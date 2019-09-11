@@ -14,3 +14,20 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('paises', 'UserController@paises');
+
+Route::post('paises', 'UserController@cargarpaises')->name('paisess');
+
+
+Route::get('aerolineas','UserController@aero');
+
+Route::get('alojamientos','UserController@aloja');
+
+Route::get('login','UserController@login');
+
+Route::get('menuadmin','UserController@menuadmin');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
