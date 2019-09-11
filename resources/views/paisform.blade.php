@@ -11,6 +11,7 @@
 </div>
 
 <form action="{{route('paisess')}}" method="POST">
+  {{csrf_field()}}
   <label >Pais</label>
   <input type="text" name="descripcion" placeholder="--Ingrese Pais" class="form-control" >
   <button type="submit" class="btn btn-primary ">Cargar</button>
