@@ -13,7 +13,7 @@
 <form action="{{route('paisess')}}" method="POST">
   {{csrf_field()}}
   <label >Pais</label>
-  <input type="text" name="descripcion" placeholder="--Ingrese Pais" class="form-control" >
+  <input type="text" name="descripcion" placeholder="--Ingrese Pais--" class="form-control" >
   <button type="submit" class="btn btn-primary ">Cargar</button>
 </form>
 
@@ -26,8 +26,6 @@
     <tr>
       <th scope="col">#id</th>
       <th scope="col">Descripcion</th>
-      <th scope="col">xx</th>
-      <th scope="col">xx</th>
     </tr>
   </thead>
   <tbody>
@@ -35,8 +33,6 @@
    <tr>
     <th scope="row">{{$pais->id}}</th>
     <td>{{$pais->descripcion}}</td>
-    <td>Otto</td>
-    <td>@mdo</td>
   </tr>
   @endforeach
 </tbody>

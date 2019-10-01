@@ -1,298 +1,476 @@
- <!DOCTYPE html>
-<html lang="es">
+  
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Alojamientos</title>
-    <link rel="stylesheet" href="{{ asset('/css/menuadmin.css') }}">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-</head>
 
-<body>
-<div class="page-wrapper chiller-theme toggled">
-  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
-    <i class="fas fa-bars"></i>
-  </a>
-  <nav id="sidebar" class="sidebar-wrapper">
-    <div class="sidebar-content">
-      <div class="sidebar-brand">
-        <a href="#">pro sidebar</a>
-        <div id="close-sidebar">
-          <i class="fas fa-times"></i>
+
+@section('content')
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<!------ Include the above in your HEAD tag ---------->
+
+ 
+  <div class="container-fluid main-container">
+    <div class="col-md-2 sidebar">
+      <div class="row">
+        <!-- uncomment code for absolute positioning tweek see top comment in css -->
+        <div class="absolute-wrapper"> </div>
+        <!-- Menu -->
+        <div class="side-menu">
+          <nav class="navbar navbar-default" role="navigation">
+            <!-- Main Menu -->
+            <div class="side-menu-container">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#" class="boton-uno"><span class="glyphicon glyphicon-dashboard"></span>Informacion General</a></li>
+                <li>
+
+                  <a href="#" class="boton-dos"><span class="glyphicon glyphicon-plane "></span>Distribucion y Precio</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Instalacion y Servicio</a></li>
+
+  
+
+                <li><a href="#" class="boton-tres"><span class="glyphicon glyphicon-signal"></span> Fotos</a></li>
+
+                <li><a href="#" class="boton-tres"><span class="glyphicon glyphicon-signal"></span>Condiciones</a></li>
+
+                <li><a href="#" class="boton-tres"><span class="glyphicon glyphicon-signal"></span>Pagos</a></li>
+
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </nav>
         </div>
-      </div>
-      <div class="sidebar-header">
-        <div class="user-pic">
-          <img class="img-responsive img-rounded" src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
-            alt="User picture">
-        </div>
-        <div class="user-info">
-          <span class="user-name">Jhon
-            <strong>Smith</strong>
-          </span>
-          <span class="user-role">Administrator</span>
-          <span class="user-status">
-            <i class="fa fa-circle"></i>
-            <span>Online</span>
-          </span>
-        </div>
-      </div>
-      <!-- sidebar-header  -->
-      <div class="sidebar-search">
-        <div>
-          <div class="input-group">
-            <input type="text" class="form-control search-menu" placeholder="Search...">
-            <div class="input-group-append">
-              <span class="input-group-text">
-                <i class="fa fa-search" aria-hidden="true"></i>
-              </span>
-            </div>
+      </div>      </div>
+      <div class="col-md-10 content">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            Dashboard
+          </div>
+          <div class="panel-body">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </div>
         </div>
-      </div>
-      <!-- sidebar-search  -->
-      <div class="sidebar-menu">
-        <ul>
-          <li class="header-menu">
-            <span>General</span>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-tachometer-alt"></i>
-              <span>Dashboard</span>
-              <span class="badge badge-pill badge-warning">New</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Dashboard 1
-                    <span class="badge badge-pill badge-success">Pro</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 2</a>
-                </li>
-                <li>
-                  <a href="#">Dashboard 3</a>
-                </li>
-              </ul>
+           <div class="row contenido">
+                <div class="col-md-12 contenido-uno">
+                    <p>Primer div</p>
+                </div>
+                <div class="col-md-12 contenido-dos">
+                    <p>Segundo div</p>
+                </div>
+                <div class="col-md-12 contenido-tres">
+                    <p>Tercer div</p>
+                </div>
             </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-shopping-cart"></i>
-              <span>E-commerce</span>
-              <span class="badge badge-pill badge-danger">3</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Products
+      </div>
+      <footer class="pull-left footer">
+        <p class="col-md-12">
+          <hr class="divider">
+          Copyright &COPY; 2015 <a href="http://www.pingpong-labs.com">Gravitano</a>
+        </p>
+      </footer>
+    </div>
+    
+@endsection
+    <style>
+      h1.page-header {
+        margin-top: -5px;
+      }
 
-                  </a>
-                </li>
-                <li>
-                  <a href="#">Orders</a>
-                </li>
-                <li>
-                  <a href="#">Credit cart</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="far fa-gem"></i>
-              <span>Components</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">General</a>
-                </li>
-                <li>
-                  <a href="#">Panels</a>
-                </li>
-                <li>
-                  <a href="#">Tables</a>
-                </li>
-                <li>
-                  <a href="#">Icons</a>
-                </li>
-                <li>
-                  <a href="#">Forms</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-chart-line"></i>
-              <span>Charts</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Pie chart</a>
-                </li>
-                <li>
-                  <a href="#">Line chart</a>
-                </li>
-                <li>
-                  <a href="#">Bar chart</a>
-                </li>
-                <li>
-                  <a href="#">Histogram</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="sidebar-dropdown">
-            <a href="#">
-              <i class="fa fa-globe"></i>
-              <span>Maps</span>
-            </a>
-            <div class="sidebar-submenu">
-              <ul>
-                <li>
-                  <a href="#">Google maps</a>
-                </li>
-                <li>
-                  <a href="#">Open street map</a>
-                </li>
-              </ul>
-            </div>
-          </li>
-          <li class="header-menu">
-            <span>Extra</span>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-book"></i>
-              <span>Documentation</span>
-              <span class="badge badge-pill badge-primary">Beta</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-calendar"></i>
-              <span>Calendar</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-folder"></i>
-              <span>Examples</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!-- sidebar-menu  -->
-    </div>
-    <!-- sidebar-content  -->
-    <div class="sidebar-footer">
-      <a href="#">
-        <i class="fa fa-bell"></i>
-        <span class="badge badge-pill badge-warning notification">3</span>
-      </a>
-      <a href="#">
-        <i class="fa fa-envelope"></i>
-        <span class="badge badge-pill badge-success notification">7</span>
-      </a>
-      <a href="#">
-        <i class="fa fa-cog"></i>
-        <span class="badge-sonar"></span>
-      </a>
-      <a href="#">
-        <i class="fa fa-power-off"></i>
-      </a>
-    </div>
-  </nav>
-  <!-- sidebar-wrapper  -->
-  <main class="page-content">
-    <div class="container-fluid">
-      <h2>Pro Sidebar</h2>
-      <hr>
-      <div class="row">
-        <div class="form-group col-md-12">
-          <p>This is a responsive sidebar template with dropdown menu based on bootstrap 4 framework.</p>
-          <p> You can find the complete code on <a href="https://github.com/azouaoui-med/pro-sidebar-template" target="_blank">
-              Github</a>, it contains more themes and background image option</p>
-        </div>
-        <div class="form-group col-md-12">
-          <iframe src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=star&count=true&size=large"
-            frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
-          <iframe src="https://ghbtns.com/github-btn.html?user=azouaoui-med&repo=pro-sidebar-template&type=fork&count=true&size=large"
-            frameborder="0" scrolling="0" width="140px" height="30px"></iframe>
-        </div>
-      </div>
-      <h5>More templates</h5>
-      <hr>
-      <div class="row">
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">          
-          <div class="card rounded-0 p-0 shadow-sm">
-            <img src="https://user-images.githubusercontent.com/25878302/58369568-a49b2480-7efc-11e9-9ca9-2be44afacda1.png" class="card-img-top rounded-0" alt="Angular pro sidebar">
-            <div class="card-body text-center">
-                <h6 class="card-title">Angular Pro Sidebar</h6>
-                <a href="https://github.com/azouaoui-med/angular-pro-sidebar" target="_blank" class="btn btn-primary btn-sm">Github</a>
-                <a href="https://azouaoui-med.github.io/angular-pro-sidebar/demo/" target="_blank" class="btn btn-success btn-sm">Preview</a>
-            </div>
-          </div>          
-        </div>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4">          
-          <div class="card rounded-0 p-0 shadow-sm">
-            <img src="https://user-images.githubusercontent.com/25878302/58369258-33f20900-7ef8-11e9-8ff3-b277cb7ed7b4.PNG" class="card-img-top rounded-0" alt="Angular pro sidebar">
-            <div class="card-body text-center">
-                <h6 class="card-title">Angular Dashboard</h6>
-                <a href="https://github.com/azouaoui-med/lightning-admin-angular" target="_blank" class="btn btn-primary btn-sm">Github</a>
-                <a href="https://azouaoui-med.github.io/lightning-admin-angular/demo/" target="_blank" class="btn btn-success btn-sm">Preview</a>
-            </div>
-          </div>          
-        </div>
-      </div>
-    </div>
+      .sidebar {
+        padding-left: 0;
+      }
 
-  </main>
-  <!-- page-content" -->
-</div>
-<!-- page-wrapper -->
-    <script src="js/jquery-3.3.1.min.js"></script>
+      .main-container { 
+        background: #FFF;
+        padding-top: 15px;
+        margin-top: -20px;
+      }
+
+      .footer {
+        width: 100%;
+      }  
+
+      :focus {
+        outline: none;
+      }
+
+      .side-menu {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-color: #f8f8f8;
+        border-right: 1px solid #e7e7e7;
+      }
+      .side-menu .navbar {
+        border: none;
+      }
+      .side-menu .navbar-header {
+        width: 100%;
+        border-bottom: 1px solid #e7e7e7;
+      }
+      .side-menu .navbar-nav .active a {
+        background-color: transparent;
+        margin-right: -1px;
+        border-right: 5px solid #e7e7e7;
+      }
+      .side-menu .navbar-nav li {
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid #e7e7e7;
+      }
+      .side-menu .navbar-nav li a {
+        padding: 15px;
+      }
+      .side-menu .navbar-nav li a .glyphicon {
+        padding-right: 10px;
+      }
+      .side-menu #dropdown {
+        border: 0;
+        margin-bottom: 0;
+        border-radius: 0;
+        background-color: transparent;
+        box-shadow: none;
+      }
+      .side-menu #dropdown .caret {
+        float: right;
+        margin: 9px 5px 0;
+      }
+      .side-menu #dropdown .indicator {
+        float: right;
+      }
+      .side-menu #dropdown > a {
+        border-bottom: 1px solid #e7e7e7;
+      }
+      .side-menu #dropdown .panel-body {
+        padding: 0;
+        background-color: #f3f3f3;
+      }
+      .side-menu #dropdown .panel-body .navbar-nav {
+        width: 100%;
+      }
+      .side-menu #dropdown .panel-body .navbar-nav li {
+        padding-left: 15px;
+        border-bottom: 1px solid #e7e7e7;
+      }
+      .side-menu #dropdown .panel-body .navbar-nav li:last-child {
+        border-bottom: none;
+      }
+      .side-menu #dropdown .panel-body .panel > a {
+        margin-left: -20px;
+        padding-left: 35px;
+      }
+      .side-menu #dropdown .panel-body .panel-body {
+        margin-left: -15px;
+      }
+      .side-menu #dropdown .panel-body .panel-body li {
+        padding-left: 30px;
+      }
+      .side-menu #dropdown .panel-body .panel-body li:last-child {
+        border-bottom: 1px solid #e7e7e7;
+      }
+      .side-menu #search-trigger {
+        background-color: #f3f3f3;
+        border: 0;
+        border-radius: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 15px 18px;
+      }
+      .side-menu .brand-name-wrapper {
+        min-height: 50px;
+      }
+      .side-menu .brand-name-wrapper .navbar-brand {
+        display: block;
+      }
+      .side-menu #search {
+        position: relative;
+        z-index: 1000;
+      }
+      .side-menu #search .panel-body {
+        padding: 0;
+      }
+      .side-menu #search .panel-body .navbar-form {
+        padding: 0;
+        padding-right: 50px;
+        width: 100%;
+        margin: 0;
+        position: relative;
+        border-top: 1px solid #e7e7e7;
+      }
+      .side-menu #search .panel-body .navbar-form .form-group {
+        width: 100%;
+        position: relative;
+      }
+      .side-menu #search .panel-body .navbar-form input {
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        width: 100%;
+        height: 50px;
+      }
+      .side-menu #search .panel-body .navbar-form .btn {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border: 0;
+        border-radius: 0;
+        background-color: #f3f3f3;
+        padding: 15px 18px;
+      }
+      /* Main body section */
+      .side-body {
+        margin-left: 310px;
+      }
+      /* small screen */
+      @media (max-width: 768px) {
+        .side-menu {
+          position: relative;
+          width: 100%;
+          height: 0;
+          border-right: 0;
+        }
+
+        .side-menu .navbar {
+          z-index: 999;
+          position: relative;
+          height: 0;
+          min-height: 0;
+          background-color:none !important;
+          border-color: none !important;
+        }
+        .side-menu .brand-name-wrapper .navbar-brand {
+          display: inline-block;
+        }
+        /* Slide in animation */
+        @-moz-keyframes slidein {
+          0% {
+            left: -300px;
+          }
+          100% {
+            left: 10px;
+          }
+        }
+        @-webkit-keyframes slidein {
+          0% {
+            left: -300px;
+          }
+          100% {
+            left: 10px;
+          }
+        }
+        @keyframes slidein {
+          0% {
+            left: -300px;
+          }
+          100% {
+            left: 10px;
+          }
+        }
+        @-moz-keyframes slideout {
+          0% {
+            left: 0;
+          }
+          100% {
+            left: -300px;
+          }
+        }
+        @-webkit-keyframes slideout {
+          0% {
+            left: 0;
+          }
+          100% {
+            left: -300px;
+          }
+        }
+        @keyframes slideout {
+          0% {
+            left: 0;
+          }
+          100% {
+            left: -300px;
+          }
+        }
+        /* Slide side menu*/
+        /* Add .absolute-wrapper.slide-in for scrollable menu -> see top comment */
+        .side-menu-container > .navbar-nav.slide-in {
+          -moz-animation: slidein 300ms forwards;
+          -o-animation: slidein 300ms forwards;
+          -webkit-animation: slidein 300ms forwards;
+          animation: slidein 300ms forwards;
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+        }
+        .side-menu-container > .navbar-nav {
+          /* Add position:absolute for scrollable menu -> see top comment */
+          position: fixed;
+          left: -300px;
+          width: 300px;
+          top: 43px;
+          height: 100%;
+          border-right: 1px solid #e7e7e7;
+          background-color: #f8f8f8;
+          overflow: auto;
+          -moz-animation: slideout 300ms forwards;
+          -o-animation: slideout 300ms forwards;
+          -webkit-animation: slideout 300ms forwards;
+          animation: slideout 300ms forwards;
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+        }
+        @-moz-keyframes bodyslidein {
+          0% {
+            left: 0;
+          }
+          100% {
+            left: 300px;
+          }
+        }
+        @-webkit-keyframes bodyslidein {
+          0% {
+            left: 0;
+          }
+          100% {
+            left: 300px;
+          }
+        }
+        @keyframes bodyslidein {
+          0% {
+            left: 0;
+          }
+          100% {
+            left: 300px;
+          }
+        }
+        @-moz-keyframes bodyslideout {
+          0% {
+            left: 300px;
+          }
+          100% {
+            left: 0;
+          }
+        }
+        @-webkit-keyframes bodyslideout {
+          0% {
+            left: 300px;
+          }
+          100% {
+            left: 0;
+          }
+        }
+        @keyframes bodyslideout {
+          0% {
+            left: 300px;
+          }
+          100% {
+            left: 0;
+          }
+        }
+        /* Slide side body*/
+        .side-body {
+          margin-left: 5px;
+          margin-top: 70px;
+          position: relative;
+          -moz-animation: bodyslideout 300ms forwards;
+          -o-animation: bodyslideout 300ms forwards;
+          -webkit-animation: bodyslideout 300ms forwards;
+          animation: bodyslideout 300ms forwards;
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+        }
+        .body-slide-in {
+          -moz-animation: bodyslidein 300ms forwards;
+          -o-animation: bodyslidein 300ms forwards;
+          -webkit-animation: bodyslidein 300ms forwards;
+          animation: bodyslidein 300ms forwards;
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+        }
+        /* Hamburger */
+        .navbar-toggle-sidebar {
+          border: 0;
+          float: left;
+          padding: 18px;
+          margin: 0;
+          border-radius: 0;
+          background-color: #f3f3f3;
+        }
+        /* Search */
+        #search .panel-body .navbar-form {
+          border-bottom: 0;
+        }
+        #search .panel-body .navbar-form .form-group {
+          margin: 0;
+        }
+        .side-menu .navbar-header {
+          /* this is probably redundant */
+          position: fixed;
+          z-index: 3;
+          background-color: #f8f8f8;
+        }
+        /* Dropdown tweek */
+        #dropdown .panel-body .navbar-nav {
+          margin: 0;
+        }
+      }
+
+    </style>
+    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script>
-        
-        $(".sidebar-dropdown > a").click(function() {
-  $(".sidebar-submenu").slideUp(200);
-  if (
-    $(this)
-      .parent()
-      .hasClass("active")
-  ) {
-    $(".sidebar-dropdown").removeClass("active");
-    $(this)
-      .parent()
-      .removeClass("active");
-  } else {
-    $(".sidebar-dropdown").removeClass("active");
-    $(this)
-      .next(".sidebar-submenu")
-      .slideDown(200);
-    $(this)
-      .parent()
-      .addClass("active");
-  }
-});
+      $(function () {
+        $('.navbar-toggle-sidebar').click(function () {
+          $('.navbar-nav').toggleClass('slide-in');
+          $('.side-body').toggleClass('body-slide-in');
+          $('#search').removeClass('in').addClass('collapse').slideUp(200);
+        });
 
-$("#close-sidebar").click(function() {
-  $(".page-wrapper").removeClass("toggled");
-});
-$("#show-sidebar").click(function() {
-  $(".page-wrapper").addClass("toggled");
-});
-        
+        $('#search-trigger').click(function () {
+          $('.navbar-nav').removeClass('slide-in');
+          $('.side-body').removeClass('body-slide-in');
+          $('.search-input').focus();
+        });
+      });
     </script>
-</body>
-
-</html>
+        <script>
+        $(document).ready(function(){
+            $('.contenido-dos').hide();
+            $('.contenido-tres').hide();
+            
+            $('.boton-dos').click(function(){
+                $('.contenido-uno').fadeOut();
+                $('.contenido-dos').fadeIn();
+                $('.contenido-tres').fadeOut();
+                $('.boton-dos').addClass('boton-activo');
+                $('.boton-tres').removeClass('boton-activo');
+                $('.boton-uno').removeClass('boton-activo');
+            })
+            
+            $('.boton-tres').click(function(){
+                $('.contenido-uno').fadeOut();
+                $('.contenido-dos').fadeOut();
+                $('.contenido-tres').fadeIn();
+                $('.boton-tres').addClass('boton-activo');
+                $('.boton-dos').removeClass('boton-activo');
+                $('.boton-uno').removeClass('boton-activo');
+            })
+            
+            $('.boton-uno').click(function(){
+                $('.contenido-uno').fadeIn();
+                $('.contenido-dos').fadeOut();
+                $('.contenido-tres').fadeOut();
+                $('.boton-uno').addClass('boton-activo');
+                $('.boton-dos').removeClass('boton-activo');
+                $('.boton-tres').removeClass('boton-activo');
+            })
+            
+        })
+    </script>
