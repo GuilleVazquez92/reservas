@@ -10,13 +10,13 @@
 </head>
 <body>
     <div class="col-md-12 blog text-center">
-        <select name="" id=""></select>
+       
         <div class="container">
             <div class="row" align="left" >
                 
                 <div id="clickeable" onclick="location.href='http://reservas.local/alojamientos'" class="row col-md-5  img">
-                    $tipo_alojamiento as $taloja
-                    <option value=""{{$tipo_aloja['1']}}></option>
+                    
+                    
                     <div class="col-md-12"> 
                         <h3>Hotel</h3>
                     </div>

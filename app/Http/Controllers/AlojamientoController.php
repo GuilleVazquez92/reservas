@@ -54,7 +54,7 @@ class AlojamientoController extends Controller
 	public function admin()
 	{
 
-		return view('alojamientos.adminAlojamiento'); 
+		return view('menuadmin'); 
 	}
 
 }

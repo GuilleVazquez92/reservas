@@ -26,16 +26,16 @@
                 <li class="active"><a href="#" class="boton-uno"><span class="glyphicon glyphicon-dashboard"></span>Informacion General</a></li>
                 <li>
 
-                  <a href="#" class="boton-dos"><span class="glyphicon glyphicon-plane "></span>Distribucion y Precio</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-cloud"></span> Instalacion y Servicio</a></li>
+                  <a href="#" class="boton-dos"><span class="glyphicon glyphicon-plane "></span>Habitaciones</a></li>
+                <li><a href="#" class="boton-tres"><span class="glyphicon glyphicon-cloud"></span> Regimenes</a></li>
 
   
 
-                <li><a href="#" class="boton-tres"><span class="glyphicon glyphicon-signal"></span> Fotos</a></li>
+                <li><a href="#" class="boton-cuatro" ><span class="glyphicon glyphicon-plane"></span> Fotos</a></li>
 
-                <li><a href="#" class="boton-tres"><span class="glyphicon glyphicon-signal"></span>Condiciones</a></li>
+                <li><a href="#" class="boton-cinco"><span class="glyphicon glyphicon-signal"></span>Condiciones</a></li>
 
-                <li><a href="#" class="boton-tres"><span class="glyphicon glyphicon-signal"></span>Pagos</a></li>
+                <li><a href="#" class="boton-seis"><span class="glyphicon glyphicon-signal"></span>Pagos</a></li>
 
               </ul>
             </div><!-- /.navbar-collapse -->
@@ -43,35 +43,181 @@
         </div>
       </div>      </div>
       <div class="col-md-10 content">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            Dashboard
-          </div>
-          <div class="panel-body">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </div>
-        </div>
+      
            <div class="row contenido">
                 <div class="col-md-12 contenido-uno">
-                    <p>Primer div</p>
+                     <div class="panel panel-default">
+          <div class="panel-heading">
+            BIENVENIDO  
+          </div>
+          <div class="panel-body">
+              Buenas, te damos la Bienvenida a Tuviaje.com, el lugar perfecto para compartir tu alojamiento con el resto del mundo. 
+          </div>
+        </div>
                 </div>
                 <div class="col-md-12 contenido-dos">
-                    <p>Segundo div</p>
+                    
+            <h3 align="center">Cargar Habitaciones</h3>
+                    <form>
+    <div class="form-group">
+     <div class="form-group">
+    <label for="exampleFormControlSelect1">Tipo de Habitaciones</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+ 
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">Cantidad de camas </label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div>
+  <label for="exampleFormControlInput1">Precio</label>
+    <input type="int" class="form-control" id="exampleFormControlInput1" placeholder="">
+  </div>
+  <button type="button" class="btn btn-primary btn-lg">Cargar Habitacion</button>
+  
+</form>
+
+<h3 align="center">Habitaciones Cargadas</h3>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Numero</th>
+      <th scope="col">Tipo de Habitacion</th>
+      <th scope="col">Cantidad de Camas </th>
+      <th scope="col">Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+
                 </div>
                 <div class="col-md-12 contenido-tres">
-                    <p>Tercer div</p>
+                       <h3 align="center">Cargar Regimenes</h3>
+                    <form>
+    <div class="form-group">
+      <label for="exampleFormControlInput1">Descripcion</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+    
+  <label for="exampleFormControlInput1">Precio</label>
+    <input type="int" class="form-control" id="exampleFormControlInput1" placeholder="">
+  </div>
+  <button type="button" class="btn btn-primary btn-lg">Cargar Regimen</button>
+  
+</form>
+
+<h3 align="center">Habitaciones Cargadas</h3>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Numero</th>
+      <th scope="col">Tipo de Regimen</th>
+      <th scope="col">Precio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      
+    </tr>
+  </tbody>
+</table>
+                </div>
+                    <div class="col-md-12 contenido-cuatro">
+        
+<h3 align="center">Imagenes</h3>
+        <form>
+  <div class="form-group">
+    <label for="exampleFormControlFile1">Seleccione Imagenes de SU ALOJAMIENTO</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+  </div>
+</form>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row"></th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row"></th>
+      <td colspan="2"></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+                </div>
+                 <div class="col-md-12 contenido-cinco">
+        <p>div 5</p>
+                </div>
+                 <div class="col-md-12 contenido-seis">
+        <p>div 6</p>
                 </div>
             </div>
       </div>
       <footer class="pull-left footer">
         <p class="col-md-12">
           <hr class="divider">
-          Copyright &COPY; 2015 <a href="http://www.pingpong-labs.com">Gravitano</a>
+          Copyright &COPY; 2020 <a href="">GUILLERMO VAZQUEZ</a>
         </p>
       </footer>
     </div>
@@ -418,6 +564,7 @@
         #dropdown .panel-body .navbar-nav {
           margin: 0;
         }
+        
       }
 
     </style>
@@ -444,33 +591,99 @@
         $(document).ready(function(){
             $('.contenido-dos').hide();
             $('.contenido-tres').hide();
+            $('.contenido-cuatro').hide();
+            $('.contenido-cinco').hide();
+            $('.contenido-seis').hide();
             
             $('.boton-dos').click(function(){
                 $('.contenido-uno').fadeOut();
                 $('.contenido-dos').fadeIn();
                 $('.contenido-tres').fadeOut();
+                $('.contenido-cuatro').fadeOut();
+                $('.contenido-cinco').fadeOut();
+                $('.contenido-seis').fadeOut();
                 $('.boton-dos').addClass('boton-activo');
                 $('.boton-tres').removeClass('boton-activo');
                 $('.boton-uno').removeClass('boton-activo');
+                $('.boton-cuatro').removeClass('boton-activo');
+                $('.boton-cinco').removeClass('boton-activo');
+                $('.boton-seis').removeClass('boton-activo');
             })
             
             $('.boton-tres').click(function(){
                 $('.contenido-uno').fadeOut();
                 $('.contenido-dos').fadeOut();
                 $('.contenido-tres').fadeIn();
+                $('.contenido-cuatro').fadeOut();
+                $('.contenido-cinco').fadeOut();
+                $('.contenido-seis').fadeOut();
                 $('.boton-tres').addClass('boton-activo');
                 $('.boton-dos').removeClass('boton-activo');
                 $('.boton-uno').removeClass('boton-activo');
+                $('.boton-cuatro').removeClass('boton-activo');
+                $('.boton-cinco').removeClass('boton-activo');
+                $('.boton-seis').removeClass('boton-activo');
             })
             
             $('.boton-uno').click(function(){
                 $('.contenido-uno').fadeIn();
                 $('.contenido-dos').fadeOut();
                 $('.contenido-tres').fadeOut();
+                $('.contenido-cuatro').fadeOut();
+                $('.contenido-cinco').fadeOut();
+                $('.contenido-seis').fadeOut();
                 $('.boton-uno').addClass('boton-activo');
                 $('.boton-dos').removeClass('boton-activo');
                 $('.boton-tres').removeClass('boton-activo');
+                $('.boton-cuatro').removeClass('boton-activo');
+                $('.boton-cinco').removeClass('boton-activo');
+                $('.boton-seis').removeClass('boton-activo');
             })
-            
+
+             $('.boton-cuatro').click(function(){
+                $('.contenido-cuatro').fadeIn();
+                $('.contenido-dos').fadeOut();
+                $('.contenido-tres').fadeOut();
+                $('.contenido-uno').fadeOut();
+                $('.contenido-cinco').fadeOut();
+                $('.contenido-seis').fadeOut();
+                $('.boton-cuatro').addClass('boton-activo');
+                $('.boton-dos').removeClass('boton-activo');
+                $('.boton-tres').removeClass('boton-activo');
+                $('.boton-uno').removeClass('boton-activo');
+                $('.boton-cinco').removeClass('boton-activo');
+                $('.boton-seis').removeClass('boton-activo');
+
+            })
+              $('.boton-cinco').click(function(){
+                $('.contenido-cinco').fadeIn();
+                $('.contenido-dos').fadeOut();
+                $('.contenido-tres').fadeOut();
+                $('.contenido-uno').fadeOut();
+                $('.contenido-cuatro').fadeOut();
+                $('.contenido-seis').fadeOut();
+                $('.boton-cinco').addClass('boton-activo');
+                $('.boton-dos').removeClass('boton-activo');
+                $('.boton-tres').removeClass('boton-activo');
+                $('.boton-uno').removeClass('boton-activo');
+                $('.boton-cuatro').removeClass('boton-activo');
+                $('.boton-seis').removeClass('boton-activo');
+
+            })
+               $('.boton-seis').click(function(){
+                $('.contenido-seis').fadeIn();
+                $('.contenido-dos').fadeOut();
+                $('.contenido-tres').fadeOut();
+                $('.contenido-uno').fadeOut();
+                $('.contenido-cuatro').fadeOut();
+                $('.contenido-cinco').fadeOut();
+                $('.boton-seis').addClass('boton-activo');
+                $('.boton-dos').removeClass('boton-activo');
+                $('.boton-tres').removeClass('boton-activo');
+                $('.boton-uno').removeClass('boton-activo');
+                $('.boton-cuatro').removeClass('boton-activo');
+                $('.boton-cinco').removeClass('boton-activo');
+
+            })
         })
     </script>
