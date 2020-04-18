@@ -26,4 +26,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function alojamientos() {
+        return $this->belongsToMany(\App\Alojamiento::class, 'user_x_alojamiento', 'iduser', 'idalojamiento');
+    }
 }
