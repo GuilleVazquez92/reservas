@@ -16,29 +16,51 @@ Route::get('/', function () {
 });
 
 Route::get('inicio', function () {
-	return view('inicio/inicio');
+	return view('admin.info');
 });
+
+//--- rutas para Administrador de Alojamiento ---
+Route::get('regimenes', 'AlojamientoController@regimenes');
+Route::post('regimenes', 'AlojamientoController@cargarRegimenes')->name('regimenes');
+
+Route::get('habitaciones', 'AlojamientoController@habitaciones');
+Route::post('habitaciones', 'AlojamientoController@cargar_habitaciones')->name('habitaciones');
+
+Route::get('info', 'AlojamientoController@info');
+
+Route::get('fotos', 'AlojamientoController@fotos');
+Route::post('fotos', 'AlojamientoController@cargarFotos')->name('fotos');
+
+Route::get('condiciones', 'AlojamientoController@condiciones');
+Route::get('pagos', 'AlojamientoController@pagos');
+
+Route::get('RegistrarAlojamiento', 'RegistroAlojamiento@mostrar');
+Route::get('pagos', 'AlojamientoController@pagos');
+
+Route::get('prueba', 'prueba@aloja');
+Route::post('prueba', 'prueba@cargarPrueba')->name('prueba');
+
 
 
 
 Route::get('paises', 'PaisController@paises');
 Route::post('paises', 'PaisController@cargarpaises')->name('paisess');
 
-Route::get('alojamientos/admin', 'AlojamientoController@admin');
-Route::post('alojamientos/admin', 'prueba@cargarAlojamiento')->name('prueba');
+//Route::get('alojamientos/admin', 'AlojamientoController@admin');
+//Route::post('alojamientos/admin', 'prueba@cargarAlojamiento')->name('prueba');
 
 Route::get('opciones', 'opciones@mostrar');
 Route::get('opciones/hoteles', 'opciones@mostrar_hoteles');
 
-Route::get('alojamientos','AlojamientoController@aloja');
-Route::post('alojamientos', 'AlojamientoController@cargarAlojamiento')->name('alojamiento');
+Route::get('alojamientos','Registro@aloja');
+Route::post('alojamientos', 'Registro@cargarAlojamiento')->name('alojamiento');
 
-Route::get('menuadmin','UserController@menuadmin');
+Route::get('Route','UserController@Route');
 
 		// Reservas Routes
 
-Route::get('reservas/alojamientos', 'reservas@mostrar');
-Route::post('reservas/alojamientos', 'prueba@cargarAlojamiento')->name('prueba');
+//Route::get('reservas/alojamientos', 'reservas@mostrar');
+//Route::post('reservas/alojamientos', 'prueba@cargarAlojamiento')->name('prueba');
 
 
 		// Login Routes .. 

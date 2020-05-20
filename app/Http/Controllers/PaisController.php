@@ -21,3 +21,4 @@ class PaisController extends Controller
 		
 		return back();
 	}
+}

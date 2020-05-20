@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -52,11 +52,11 @@
   <!--==========================
   Hero Section
   ============================-->
-  <section id="hero">
+  <section id="hero" style="background-image: url(img/arbol.jpg);">
     <div class="hero-container">
       <div class="wow fadeIn">
         <div class="hero-logo" >
-         <img src="img/tuviaje.png" alt="" >
+        <img src="img/tuviaje.png" alt="" style="width: 350px; height: 350px;">
         </div>
 
         <h1>Tu mejor forma de viajar</h1>
@@ -76,7 +76,7 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="#hero"><img src="img/tuviaje.png" alt="" title="" /></img></a>
+        <a href="#hero"><img src="img/tuviaje.png"style="width: 75px; height: 100px;" ></img></a>
         <!-- Uncomment below if you prefer to use a text image -->
         <!--<h1><a href="#hero">Header 1</a></h1>-->
       </div>

@@ -1,14 +1,18 @@
   
-@extends('layouts.app')
-
-
-
-@section('content')
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <title>MenuAdmin</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+ <link type= "text/css" href="css/menu.css" rel="stylesheet">
+</head>
+<body>
 
+
+
+<h1 align="center"> Administra tu Alojamiento</h1><br>
 <!------ Include the above in your HEAD tag ---------->
 
  
@@ -42,6 +46,7 @@
           </nav>
         </div>
       </div>      </div>
+      
       <div class="col-md-10 content">
       
            <div class="row contenido">
@@ -55,6 +60,7 @@
           </div>
         </div>
                 </div>
+                
                 <div class="col-md-12 contenido-dos">
                     
             <h3 align="center">Cargar Habitaciones</h3>
@@ -124,15 +130,14 @@
                 </div>
                 <div class="col-md-12 contenido-tres">
                        <h3 align="center">Cargar Regimenes</h3>
-                    <form>
+<form>
     <div class="form-group">
-      <label for="exampleFormControlInput1">Descripcion</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
-    
-  <label for="exampleFormControlInput1">Precio</label>
-    <input type="int" class="form-control" id="exampleFormControlInput1" placeholder="">
+              <label for="exampleFormControlInput1">Descripcion</label>
+              <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="">
+              <label for="exampleFormControlInput1">Precio</label>
+              <input type="int" class="form-control" id="exampleFormControlInput1" placeholder="">
   </div>
-  <button type="button" class="btn btn-primary btn-lg">Cargar Regimen</button>
+              <button type="button" class="btn btn-primary btn-lg">Cargar Regimen</button>
   
 </form>
 
@@ -222,7 +227,6 @@
       </footer>
     </div>
     
-@endsection
     <style>
       h1.page-header {
         margin-top: -5px;
@@ -687,3 +691,5 @@
             })
         })
     </script>
+    </body>
+</html>
