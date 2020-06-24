@@ -19,6 +19,8 @@ Route::get('inicio', function () {
 	return view('admin.info');
 });
 
+Route::get('amadeus/flights', 'AmadeusController@flights');
+
 //--- rutas para Administrador de Alojamiento ---
 Route::get('regimenes', 'AlojamientoController@regimenes');
 Route::post('regimenes', 'AlojamientoController@cargarRegimenes')->name('regimenes');
