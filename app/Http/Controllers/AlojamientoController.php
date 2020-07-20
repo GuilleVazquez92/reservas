@@ -119,7 +119,7 @@ class AlojamientoController extends Controller
 
 	public function info()
 	{
-			return view('admin.info');
+			return view('Admin.info');
 	}
 
 
@@ -178,7 +178,7 @@ class AlojamientoController extends Controller
 
 		$prueba = \Auth::user()->alojamientos;
 		
-		return view('admin.fotos',$params)->with('alojamientos',$prueba);
+		return view('Admin.fotos',$params)->with('alojamientos',$prueba);
 	}
 		
 
@@ -209,7 +209,7 @@ class AlojamientoController extends Controller
 
 		$prueba = \Auth::user()->alojamientos;
 		
-		return view('admin.fotos',$params)->with('alojamientos',$prueba); 
+		return view('Admin.fotos',$params)->with('alojamientos',$prueba); 
 		
 	}
 	

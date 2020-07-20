@@ -20,9 +20,9 @@ class AmadeusController extends Controller
     	$token = $this->getToken();
     	$endpoint = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
     	$travel_data = array(
-    		'originLocationCode'     => 'BOS',
+    	  'originLocationCode'     => 'BOS',
 		  'destinationLocationCode' => 'PAR',
-		  'departureDate'           => '2020-07-14',
+		  'departureDate'           => '2020-08-20',
 		  'adults'                  => 2
     	);
     	$params = http_build_query($travel_data);
@@ -31,10 +31,13 @@ class AmadeusController extends Controller
 		$response = Requests::get($url, $headers);
 		$body = json_decode($response->body);
 
+		//dd ($response);
+
+		
 		echo "Cantidad de vuelos: {$body->meta->count}</br></br>";
 
 		foreach($body->data as $flight) {
-			// dd($flight);
+			//dd($flight);
 			echo "Vuelo ID: {$flight->id}</br>";
 			echo "Precio: {$flight->price->total} {$flight->price->currency}</br>";
 			echo "Duracion: {$flight->itineraries[0]->duration}</br>";
