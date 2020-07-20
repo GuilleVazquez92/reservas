@@ -2,6 +2,7 @@
 
 
 @section('contenido')
+<div class="col-md-12 contenido-dos">
 <h1 align="center" id="prueba">Registrar Alojamiento</h1>
 <form action="{{route('prueba')}}" method="POST">
   {{csrf_field()}}
@@ -120,4 +121,5 @@
  <button type="submit" class="btn btn-primary ">Cargar</button>
  </div>
 </form>
+ </div>
 @endsection

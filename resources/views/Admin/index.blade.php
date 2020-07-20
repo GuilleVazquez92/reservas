@@ -8,11 +8,11 @@
   <title>Admistrador</title>
 
   <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->
-  <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <link rel="stylesheet" href="/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
@@ -57,7 +57,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -73,7 +73,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="/dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -89,7 +89,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="/dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Sofia Caballero
@@ -150,7 +150,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="dist/img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="/dist/img/logo.PNG" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">Tu Viaje</span>
     </a>
@@ -160,7 +160,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">{{ Auth::user()->name }} </a>
@@ -184,34 +184,14 @@
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="regimenes" class="nav-link">
+            <a href="habitaciones" class="nav-link">
               <i class="nav-icon fas fa-bed"></i>
               <p>
                 Habitaciones
-                <i class="fas fa-angle-left right"></i>
+                
               </p>
             </a>
-            <ul class="nav nav-treeview">
-             <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle nav-icon"></i>
-              <p>Registrar</p>
-            </a>
-          </li>
-             <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle nav-icon"></i>
-              <p>Editar</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle nav-icon"></i>
-              <p class="text">Eliminar</p>
-            </a>
-          </li>
-             
-            </ul>
+           
           </li>
           
           <li class="nav-item has-treeview">
@@ -219,65 +199,20 @@
               <i class="nav-icon fas fa-utensils"></i>
               <p>
                 Regimenes
-                <i class="fas fa-angle-left right"></i>
+                
               </p>
             </a>
-            <ul class="nav nav-treeview">
-           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle nav-icon"></i>
-              <p>Registrar</p>
-            </a>
-          </li>
-             <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle nav-icon"></i>
-              <p>Editar</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle nav-icon"></i>
-              <p class="text">Eliminar</p>
-            </a>
-          </li>
-             
-          
-            </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="fotos" class="nav-link">
               <i class="nav-icon fas fa-camera-retro"></i>
               <p>
                 Fotos
-                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              
-            <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle nav-icon"></i>
-              <p>Registrar</p>
-            </a>
-          </li>
-             <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle nav-icon"></i>
-              <p>Editar</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon far fa-circle nav-icon"></i>
-              <p class="text">Eliminar</p>
-            </a>
-          </li>
-             
-            </ul>
           </li>
             <li class="nav-item">
-            <a href="info" class="nav-link">
+            <a href="pagos" class="nav-link">
               <i class="nav-icon fas fa-money-check"></i>
               <p>
                 Pagos
@@ -286,7 +221,7 @@
           </li>
         
              <li class="nav-item">
-            <a href="info" class="nav-link">
+            <a href="condiciones" class="nav-link">
               <i class="nav-icon fas fa-file-alt"></i>
               <p>
                 Condiciones
@@ -366,27 +301,27 @@
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
-<script src="plugins/jquery/jquery.min.js"></script>
+<script src="/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- overlayScrollbars -->
-<script src="plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
-<script src="dist/js/adminlte.js"></script>
+<script src="/dist/js/adminlte.js"></script>
 
 <!-- OPTIONAL SCRIPTS -->
-<script src="dist/js/demo.js"></script>
+<script src="/dist/js/demo.js"></script>
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="plugins/raphael/raphael.min.js"></script>
-<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<script src="/plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="/plugins/raphael/raphael.min.js"></script>
+<script src="/plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="/plugins/jquery-mapael/maps/usa_states.min.js"></script>
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+<script src="/plugins/chart.js/Chart.min.js"></script>
 
 <!-- PAGE SCRIPTS -->
-<script src="dist/js/pages/dashboard2.js"></script>
+<script src="/dist/js/pages/dashboard2.js"></script>
 </body>
 </html>

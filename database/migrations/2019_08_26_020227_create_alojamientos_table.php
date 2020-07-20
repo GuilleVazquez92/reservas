@@ -17,7 +17,6 @@ class CreateAlojamientosTable extends Migration
             $table->increments('id');
             $table->integer('idciudad')->unsigned();
             $table->integer('idtipoalojamiento')->unsigned();
-            $table->integer('idtelefono_x_alojamiento')->unsigned();
             $table->string('nombre');
             $table->string('descripcion')->nullable();
             $table->string('email')->nullable()->unique();

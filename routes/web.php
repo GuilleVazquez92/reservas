@@ -34,7 +34,9 @@ Route::post('fotos', 'AlojamientoController@cargarFotos')->name('fotos');
 Route::get('condiciones', 'AlojamientoController@condiciones');
 Route::get('pagos', 'AlojamientoController@pagos');
 
-Route::get('RegistrarAlojamiento', 'RegistroAlojamiento@mostrar');
+Route::get('RegistrarAlojamiento', 'RegistroAlojamiento@mostrar')->name('RegistrarAlojamiento');
+Route::post('RegistrarAlojamiento', 'RegistroAlojamiento@cargarAlojamiento')->name('RegistrarAlojamiento');
+
 Route::get('pagos', 'AlojamientoController@pagos');
 
 Route::get('prueba', 'prueba@aloja');
@@ -52,8 +54,8 @@ Route::post('paises', 'PaisController@cargarpaises')->name('paisess');
 Route::get('opciones', 'opciones@mostrar');
 Route::get('opciones/hoteles', 'opciones@mostrar_hoteles');
 
-Route::get('alojamientos','Registro@aloja');
-Route::post('alojamientos', 'Registro@cargarAlojamiento')->name('alojamiento');
+//Route::get('alojamientos','Registro@aloja');
+//Route::post('alojamientos', 'Registro@cargarAlojamiento')->name('alojamiento');
 
 Route::get('Route','UserController@Route');
 

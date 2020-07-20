@@ -1,5 +1,8 @@
+
+
 @extends('Admin.index')
 
+
 @section('contenido')
-<h1>pagosw</h1>
+<h1>pagos</h1>
 @endsection
