@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'amadeus' => [
+        'key' => env('AMADEUS_KEY'),
+        'secret' => env('AMADEUS_SECRET')
+    ],
+
 ];
