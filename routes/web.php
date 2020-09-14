@@ -22,6 +22,18 @@ Route::get('inicio', function () {
 Route::get('amadeus/flights', 'AmadeusController@flights');
 
 //--- rutas para Administrador de Alojamiento ---
+
+
+ 
+Route::get('test', function () {
+    return view('datepicker');
+});
+
+ 
+Route::post('test','DateController@showDate');
+
+
+
 Route::get('regimenes', 'AlojamientoController@regimenes');
 Route::post('regimenes', 'AlojamientoController@cargarRegimenes')->name('regimenes');
 
@@ -41,8 +53,8 @@ Route::post('RegistrarAlojamiento', 'RegistroAlojamiento@cargarAlojamiento')->na
 
 Route::get('pagos', 'AlojamientoController@pagos');
 
-Route::get('prueba', 'prueba@aloja');
-Route::post('prueba', 'prueba@cargarPrueba')->name('prueba');
+Route::get('publicar', 'Publicar@mostrar')->name('publicar');
+Route::post('publicar', 'Publicar@cargar')->name('publicarAlojamiento');
 
 
 

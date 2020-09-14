@@ -8,19 +8,6 @@
       <form action="{{route('habitaciones')}}" method="POST">
         {{csrf_field()}}
     <div class="form-group">
-              <div class="form-group">
-                        <label for="inputState">Confirma tu alojamiento</label>
-                        <select id="alojamiento" class="form-control" name="idalojamiento">
-                            <option selected>---Seleccione tus Alojamientos----</option>
-
-                                         @foreach($alojamientos as $alojamiento)
-                            <option value="{{$alojamiento -> id}}">
-                                        {{$alojamiento['descripcion']}}
-                            </option>
-                                         @endforeach
-
-                          </select>
-             </div>
      <div class="form-group">
     <label for="inputState">Tipo de Habitaciones</label>
     <select name="idtipohabitacion" class="form-control" >
@@ -46,8 +33,12 @@
       <option>6</option>
     </select>
   </div>
+  <label for="inputState">Descripcion</label>
+    <input type="int" class="form-control" name="descripcion" placeholder="">
+  
   <label for="inputState">Precio</label>
     <input type="int" class="form-control" name="precio" placeholder="">
+  </div>
   </div>
   <button type="submit" class="btn btn-primary btn-lg">Cargar Habitacion</button>
   
@@ -59,7 +50,7 @@
     
     <tr>
       <th scope="col">Numero</th>
-      <th scope="col">Alojamiento</th>
+      <th scope="col">Descripcion</th>
       <th scope="col">Tipo de habitacion</th>
       <th scope="col">Cantidad de Camas</th>
       <th scope="col">Precio</th>
@@ -69,7 +60,7 @@
     <tr>
       @foreach($habitaciones as $habitacion)
       <th> {{$habitacion['id']}}</th>
-      <td> {{$habitacion['idalojamiento']}}</td>
+      <td> {{$habitacion['descripcion']}}</td>
       <td> {{$habitacion['idtipo']}}</td>
       <td> {{$habitacion['cant_camas']}}</td>
       <td> {{$habitacion['precio']}}</td>

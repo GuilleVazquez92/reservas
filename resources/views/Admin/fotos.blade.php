@@ -13,7 +13,7 @@
 
                                          @foreach($alojamientos as $alojamiento)
                             <option value="{{$alojamiento -> id}}">
-                                        {{$alojamiento['descripcion']}}
+                                        {{$alojamiento['nombre']}}
                             </option>
                                          @endforeach
 

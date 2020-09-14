@@ -5,20 +5,8 @@
                        <h3 align="center">Cargar Regimenes</h3>
 <form action="{{route('regimenes')}}" method="POST">
         {{csrf_field()}}
-         <div class="form-group">
-                        <label for="inputState">Confirma tu alojamiento</label>
-                        <select id="alojamiento" class="form-control" name="idalojamiento">
-                            <option selected>---Seleccione tus Alojamientos----</option>
-
-                                         @foreach($alojamientos as $alojamiento)
-                            <option value="{{$alojamiento -> id}}">
-                                        {{$alojamiento['nombre']}}
-                            </option>
-                                         @endforeach
-
-                          </select>
-             </div>
-    <div class="form-group">
+      
+    <div class="form-group ">
               <label for="inputState">Descripcion</label>
               <input type="text" class="form-control" name="descripcion" placeholder="">
               <label for="inputState">Precio</label>

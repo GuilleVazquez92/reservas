@@ -23,12 +23,11 @@ class AlojamientoController extends Controller
 	public function regimenes()
 	{
 
-		$alojamientos= App\Alojamiento::all();
 		$regimenes= App\Regimen::all();
-		$params['alojamientos'] = $alojamientos;
+		
 		$params['regimenes'] = $regimenes;
 		
-		$prueba = \Auth::user()->alojamientos;
+		$prueba = \Auth::user();
 		
 
 		return view('Admin.regimenes',$params)->with('alojamientos',$prueba); 
@@ -36,18 +35,20 @@ class AlojamientoController extends Controller
 	
 	public function cargarRegimenes(Request $request)
 	{
+			$prueba = \Auth::user();
+
 			$regimennuevo = new App\Regimen;
-			$regimennuevo->idalojamiento= $request->get('idalojamiento');
+			$regimennuevo->iduser= $prueba->id ;
 			$regimennuevo->descripcion= $request->get('descripcion');
 			$regimennuevo->precio= $request->get('precio');
 			$regimennuevo->save();
 		
-			$alojamientos= App\Alojamiento::all();
+			
+
 			$regimenes= App\Regimen::all();
-			$params['alojamientos'] = $alojamientos;
 			$params['regimenes'] = $regimenes;
 		
-			$prueba = \Auth::user()->alojamientos;
+			
 		
 
 			return view('Admin.regimenes',$params)->with('alojamientos',$prueba);
@@ -75,18 +76,21 @@ class AlojamientoController extends Controller
 		$params['habitaciones'] = $habitaciones;
 
 		
-		$prueba = \Auth::user()->alojamientos;
+		$prueba = \Auth::user();
 		
 
 		return view('Admin.habitaciones',$params)->with('alojamientos',$prueba); 
 	}
 		public function cargar_habitaciones(Request $request)
 	{
+			$prueba = \Auth::user();
+
 			$habitacionnueva = new App\Habitacion;
-			$habitacionnueva->idalojamiento= $request->get('idalojamiento');
+			$habitacionnueva->idusers= $prueba->id;
 			$habitacionnueva->idtipo= $request->get('idtipohabitacion');
 			$habitacionnueva->cant_camas= $request->get('cant_camas');
 			$habitacionnueva->precio= $request->get('precio');
+			$habitacionnueva->descripcion= $request->get('descripcion');
 			$habitacionnueva->save();
 		 
 		 	$alojamientos= App\Alojamiento::all();
@@ -97,7 +101,7 @@ class AlojamientoController extends Controller
 			$params['tipo_habitacion'] = $tipoHabitaciones;
 			$params['habitaciones'] = $habitaciones;
 			
-			$prueba = \Auth::user()->alojamientos;
+			
 		
 
 		return view('Admin.habitaciones',$params)->with('alojamientos',$prueba); 

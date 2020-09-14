@@ -13,10 +13,11 @@ class Habitacion extends Model
     public $timestamps=true;
 
     protected $fillable = [
-    	'idalojamiento',
+    	'idusers',
     	'idtipo',
     	'cant_camas',
     	'precio',
+        'descripcion',
     ];
     
     protected $guarded = [

@@ -15,13 +15,14 @@ class CreateHabitacionesTable extends Migration
     {
         Schema::create('habitaciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idalojamiento')->unsigned();
+            $table->integer('idusers')->unsigned();
             $table->integer('idtipo')->unsigned();
             $table->integer('cant_camas');
+            $table->string('descripcion',50);
             $table->integer('precio');
             $table->timestamps();
 
-            $table->foreign('idalojamiento')->references('id')->on('alojamientos');
+            $table->foreign('idusers')->references('id')->on('users');
             $table->foreign('idtipo')->references('id')->on('tipo_alojamiento');
         });
     }

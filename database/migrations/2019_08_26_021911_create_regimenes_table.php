@@ -15,11 +15,11 @@ class CreateRegimenesTable extends Migration
     {
         Schema::create('regimenes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idalojamiento')->unsigned()->nullable();
+            $table->integer('iduser')->unsigned()->nullable();
             $table->string('descripcion', 100)->nullable();
             $table->integer('precio')->nullable();
 
-            $table->foreign('idalojamiento')->references('id')->on('alojamientos');
+            $table->foreign('iduser')->references('id')->on('users');
         });
     }
 

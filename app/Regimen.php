@@ -13,7 +13,7 @@ class Regimen extends Model
     public $timestamps=false;
 
     protected $fillable = [
-    	'idalojamiento',
+    	'iduser',
     	'descripcion',
     	'precio',
     ];

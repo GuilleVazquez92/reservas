@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\UserPorAlojamiento;
-use App\TelefonoUser;
+use App\User;
+use App\TipoHabitacion;
 use App;
 use DB;
 
