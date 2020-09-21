@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-	return view('inicio/inicio');
+	return view('inicio/index');
 });
 
 Route::get('inicio', function () {
@@ -22,15 +22,6 @@ Route::get('inicio', function () {
 Route::get('amadeus/flights', 'AmadeusController@flights');
 
 //--- rutas para Administrador de Alojamiento ---
-
-
- 
-Route::get('test', function () {
-    return view('datepicker');
-});
-
- 
-Route::post('test','DateController@showDate');
 
 
 
@@ -57,7 +48,17 @@ Route::get('publicar', 'Publicar@mostrar')->name('publicar');
 Route::post('publicar', 'Publicar@cargar')->name('publicarAlojamiento');
 
 
+//--- rutas para buscar Alojamiento ---
 
+
+Route::get('reservar', 'reservas@mostrar');
+Route::post('reservar', 'reservas@cargar')->name('reservarAlojamiento');
+ 
+Route::post('test','DateController@showDate');
+
+Route::get('test', function () {
+	return view('datepicker');
+});
 
 Route::get('paises', 'PaisController@paises');
 Route::post('paises', 'PaisController@cargarpaises')->name('paisess');
