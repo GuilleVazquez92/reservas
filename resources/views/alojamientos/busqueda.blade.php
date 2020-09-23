@@ -3,10 +3,10 @@
 @section('alojamiento')
            
 
-            @foreach($p as $a)
+            @foreach($ok as $o)
 
             
-            <p>{{$a}}</p> <br>
+            <p>{{$o->direccion}}</p> <br>
             
             @endforeach
 

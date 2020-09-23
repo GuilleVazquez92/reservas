@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use DB;
 class reservas extends Controller
 {
 
@@ -23,19 +24,33 @@ class reservas extends Controller
 			$publicado = App\PublicarAlojamiento::all();
 
 
+			$miarray = array();
+			$miarray["destino"] = $request->get('city');
+			$miarray["llegada"] = $request->get('check-in');
+			$miarray["salida"] = $request->get('check-out');
+			$miarray["adultos"] = $request->get('adult');
+			$miarray["nino"] = $request->get('children');
+			$miarray["tipo"] = $request->get('room');
+			
 
-			$destino = $request->get('city');
-			$llegada = $request->get('check-in');
-			$salida = $request->get('check-out');
-			$adultos = $request->get('adult');
-			$nino = $request->get('children');
-			$tipo = $request->get('room');
+		
+			
 
-			$p = [$destino,$llegada,$salida,$adultos,$nino,$tipo];
-			$params ['p'] = $p;
-			dd($params);
-					
-					
+			//return view('alojamientos.busqueda', $params);
+			
+//$ok=DB::SELECT('SELECT * FROM publicar_alojamiento WHERE fecha_inicio = '.$miarray["llegada"].' AND fecha_fin = '.$miarray["salida"].' ');
+
+		
+$ok=DB::SELECT('
+	SELECT alojamientos.nombre, alojamientos.direccion 
+	FROM publicar_alojamiento, alojamientos 
+	WHERE idhabitacion = '.$miarray["tipo"].'
+	AND publicar_alojamiento.idalojamiento = alojamientos.id 
+	');
+
+   return view('alojamientos.busqueda') ->with('ok',$ok);         
+            
+		//dd($ok);
 			
 	}
 

@@ -17,7 +17,7 @@ class CreatePublicarAlojamiento extends Migration
             $table->increments('id');
             $table->integer('iduser')->unsigned();
             $table->integer('idalojamiento')->unsigned();
-            $table->integer('idhabitacion')->unsigned();
+            $table->integer('idtipo')->unsigned();
             $table->integer('idregimen')->unsigned();
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
@@ -26,7 +26,7 @@ class CreatePublicarAlojamiento extends Migration
 
             $table->foreign('iduser')->references('id')->on('users');
             $table->foreign('idalojamiento')->references('id')->on('alojamientos');
-            $table->foreign('idhabitacion')->references('id')->on('habitaciones');
+            $table->foreign('idtipo')->references('id')->on('tipo_habitaciones');
             $table->foreign('idregimen')->references('id')->on('regimenes');
           
         });
