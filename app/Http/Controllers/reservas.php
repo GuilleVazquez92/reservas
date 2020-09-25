@@ -35,23 +35,22 @@ class reservas extends Controller
 
 		
 			
-
-			//return view('alojamientos.busqueda', $params);
-			
-//$ok=DB::SELECT('SELECT * FROM publicar_alojamiento WHERE fecha_inicio = '.$miarray["llegada"].' AND fecha_fin = '.$miarray["salida"].' ');
+			dd($miarray);
 
 		
-$ok=DB::SELECT('
-	SELECT alojamientos.nombre, alojamientos.direccion 
-	FROM publicar_alojamiento, alojamientos 
-	WHERE idhabitacion = '.$miarray["tipo"].'
-	AND publicar_alojamiento.idalojamiento = alojamientos.id 
-	');
+			$ok=DB::SELECT('
+			SELECT alojamientos.nombre, alojamientos.direccion 
+			FROM publicar_alojamiento, alojamientos 
+			WHERE publicar_alojamiento.idhabitacion = '.$miarray["tipo"].'
+			AND publicar_alojamiento.idalojamiento = alojamientos.id
+			AND publicar_alojamiento.fecha_inicio  = '.$miarray["llegada"].'
+			AND publicar_alojamiento.fecha_fin = '.$miarray["salida"].'
+			');
 
-   return view('alojamientos.busqueda') ->with('ok',$ok);         
-            
-		//dd($ok);
-			
-	}
+		   //return view('alojamientos.busqueda') ->with('ok',$ok);         
+		         //dd($miarray);   
+				//dd($ok);
+					
+			}
 
 }
