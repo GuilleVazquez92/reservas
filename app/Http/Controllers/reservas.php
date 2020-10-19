@@ -35,7 +35,7 @@ class reservas extends Controller
 
 		
 			
-			dd($miarray);
+			//echo('$miarray["llegada"]');
 
 		
 			$ok=DB::SELECT('
@@ -43,13 +43,13 @@ class reservas extends Controller
 			FROM publicar_alojamiento, alojamientos 
 			WHERE publicar_alojamiento.idhabitacion = '.$miarray["tipo"].'
 			AND publicar_alojamiento.idalojamiento = alojamientos.id
-			AND publicar_alojamiento.fecha_inicio  = '.$miarray["llegada"].'
-			AND publicar_alojamiento.fecha_fin = '.$miarray["salida"].'
+			AND publicar_alojamiento.fecha_inicio  = date('.$miarray["llegada"].')
+			AND publicar_alojamiento.fecha_fin = date('.$miarray["salida"].')
 			');
 
 		   //return view('alojamientos.busqueda') ->with('ok',$ok);         
 		         //dd($miarray);   
-				//dd($ok);
+				dd($ok);
 					
 			}
 
