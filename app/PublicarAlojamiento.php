@@ -25,4 +25,20 @@ class PublicarAlojamiento extends Model
     	'created_at',
     	'updated_at',
     ];
+
+    public function alojamiento() {
+        return $this->belongsTo(\App\Alojamiento::class, 'idalojamiento', 'id');
+    }
+
+    public function habitacion() {
+        return $this->belongsTo(\App\Habitacion::class, 'idhabitacion', 'id');
+    }
+
+    public function regimen() {
+        return $this->belongsTo(\App\Regimen::class, 'idregimen', 'id');
+    }
+
+    public function user() {
+        return $this->belongsTo(\App\User::class, 'iduser', 'id');
+    }
 }
