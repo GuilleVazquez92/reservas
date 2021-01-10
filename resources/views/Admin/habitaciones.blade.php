@@ -39,7 +39,7 @@
   <label for="inputState">Precio</label>
     <input type="int" class="form-control" name="precio" placeholder="">
   </div>
-  </div>
+  
   <button type="submit" class="btn btn-primary btn-lg">Cargar Habitacion</button>
   
 </form>
@@ -70,6 +70,6 @@
   </tbody>
 </table>
 
-
+</div>
                 </div>
 @endsection

@@ -24,4 +24,8 @@ class Habitacion extends Model
     	'created_at',
     	'updated_at',
     ];
+
+    public function tipoHabitacion() {
+        return $this->belongsTo(\App\TipoHabitacion::class, 'idtipo', 'id');
+    }
 }

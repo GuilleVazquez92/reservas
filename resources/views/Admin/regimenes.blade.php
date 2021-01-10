@@ -7,12 +7,27 @@
         {{csrf_field()}}
       
     <div class="form-group ">
+                 <label for="inputState">Tipo de Regimenes</label>
+    <select name="idtiporegimen" class="form-control" >
+                            <option selected>---Seleccione tipo de Regimen----</option>
+
+                                         @foreach($tipo_regimenes as $tipoRegi)
+                            <option value="{{$tipoRegi -> id}}">
+                                        {{$tipoRegi['descripcion']}}
+                            </option>
+                                         @endforeach
+
+                          </select>
+  </div>
               <label for="inputState">Descripcion</label>
               <input type="text" class="form-control" name="descripcion" placeholder="">
               <label for="inputState">Precio</label>
               <input type="int" class="form-control" name="precio" placeholder="">
-  </div>
-              <button type="imput" class="btn btn-primary btn-lg">Cargar Regimen</button>
+              </div>
+
+    <button type="submit" class="btn btn-primary btn-lg">Cargar Regimen</button>
+  
+              
   
 </form>
 
@@ -31,7 +46,7 @@
     <tr>
       @foreach($regimenes as $regimen)
       <th> {{$regimen['id']}}</th>
-      <td> {{$regimen['idalojamiento']}}</td>
+      <td> {{$regimen['idtipo']}}</td>
       <td> {{$regimen['descripcion']}}</td>
       <td> {{$regimen['precio']}}</td>
       

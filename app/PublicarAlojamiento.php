@@ -15,7 +15,7 @@ class PublicarAlojamiento extends Model
     protected $fillable = [
     	'iduser',
     	'idalojamiento',
-    	'idhabitacion',
+    	'idhabi',
     	'idregimen',
     	'fecha_inicio',
     	'fecha_fin',
@@ -31,7 +31,7 @@ class PublicarAlojamiento extends Model
     }
 
     public function habitacion() {
-        return $this->belongsTo(\App\Habitacion::class, 'idhabitacion', 'id');
+        return $this->belongsTo(\App\Habitacion::class, 'idhabi', 'id');
     }
 
     public function regimen() {

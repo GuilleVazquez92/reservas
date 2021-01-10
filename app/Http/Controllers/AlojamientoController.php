@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\UserPorAlojamiento;
 use App\User;
@@ -24,8 +25,10 @@ class AlojamientoController extends Controller
 	{
 
 		$regimenes= App\Regimen::all();
+		$tipo_regimenes = App\TipoRegimen::all();
 		
 		$params['regimenes'] = $regimenes;
+		$params['tipo_regimenes'] = $tipo_regimenes;
 		
 		$prueba = \Auth::user();
 		
@@ -39,6 +42,7 @@ class AlojamientoController extends Controller
 
 			$regimennuevo = new App\Regimen;
 			$regimennuevo->iduser= $prueba->id ;
+			$regimennuevo->idtipo= $request->get('idtiporegimen');
 			$regimennuevo->descripcion= $request->get('descripcion');
 			$regimennuevo->precio= $request->get('precio');
 			$regimennuevo->save();
@@ -46,8 +50,9 @@ class AlojamientoController extends Controller
 			
 
 			$regimenes= App\Regimen::all();
+			$tipo_regimenes = App\TipoRegimen::all();
 			$params['regimenes'] = $regimenes;
-		
+			$params['tipo_regimenes'] = $tipo_regimenes;
 			
 		
 

@@ -16,13 +16,13 @@ class AmadeusController extends Controller
     	Requests::register_autoloader();
     }
 
-    public function flights() {
+    	 public function flights() {
     	$token = $this->getToken();
     	$endpoint = 'https://test.api.amadeus.com/v2/shopping/flight-offers';
     	$travel_data = array(
     	  'originLocationCode'     => 'BOS',
 		  'destinationLocationCode' => 'PAR',
-		  'departureDate'           => '2020-08-20',
+		  'departureDate'           => '2021-01-10',
 		  'adults'                  => 2
     	);
     	$params = http_build_query($travel_data);
@@ -31,10 +31,10 @@ class AmadeusController extends Controller
 		$response = Requests::get($url, $headers);
 		$body = json_decode($response->body);
 
-		//dd ($response);
+		$vuelos['body']=$body;
 
-		
-		echo "Cantidad de vuelos: {$body->meta->count}</br></br>";
+		//dd ($response);
+		/*echo "Cantidad de vuelos: {$body->meta->count}</br></br>";
 
 		foreach($body->data as $flight) {
 			//dd($flight);
@@ -46,11 +46,12 @@ class AmadeusController extends Controller
 				echo "Arraival: {$seg->arrival->iataCode} a las {$seg->departure->at}</br>";
 			}
 			echo "</br></br>";
-		}
-
+		}*/
+		return view('alojamientos.vuelos',$vuelos);
     }
 
-    private function getToken() {
+
+        private function getToken() {
     	$url = 'https://test.api.amadeus.com/v1/security/oauth2/token';
     	$auth_data = array(
     		'client_id' => $this->key,
@@ -66,5 +67,8 @@ class AmadeusController extends Controller
 		$body = json_decode($response->body);
 		return $body->access_token;
     }
+   
+
+
 
 }

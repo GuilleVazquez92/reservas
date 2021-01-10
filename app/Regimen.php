@@ -14,7 +14,12 @@ class Regimen extends Model
 
     protected $fillable = [
     	'iduser',
+      	'idtipo',		
     	'descripcion',
     	'precio',
     ];
+
+     public function tipoRegimen() {
+        return $this->belongsTo(\App\TipoRegimen::class, 'idtipo', 'id');
+    }
 }

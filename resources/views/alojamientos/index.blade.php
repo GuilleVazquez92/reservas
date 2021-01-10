@@ -4,6 +4,21 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- DATATABLES -->
+    <!--  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"> -->
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <style>
+        th,td {
+            padding: 0.4rem !important;
+        }
+        body>div {
+            box-shadow: 10px 10px 8px #888888;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+    </style>
 
     <title>Tu Viaje</title>
 <!--
@@ -35,7 +50,7 @@ http://www.tooplate.com/view/2095-level
                         
                         <nav class="navbar navbar-expand-lg narbar-light">
                             <a class="navbar-brand mr-auto" href="#">
-                                <img src="alojamientos/img/logo.png" alt="Site logo">
+                                <img src="/dist/img/logo.PNG" alt="Site logo" style=" width: 100px; height: 100px;">
                                 Tu Viaje
                             </a>
                             <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">

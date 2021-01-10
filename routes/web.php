@@ -19,31 +19,26 @@ Route::get('inicio', function () {
 	return view('admin.info');
 });
 
+Route::get('vuelos', function () {
+	return view('datepicker');
+});
+
 Route::get('amadeus/flights', 'AmadeusController@flights');
 
 //--- rutas para Administrador de Alojamiento ---
 
-
-
 Route::get('regimenes', 'AlojamientoController@regimenes');
 Route::post('regimenes', 'AlojamientoController@cargarRegimenes')->name('regimenes');
-
 Route::get('habitaciones', 'AlojamientoController@habitaciones');
 Route::post('habitaciones', 'AlojamientoController@cargar_habitaciones')->name('habitaciones');
-
 Route::get('info', 'AlojamientoController@info');
-
 Route::get('fotos', 'AlojamientoController@fotos');
 Route::post('fotos', 'AlojamientoController@cargarFotos')->name('fotos');
-
 Route::get('condiciones', 'AlojamientoController@condiciones');
 Route::get('pagos', 'AlojamientoController@pagos');
-
 Route::get('RegistrarAlojamiento', 'RegistroAlojamiento@mostrar')->name('RegistrarAlojamiento');
 Route::post('RegistrarAlojamiento', 'RegistroAlojamiento@cargarAlojamiento')->name('RegistrarAlojamiento');
-
 Route::get('pagos', 'AlojamientoController@pagos');
-
 Route::get('publicar', 'Publicar@mostrar')->name('publicar');
 Route::post('publicar', 'Publicar@cargar')->name('publicarAlojamiento');
 
@@ -51,23 +46,19 @@ Route::post('publicar', 'Publicar@cargar')->name('publicarAlojamiento');
 //--- rutas para buscar Alojamiento ---
 
 
-Route::get('reservar', 'reservas@mostrar');
+Route::get('reservar', 'reservas@mostrar')->name('reservarAloja');
 Route::post('reservar', 'reservas@cargar')->name('reservarAlojamiento');
- 
 Route::post('test','DateController@showDate');
-
-Route::get('test', function () {
-	return view('datepicker');
-});
-
 Route::get('paises', 'PaisController@paises');
 Route::post('paises', 'PaisController@cargarpaises')->name('paisess');
 
-//Route::get('alojamientos/admin', 'AlojamientoController@admin');
-//Route::post('alojamientos/admin', 'prueba@cargarAlojamiento')->name('prueba');
 
-Route::get('opciones', 'opciones@mostrar');
-Route::get('opciones/hoteles', 'opciones@mostrar_hoteles');
+//--- RUTAS DE PAGO ---
+
+Route::post('pagos', 'PagosController@pago' )->name('pagos');
+Route::get('pagos', 'PagosController@mostrar');
+Route::post('otro', 'PagosController@otro' )->name('otro');
+
 
 //Route::get('alojamientos','Registro@aloja');
 //Route::post('alojamientos', 'Registro@cargarAlojamiento')->name('alojamiento');

@@ -16,6 +16,8 @@ class reservas extends Controller
 		$params['ciudades'] = $ciudades;
 		$tipo= App\TipoHabitacion::all();
 		$params['tipo'] = $tipo;
+		$fotos= App\Fotos::all();
+        $params['fotos'] = $fotos;
 		
 		return view('alojamientos.inicio', $params);
 
@@ -23,7 +25,6 @@ class reservas extends Controller
 
 		public function cargar(Request $request)
 	{
-			/*$publicado = App\PublicarAlojamiento::all();*/
 
 
 			$miarray = array();
@@ -34,14 +35,29 @@ class reservas extends Controller
 			$miarray["nino"] = $request->get('children');
 			$miarray["tipo"] = $request->get('room');
 
-			$dbDesde = Carbon::parse($request->get('check-in'))->format('Y-m-d');
-			$dbHasta = Carbon::parse($request->get('check-out'))->format('Y-m-d');
+		$dbDesde = Carbon::parse($request->get('check-in'))->format('Y-m-d');
+		$dbHasta = Carbon::parse($request->get('check-out'))->format('Y-m-d');
+		
+		$formatted_dt1=Carbon::parse($request->get('check-in'));
+		$formatted_dt2=Carbon::parse($request->get('check-out'));
+		$fecha=$formatted_dt1->diffInDays($formatted_dt2);
 
-			$publicados = PublicarAlojamiento::where('fecha_inicio', '>=', $dbDesde)
+		$publicados = PublicarAlojamiento::where('fecha_inicio', '<=', $dbDesde)
 						->where('fecha_fin', '>=', $dbHasta)
 						->get();
 
-			dd($publicados);
+		$p= count($publicados);
+		$params['publicados'] = $publicados;				
+		$fotos= App\Fotos::all();
+        $params['fotos'] = $fotos;
+		$params ['fecha'] = $fecha;
+		$params ['p'] = $p;
+        
+		return view('alojamientos.busqueda', $params);
+			
+
+
+			
 			
 			//echo('$miarray["llegada"]');
 

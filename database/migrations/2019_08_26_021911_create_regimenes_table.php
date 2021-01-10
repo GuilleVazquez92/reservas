@@ -16,10 +16,12 @@ class CreateRegimenesTable extends Migration
         Schema::create('regimenes', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('iduser')->unsigned()->nullable();
-            $table->string('descripcion', 100)->nullable();
+            $table->integer('idtipo')->unsigned();
+            $table->string('descripcion', 100);
             $table->integer('precio')->nullable();
 
             $table->foreign('iduser')->references('id')->on('users');
+            $table->foreign('idtipo')->references('id')->on('tipo_regimenes');
         });
     }
 

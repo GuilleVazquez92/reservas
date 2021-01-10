@@ -37,7 +37,7 @@ class Publicar extends Controller
 		$publinew = new App\PublicarAlojamiento;
 		$publinew->iduser= $prueba->id;
 		$publinew->idalojamiento= $request->get('idalojamiento');
-		$publinew->idhabitacion= $request->get('idhabitacion');
+		$publinew->idhabi= $request->get('idhabitacion');
 		$publinew->idregimen= $request->get('idregimen');
 		$publinew->fecha_inicio= $request->get('fecha_inicio');
 		$publinew->fecha_fin= $request->get('fecha_fin');

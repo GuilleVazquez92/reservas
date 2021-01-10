@@ -62,7 +62,7 @@ http://www.tooplate.com/view/2102-constructive
 							</li>
 							<li>
 								<a href="#company" class="scrolly" data-bg-img="inicio/img/constructive_bg_03.jpg" data-page="#tm-section-3">
-									<i class="fas fa-users tm-nav-fa-icon"></i>
+									<i class="nav-icon fas fa-hotel tm-nav-fa-icon"></i>
 									<span>Reservar</span>
 								</a>
 							</li>
@@ -101,15 +101,18 @@ http://www.tooplate.com/view/2102-constructive
 						<div>
 							<header class="mb-4"><h2 class="tm-text-shadow">Servicios</h2></header>		            
 								  <div class="row">
+							<a href="#" class="boton">
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
+									
 									<i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
 									<div class="media-body">
 										<h3>Alojamientos</h3>
-										<p>We provide a variety of templates for you at no cost. Please spread a word about <a href="https://plus.google.com/+tooplate" target="_parent">Tooplate</a> website. Thank you.</p>	
+										<p>We provide a variety of templates for you at no cost. Please spread a word about  website. Thank you.</p>	
 									</div>
 								</div>
-							</div>	
+							</div>
+							</a>	
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
 									<i class="fas fa-map-pin mr-4 tm-icon-circled tm-icon-media"></i>	
@@ -125,20 +128,21 @@ http://www.tooplate.com/view/2102-constructive
 					</section>
 
 					<!-- section 3 -->
-					<section id="tm-section-3" class="tm-section">						
-						<div class="row mb-4">
-							<header class="col-xl-12"><h2 class="tm-text-shadow">Reservas</h2></header>		
-						</div>
-						<div class="row">
+					<section id="tm-section-3" class="tm-section tm-section-carousel">
+						<div>
+							<header class="mb-4"><h2 class="tm-text-shadow">Servicios</h2></header>		            
+								  <div class="row">
+								  	<a href="{{route('reservarAloja')}}" class="scrolly" >
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
 									<i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
 									<div class="media-body">
 										<h3>Alojamientos</h3>
-										<p>We provide a variety of templates for you at no cost. Please spread a word about <a href="https://plus.google.com/+tooplate" target="_parent">Tooplate</a> website. Thank you.</p>	
+										<p>We provide a variety of templates for you at no cost. Please spread a word about  website. Thank you.</p>	
 									</div>
 								</div>
-							</div>	
+							</div>
+							</a>	
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
 									<i class="fas fa-map-pin mr-4 tm-icon-circled tm-icon-media"></i>	
@@ -148,25 +152,9 @@ http://www.tooplate.com/view/2102-constructive
 									</div>
 								</div>
 							</div>
-							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fab fa-fly mr-4 tm-icon-circled tm-icon-media"></i>
-									<div class="media-body">
-										<h3>Trasporte</h3>
-										<p>Phasellus feugiat scelerisque sapien, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>		
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
-								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fab fa-linode mr-4 tm-icon-circled tm-icon-media"></i>
-									<div class="media-body">
-										<h3>Actividades</h3>
-										<p>Phasellus feugiat scelerisque sapien, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>	
-									</div>
-								</div>
-							</div>			          		
-						</div>						               
+										          		
+						</div>          		          
+						</div>       		          	
 					</section>
 
 					<!-- section 4 -->
