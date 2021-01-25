@@ -22,8 +22,8 @@ class AmadeusController extends Controller
     	$travel_data = array(
     	  'originLocationCode'     => 'BOS',
 		  'destinationLocationCode' => 'PAR',
-		  'departureDate'           => '2021-01-10',
-		  'adults'                  => 2
+		  'departureDate'           => '2021-01-27',
+		  'adults'                  => 1
     	);
     	$params = http_build_query($travel_data);
 		$url = $endpoint . "?" . $params;

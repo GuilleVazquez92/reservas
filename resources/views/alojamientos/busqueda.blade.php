@@ -29,8 +29,7 @@
 							    </tr>
 							  </thead>
 							  <tbody>
-							  	<form action="{{route('otro')}}" method="POST">
-        							{{csrf_field()}}
+							  	
 							    <tr>
 							      @foreach($publicados as $key => $publi)		
 							      <th> </th>
@@ -56,32 +55,31 @@
 							      $precio = 0;
 							      $precio = $publi->regimen->precio + $publi->habitacion->precio;
 							      $total = $precio * $fecha;
-							      $press[] = $precio * $fecha;
+							      
 							     
 							      ?>
 							      
-							     
+							      <form action="{{route('otro')}}" method="POST">
+        							{{csrf_field()}}	
 							      <td> {{$total}} <br>{{$precio}} p/noche</td>
 							      
 							      	 <input type="hidden" value="{{$total}}" name="precio">
 							      	 
-								  
+															  
 					
 							      <th> <button type="submit" class="btn btn-primary " >Reservar</button></th>
-							      
+							      </form>		
 							      <td></td>
 							      <td></td>
 							      <td></td>
 							    </tr>
 							      @endforeach
 
-							      @foreach($press as $p)
-							      {{$p}}	
-							      @endforeach 
+							       
 							  </tbody>
 							</table>
 
-</form>
+
 	</div>
 				</div>
 
