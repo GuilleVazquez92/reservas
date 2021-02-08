@@ -1,64 +1,75 @@
-
- 
 <!DOCTYPE html>
-<html>
-<head>
-   
-</head>
-<body>
-<script src = "https://code.jquery.com/jquery-1.12.4.js"> </script> 
-<script src = "https://code.jquery.com/ui/1.12.1/jquery-ui.js"> </script> 
-<script type="text/javascript">
-$ (function () { 
-         $ ('. searchName'). autocomplete ({ 
-            source: function (req, res) { 
-               $ .ajax ({ 
-                  url: "airportSearch /", 
-                   dataType: "json", 
-                   tipo: "GET", 
-                   data: req, 
-                   success: function (data) { 
-                     res ($. map (data, function (el) { 
-                        return { 
-                          label: el.address.cityName + ('+ el.iataCode +'), 
-                          value: el.iataCode 
-                        } 
-                     })); 
-                   }, 
-                   error:función (err) {
-                     console.log (err.status); 
-                   } 
-               }); 
-            }          
-         }); 
-       });
-</script>
-                <script type="text/javascript">
-               app.get('/airportSearch/', function(req,res,next){ 
-                amadeus.referenceData.locations.get({ 
-                  keyword: req.query.term, 
-                  subType: 'AIRPORT,CITY' 
-                }).then(function(response){ 
-                  res.json(response.data); 
-                  console.log(response.data.iataCode); 
-                }).catch(function(error){ 
-                  console.log("error"); 
-                  console.log(error.response); 
-                }); 
-                }); 
-                </script>
-                    <script type="text/javascript">
-                        success: function (data){ 
-            res($.map(data, function(el){ 
-                return { 
-                  label: el.address.cityName + (' + el.iataCode +'), 
-                  value: el.iataCode 
-                 } 
-                 }));                        
-        },  
-        error: function(err){ 
-                  console.log(err.status); 
-                 } 
-                 </script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.structure.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/jquery-ui.theme.min.css">
+    <title>Busqueda de Vuelo</title>
+  </head>
+  <body>
+
+
+   <form class="form-inline" action="{{route('busqueda')}}" method="POST">
+    {{csrf_field()}}
+      <label for="text">Origen: 
+      <input type="text" class="searchName" placeholder="traveling from" name="origen">
+      </label>
+
+      <label for="text">Destino:  
+      <input type="text" class="searchName" placeholder="traveling to" name="destino">
+      </label>
+
+      <label for="text">Salida:  
+      <input type="date" class="" name="salida">
+      </label>
+
+      <label for="text">Retorno:  
+      <input type="date" class="" name="retorno">
+      </label>
+
+      <label for="text">Adult(s):  
+      <input type="number" class="" name="adultos">
+      </label>
+
+      
+      <button type="submit">Submit</button>
+   </form>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    
+
+    <script>
+        
+
+         $('.searchName').autocomplete({
+            source: function(request, response ){
+               $.ajax({
+                  url:"{{route('vuelos')}}",
+                  type : 'GET',
+                   dataType: "json",
+                   data:{
+                    term: request.term 
+                   },
+
+                   success: function (data){
+                    //alert(data);
+                     response($.map(data, function (item) {
+                return {
+                    label: item.name+',  ' + item.city  +',  (' + item.iataCode +')',
+                    value: item.iataCode
+                }
+            }));
+                      }
+
+               } );
+             }
+                
+         });
+      
+    </script>
+  
+   </body>
 </html>

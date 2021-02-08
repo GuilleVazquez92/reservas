@@ -3,87 +3,69 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\UserPorAlojamiento;
-use App\User;
-use App\TipoHabitacion;
-use Illuminate\Support\Facades\Input;
-use Intervention\Image\ImageManagerStatic as Image;
-use App;
-use DB;
+use Requests;
 
 class prueba extends Controller
 {
- 
-public function aloja()
-	{
-		$ciudades= App\Ciudad::all();
-		$paises= App\Pais::all();
-		$departamentos= App\Departamento::all();
-		$tipos= App\TipoAlojamiento::all();
 
-		$params['ciudades'] = $ciudades;
-		$params['paises'] = $paises;
-		$params['tipos'] = $tipos;
-		$params['departamentos'] = $departamentos;
+	    private $key;
+      	private $secret;
 
-		return view('admin.registrar', $params);
+    	public function __construct() {
+    	$this->key = config('services.amadeus.key');
+    	$this->secret = config('services.amadeus.secret');
+    	Requests::register_autoloader();
+    }
 
-	}
+	 	private function getToken() {
+	    	$url = 'https://test.api.amadeus.com/v1/security/oauth2/token';
+	    	$auth_data = array(
+	    		'client_id' => $this->key,
+				'client_secret' => $this->secret,
+				'grant_type'    => 'client_credentials'
+	    	);
+			$headers = array('Content-Type' => 'application/x-www-form-urlencoded');
+			$response = Requests::post($url, $headers, $auth_data);
+			
+			if (!$response)
+				return null;
 
-	public function cargarPrueba(Request $request)
-	{
-		try {
-			DB::beginTransaction();
+			$body = json_decode($response->body);
+			return $body->access_token;
+	    }
+	   
+		public function aloja(Request $request)
+		{
+			$term = $request->get('term');
 
-		    $alojamientonuevo = new App\Alojamiento;
-			$alojamientonuevo->idciudad= $request->get('idciudad');
-			$alojamientonuevo->idtipoalojamiento= $request->get('idtipo');
-			$alojamientonuevo->nombre= $request->get('nombre');
-			$alojamientonuevo->descripcion= $request->get('descripcion');
-			$alojamientonuevo->email= $request->get('correo');
-			$alojamientonuevo->direccion= $request->get('direccion');
-			$alojamientonuevo->referencia= $request->get('referencia');
-			$alojamientonuevo->categoria= $request->get('categoria');
-			$alojamientonuevo->lat= $request->get('latitud');
-			$alojamientonuevo->log= $request->get('longitud');
-			$alojamientonuevo->save();
-
-			UserPorAlojamiento::create([
-				'iduser' => \Auth::id(),
-				'idalojamiento' => $alojamientonuevo->id
-			]);
-
-			$telefononuevo = new App\TelefonoAlojamiento;
-			$telefononuevo->idalojamiento= $alojamientonuevo->id;
-			$telefononuevo->telefono= $request->get('telefono');
-			$telefononuevo->save();
+			$token = $this->getToken();
+	    	$endpoint = 'https://test.api.amadeus.com/v1/reference-data/locations';
+	    	$travel_data = array(
+	    		'subType'=> 'CITY,AIRPORT',
+	    	  	'keyword'     => $request->get('term')
+			  
+	    	);
+	    	$params = http_build_query($travel_data);
+			$url = $endpoint . "?" . $params;
+			$headers = array('Authorization' => 'Bearer '.$token);
+			$response = Requests::get($url, $headers);
+			$body = json_decode($response->body);
 			
 
-			$celularnuevo = new App\TelefonoAlojamiento;
-			$celularnuevo->idalojamiento= $alojamientonuevo->id;
-			$celularnuevo->telefono= $request->get('celular');
-			$celularnuevo->save();
-
-			DB::commit();
-
-		} catch (\Exception $e) {
-			DB::rollback();
-			\Log::error($e);
-		}
-
-		$ciudades= App\Ciudad::all();
-		$paises= App\Pais::all();
-		$departamentos= App\Departamento::all();
-		$tipos= App\TipoAlojamiento::all();
-
-		$params['ciudades'] = $ciudades;
-		$params['paises'] = $paises;
-		$params['tipos'] = $tipos;
-		$params['departamentos'] = $departamentos;
+			
+			foreach ($body->data as  $date) {
+			
+				$lavel[] = ['name'=>$date->name,
+							'iataCode'=>$date->iataCode,
+							'city'=> $date->address->cityName
 
 
-		return view('admin.info',$params);
+				];
+
 		
+
+			}
+		return $lavel;	
+		//dd ($body);
 	}
-	
 }

@@ -24,6 +24,10 @@ Route::get('vuelos', function () {
 });
 
 Route::get('amadeus/flights', 'AmadeusController@flights');
+Route::post('amadeus/busqueda', 'AmadeusController@flights')->name('busqueda');
+
+Route::get('amadeus/name', 'prueba@aloja')->name('vuelos');
+
 
 //--- rutas para Administrador de Alojamiento ---
 

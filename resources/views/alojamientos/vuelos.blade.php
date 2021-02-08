@@ -40,9 +40,9 @@
             @foreach($body->data as $flight) 
                                 <tr>
                                   
-                                  <td>{{$flight->id}}</td>
-                                  <td>{{$flight->itineraries[0]->duration}}</td>
-                                  <td>{{$flight->price->total}} {{$flight->price->currency}}</td>
+                                  <td>{{$id}}</td>
+                                  <td>{{$duracion}}</td>
+                                  <td>{{$precio}}</td>
                                   @foreach($flight->itineraries[0]->segments as $seg) 
                                   <td>{{$seg->departure->iataCode}} a las {{$seg->departure->at}}</td>
                                   <td>{{$seg->arrival->iataCode}} a las {{$seg->departure->at}}</td>
