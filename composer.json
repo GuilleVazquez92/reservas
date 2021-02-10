@@ -30,7 +30,8 @@
             "App\\": "app/"
         },
         "files":[
-            "vendor/rmccue/requests/library/Requests.php"
+            "vendor/rmccue/requests/library/Requests.php",
+            "includes/helpers.php"
         ]
     },
     "autoload-dev": {
