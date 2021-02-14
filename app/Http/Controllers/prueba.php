@@ -41,8 +41,8 @@ class prueba extends Controller
 			$token = $this->getToken();
 	    	$endpoint = 'https://test.api.amadeus.com/v1/reference-data/locations';
 	    	$travel_data = array(
-	    		'subType'=> 'CITY,AIRPORT',
-	    	  	'keyword'     => $request->get('term')
+	    		'subType'=> 'CITY',
+	    	  	'keyword'     =>  $request->get('term')
 			  
 	    	);
 	    	$params = http_build_query($travel_data);
@@ -68,4 +68,29 @@ class prueba extends Controller
 		return $lavel;	
 		//dd ($body);
 	}
+
+	public function iata(Request $request) {
+    	
+   
+
+    	$token = $this->getToken();
+    	$endpoint = 'https://test.api.amadeus.com/v1/reference-data/airlines';
+    	$travel_data = array(
+    	  'airlineCodes'     =>"AA"
+		
+    	);
+    	$params = http_build_query($travel_data);
+		$url = $endpoint . "?" . $params;
+		$headers = array('Authorization' => 'Bearer '.$token);
+		$response = Requests::get($url, $headers);
+		$body = json_decode($response->body);
+
+		
+		
+
+		//$vuelos['body']= $body;
+		dd($body);
+
+		//return $vuelos;
+    }
 }

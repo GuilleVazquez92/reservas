@@ -15,15 +15,15 @@ class CreateReservasTable extends Migration
     {
         Schema::create('reservas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('iduser')->unsigned();
-            $table->integer('idhabitacion')->unsigned();
-            $table->integer('idregimen')->unsigned();
+            $table->integer('idpublicado')->unsigned();
             $table->timestamp('fecha_entrada')->nullable();
             $table->timestamp('fecha_salida')->nullable();
             $table->integer('precio_total');
-            $table->double('porc_operador', 3,3)->nullable();
-            $table->double('porc_agencia', 3,3)->nullable();
+            $table->integer('bandera');
+            
             $table->timestamps();
+
+            $table->foreign('idpublicado')->references('id')->on('publicar_alojamiento');
         });
     }
 

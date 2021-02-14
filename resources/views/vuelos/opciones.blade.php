@@ -70,6 +70,10 @@
                  float: left;
 
                 }
+                p {
+  				color:black !important;
+  	
+					}
 </style>
     </style>
 
@@ -89,12 +93,16 @@ http://www.tooplate.com/view/2095-level
     <link rel="stylesheet" type="text/css" href="alojamientos/slick/slick-theme.css"/>
     <link rel="stylesheet" type="text/css" href="alojamientos/css/datepicker.css"/>
     <link rel="stylesheet" href="alojamientos/css/tooplate-style.css">                                   <!-- Templatemo style -->
+  
+  <!-- Theme style -->
+  <link rel="stylesheet" href="./dist/css/adminlte.min.css">
+
 
    
 </head>
 
     <body>
-        <div class="tm-main-content" id="top">
+    	<div class="tm-main-content" id="top">
             <div class="tm-top-bar-bg"></div>
             <div class="tm-top-bar" id="tm-top-bar">
                 <!-- Top Navbar -->
@@ -130,9 +138,65 @@ http://www.tooplate.com/view/2095-level
                 </div>
             </div>
 
- @yield('alojamiento') 
-            
-            <footer class="tm-bg-dark-blue">
+
+
+
+	<h1 align="center">Lista de vuelos</h1>
+
+  @foreach($body->data as $flight) 
+  
+	@foreach($flight->itineraries[0]->segments as $seg)
+	<div id="global">
+ 		
+ 		<div id="principal">
+ 				<div id="mitad">
+							 <p>Latam	 
+							 </P>
+							 <p > 
+							 	&nbsp;&nbsp;&nbsp;<i class="fas fa-plane"></i>
+							 </p>
+							 <p>---</p>
+				</div>
+				<div id="mitad">
+							<p > {{$seg->departure->iataCode}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right" ></i></P>
+							 <p> {{parsearHorarioDeVuelo($seg->departure->at)}}</P>
+							 <p>----</p>
+				</div>
+				<div id="mitad">
+							 <p>{{$seg->arrival->iataCode}}</P>
+							 <p> {{parsearHorarioDeVuelo($seg->arrival->at)}}</P>
+							 		<p>----</p>
+				</div>
+				<div id="mitad">
+							 <p >{{parsearFechaDeVuelo($seg->departure->at)}}</P>
+							 <p ><i class="far fa-clock"></i> <tr>{{parsearDuracionEstimada($flight->itineraries[0]->duration)}}</P>
+							 	<p>----</p>
+				</div>
+				<div id="mitad">
+							 <p> 1 escala</P>
+							 <p> <a href="">Ver detalles</a></P>
+							 <p>---</p>	
+				</div>		
+				 	 	
+ 		</div>
+ 		@endforeach
+ 		<div class="anuncios1" align="center">
+					 <p> <h4>USD {{$flight->price->total}}</h4> </P>
+					 	<p>Precio por adulto</p>
+					  <button type="button" class="btn  bg-gradient-danger ">Elegir</button>
+					 
+ 			</div>
+ 			 </div>
+
+ 
+ @endforeach 	
+
+ 
+	
+
+
+
+<footer class="tm-bg-dark-blue">
                 <div class="container">
                     <div class="row">
                         <p class="col-sm-12 text-center tm-font-light tm-color-white p-4 tm-margin-b-0">
@@ -141,16 +205,5 @@ http://www.tooplate.com/view/2095-level
                 </div>                
             </footer>
         </div>
-        
-        <!-- load JS files -->
-        <script src="alojamientos/js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
-        <script src="alojamientos/js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->       
-        <script src="alojamientos/js/bootstrap.min.js"></script>                 <!-- https://getbootstrap.com/ -->
-        <script src="alojamientos/js/datepicker.min.js"></script>                <!-- https://github.com/qodesmith/datepicker -->
-        <script src="alojamientos/js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
-        <script src="alojamientos/slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
-        <script>
-           
-
 </body>
-</html>            
+</html> 

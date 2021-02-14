@@ -10,23 +10,23 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//------  Pantalla Principal  ---
 Route::get('/', function () {
 	return view('inicio/index');
 });
 
-Route::get('inicio', function () {
-	return view('admin.info');
+
+Route::get('prueba', function () {
+	return view('vuelos.opciones');
 });
 
 Route::get('vuelos', function () {
-	return view('datepicker');
-});
+	return view('vuelos.consulta');
+})->name('consultaVuelo');
 
 Route::get('amadeus/flights', 'AmadeusController@flights');
 Route::post('amadeus/busqueda', 'AmadeusController@flights')->name('busqueda');
-
-Route::get('amadeus/name', 'prueba@aloja')->name('vuelos');
+Route::get('amadeus/consulta', 'prueba@aloja')->name('vuelos');
 
 
 //--- rutas para Administrador de Alojamiento ---
@@ -61,6 +61,7 @@ Route::post('paises', 'PaisController@cargarpaises')->name('paisess');
 
 Route::post('pagos', 'PagosController@pago' )->name('pagos');
 Route::get('pagos', 'PagosController@mostrar');
+Route::post('pagos/monto', 'PagosController@mostrar')->name('mostrarPago');
 Route::post('otro', 'PagosController@otro' )->name('otro');
 
 

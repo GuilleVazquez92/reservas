@@ -22,33 +22,60 @@
     <title>Vuelos</title>
 </head>
 <body>
-    <div class="container" style="margin-top: 25px;padding: 10px">
+    <div class="container">
     <table id="tablax" class="table table-striped table-bordered" style="width:100%">
         <tbody>
             <tr>
-                <th>1</th>
-                <th>Leonardo</th>
-                <th>Ape1</th>
-                <th>Ape2</th>
-                <th>12345689</th>
-                <th>1</th>
-                <th>Leonardo</th>
-                <th>Ape1</th>
-                <th>Ape2</th>
-                <th>12345689</th>
+                <th>Numero</th>
+                <th>Duracion</th>
+                <th>Precio</th>
+                <th>Salida</th>
+                <th>Fecha</th>
+                <th>Llegada</th>
+                <th>Fecha</th>
+                <th>horario</th>
+                <th>Salida</th>
+                <th>Fecha</th>
+                <th>Llegada</th>
+                <th>Fecha</th>
+                <th>horario</th>
             </tr>
             @foreach($body->data as $flight) 
-                                <tr>
+                                <tr> 
                                   
-                                  <td>{{$id}}</td>
-                                  <td>{{$duracion}}</td>
-                                  <td>{{$precio}}</td>
-                                  @foreach($flight->itineraries[0]->segments as $seg) 
-                                  <td>{{$seg->departure->iataCode}} a las {{$seg->departure->at}}</td>
-                                  <td>{{$seg->arrival->iataCode}} a las {{$seg->departure->at}}</td>
-                                    
+                                  <td>{{$flight->id}}</td>
+                                  <td>{{parsearDuracionEstimada($flight->itineraries[0]->duration)}}</td>
+                                  <td>{{$flight->price->total}}</td>
+                                  @foreach($flight->itineraries[0]->segments as $seg)
+
+                                  
+                                  <td><p>{{$seg->departure->iataCode}}</p><p>{{parsearHorarioDeVuelo($seg->departure->at)}}</p></td>
+                                  <td>{{parsearFechaDeVuelo($seg->departure->at)}}</td>
+                                  <td>{{$seg->arrival->iataCode}}</td>
+                                  <td>{{parsearFechaDeVuelo($seg->arrival->at)}}</td>
+                                  <td>{{parsearHorarioDeVuelo($seg->arrival->at)}}</td>
+                                 
+
+                                  @foreach($flight->itineraries[1]->segments as $seg)
+
+                                  
+                                  <td>{{$seg->departure->iataCode}}</td>
+                                  <td>{{parsearFechaDeVuelo($seg->departure->at)}}</td>
+                                  <td>{{parsearHorarioDeVuelo($seg->departure->at)}}</td>
+                                  <td>{{$seg->arrival->iataCode}}</td>
+                                  <td>{{parsearFechaDeVuelo($seg->arrival->at)}}</td>
+                                  <td>{{parsearHorarioDeVuelo($seg->arrival->at)}}</td>
+                                    @endforeach 
+
+                                  <form action="{{route('mostrarPago')}}" method="POST">
+                                    {{csrf_field()}}    
+
+                                     <input type="hidden" value="{{$flight->price->total}}" name="precio">
+                                      
                                   @endforeach 
-                                 <th><button class="success">Reservar</button></th>
+                                  
+                                 <th><button class="input">Reservar</button></th>
+                                </form>
                                 </tr>
                                 @endforeach
                    </tbody>
@@ -66,35 +93,6 @@
     <!-- BOOTSTRAP -->
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
     </script>
-    <script>
-        $(document).ready(function () {
-            $('#tablax').DataTable({
-                language: {
-                    processing: "Tratamiento en curso...",
-                    search: "Buscar&nbsp;:",
-                    lengthMenu: "Agrupar de _MENU_ items",
-                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
-                    infoEmpty: "No existen datos.",
-                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
-                    infoPostFix: "",
-                    loadingRecords: "Cargando...",
-                    zeroRecords: "No se encontraron datos con tu busqueda",
-                    emptyTable: "No hay datos disponibles en la tabla.",
-                    paginate: {
-                        first: "Primero",
-                        previous: "Anterior",
-                        next: "Siguiente",
-                        last: "Ultimo"
-                    },
-                    aria: {
-                        sortAscending: ": active para ordenar la columna en orden ascendente",
-                        sortDescending: ": active para ordenar la columna en orden descendente"
-                    }
-                },
-                scrollY: 400,
-                lengthMenu: [ [10, 25, -1], [10, 25, "All"] ],
-            });
-        });
-    </script>
+ 
 </body>
 </html>

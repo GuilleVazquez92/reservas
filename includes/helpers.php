@@ -1,4 +1,6 @@
 <?php 
+use \Carbon\Carbon;
+use Illuminate\Http\Request;
 
 function parsearDuracionEstimada( $str ) {
 
@@ -21,4 +23,51 @@ function parsearDuracionEstimada( $str ) {
 
 }
 
+function parsearFechaDeVuelo( $fecha ) {
+	
+	$fecha = Carbon::parse($fecha)->format('d-m-Y');
+				
+
+	return ($fecha) ;
+
+}
+
+function parsearHorarioDeVuelo( $hora ) {
+
+	
+	
+	$horario = Carbon::parse($hora)->format('H:i');
+			
+
+	return ($horario);
+
+}
+
+
+
+    	 /*function iata() {
+    	
+   
+
+    	$token = getToken();
+    	$endpoint = 'https://est.api.amadeus.com/v1/reference-data/airlines ';
+    	$travel_data = array(
+    	  'airlineCodes'     => $request->get('origen')
+		
+    	);
+    	$params = http_build_query($travel_data);
+		$url = $endpoint . "?" . $params;
+		$headers = array('Authorization' => 'Bearer '.$token);
+		$response = Requests::get($url, $headers);
+		$body = json_decode($response->body);
+
+		
+		
+
+		$vuelos['body']= $body;
+		//dd($response);
+
+		return $vuelos;
+    }*/
+      
 ?>

@@ -10,9 +10,12 @@ use Stripe\Charge;
 class PagosController extends Controller
 {
 
-	public function mostrar(){
+	public function mostrar(Request $request){
 
-		return view('pago');
+        $monto = $request->get('precio');
+
+        $params['monto']= $monto;
+		return view('pago',$params);
 	}
     public function otro(Request $request){
 
@@ -32,7 +35,7 @@ class PagosController extends Controller
             ));
         $charge = Charge::create(array(
                 'customer' => $customer->id,
-                'amount' => 5000,
+                'amount' => $request->get('precio'),
                 'currency' => 'usd'
             ));
         return 'Cargo exitoso!';

@@ -59,7 +59,7 @@
 							     
 							      ?>
 							      
-							      <form action="{{route('otro')}}" method="POST">
+							      <form action="{{route('mostrarPago')}}" method="POST">
         							{{csrf_field()}}	
 							      <td> {{$total}} <br>{{$precio}} p/noche</td>
 							      

@@ -55,16 +55,18 @@ http://www.tooplate.com/view/2102-constructive
 					<nav id="tmMainNav" class="tm-main-nav">
 						<ul>
 							<li>
-								<a href="#intro" id="tmNavLink1" class="scrolly active" data-bg-img="inicio/img/constructive_bg_01.jpg" data-page="#tm-section-1">
+								<a href="#intro" id="tmNavLink1" class="scrolly active" data-bg-img="constructive_bg_01.jpg" data-page="#tm-section-1">
 									<i class="fas fa-home tm-nav-fa-icon"></i>
 									<span>Inicio</span>
 								</a>
 							</li>
 							<li>
-								<a href="#company" class="scrolly" data-bg-img="inicio/img/constructive_bg_03.jpg" data-page="#tm-section-3">
-									<i class="nav-icon fas fa-hotel tm-nav-fa-icon"></i>
-									<span>Reservar</span>
+								<li>
+								<a href="#products" id="tmNavLink2" class="scrolly" data-bg-img="constructive_bg_02.jpg" data-page="#tm-section-3" data-page-type="carousel">
+									<i class="fas fa-map tm-nav-fa-icon"></i>
+									<span>Servicios</span>
 								</a>
+							
 							</li>
 							<li>
 								<a href="#products" id="tmNavLink2" class="scrolly" data-bg-img="inicio/img/constructive_bg_02.jpg" data-page="#tm-section-2" data-page-type="carousel">
@@ -101,28 +103,29 @@ http://www.tooplate.com/view/2102-constructive
 						<div>
 							<header class="mb-4"><h2 class="tm-text-shadow">Servicios</h2></header>		            
 								  <div class="row">
-							<a href="#" class="boton">
+							<a href="{{route('reservarAloja')}}" class="boton" style="color: white;">
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
 									
-									<i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+									<i class="fas fa-hotel tm-icon-circled tm-icon-media "></i>
 									<div class="media-body">
 										<h3>Alojamientos</h3>
 										<p>We provide a variety of templates for you at no cost. Please spread a word about  website. Thank you.</p>	
 									</div>
 								</div>
 							</div>
-							</a>	
+							</a>
+							<a href="{{route('vuelos')}}" target="_blank" style="color: white;">	
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fas fa-map-pin mr-4 tm-icon-circled tm-icon-media"></i>	
+									<i class="fas fa-car mr-4 tm-icon-circled tm-icon-media"></i>	
 									<div class="media-body">
 										<h3>Trasporte</h3>
-										<p>Photos by <a href="https://unsplash.com" target="_blank">Unsplash.com</a> website, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>	
+										<p>Photos by Unsplash.com website, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>	
 									</div>
 								</div>
 							</div>
-										          		
+							</a>			          		
 						</div>          		          
 						</div>       		          	
 					</section>
@@ -132,27 +135,29 @@ http://www.tooplate.com/view/2102-constructive
 						<div>
 							<header class="mb-4"><h2 class="tm-text-shadow">Servicios</h2></header>		            
 								  <div class="row">
-								  	<a href="{{route('reservarAloja')}}" class="scrolly" >
+								  	<a href="{{route('reservarAloja')}}" class="scrolly" style="color: white;">
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fab fa-apple tm-icon-circled tm-icon-media"></i>
+									<i class="fas fa-hotel tm-icon-circled tm-icon-media"></i>
 									<div class="media-body">
 										<h3>Alojamientos</h3>
 										<p>We provide a variety of templates for you at no cost. Please spread a word about  website. Thank you.</p>	
 									</div>
 								</div>
 							</div>
-							</a>	
+							</a>
+							<a href="{{route('consultaVuelo')}}" target="_blank" style="color: white;">	
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fas fa-map-pin mr-4 tm-icon-circled tm-icon-media"></i>	
-									<div class="media-body">
+									<i class="fas fa-plane-departure mr-4 tm-icon-circled tm-icon-media"></i>	
+
+									<div class="media-body" >
 										<h3>Vuelos</h3>
-										<p>Photos by <a href="https://unsplash.com" target="_blank">Unsplash.com</a> website, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>	
+										<p>Photos by Unsplash.com website, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>	
 									</div>
 								</div>
 							</div>
-										          		
+							</a>			          		
 						</div>          		          
 						</div>       		          	
 					</section>

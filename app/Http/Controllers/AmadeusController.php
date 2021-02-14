@@ -56,7 +56,7 @@ class AmadeusController extends Controller
 
 		//echo "Cantidad de vuelos: {$body->meta->count}</br></br>";
 
-		foreach($body->data as $flight) {
+		/*foreach($body->data as $flight) {
 			$id= $flight->id;
 			$precio =$flight->price->total;
 			$duracion = $flight->itineraries[0]->duration;
@@ -72,23 +72,13 @@ class AmadeusController extends Controller
 				$llegada = $seg->arrival->iataCode;
 				$vuelo_numero = $seg->number;
 			}
-		}
+		}*/
 		
 
-		$vuelos['id']=$id;
-		$vuelos['precio']=$precio;
-		$vuelos['duracion']=$duracion;
-		$vuelos['fecha_salida']=$fecha_salida;
-		$vuelos['fecha_llegada']=$fecha_llegada;
-		$vuelos['hora_salida']=$hora_salida;
-		$vuelos['hora_llegada']=$hora_llegada;
-		$vuelos['salida']=$salida;
-		$vuelos['llegada']=$llegada;
-		$vuelos['vuelo_numero']=$vuelo_numero;
-		$vuelos['body']=$body;
+		$vuelos['body']= $body;
+		//dd($response);
 
-
-		return view('alojamientos.vuelos',$vuelos);
+	return view('vuelos.opciones',$vuelos);
     }
 
 
