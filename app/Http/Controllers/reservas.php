@@ -9,7 +9,8 @@ use App;
 use DB;
 class reservas extends Controller
 {
-
+	
+     
 	public function mostrar()
 	{
 		$ciudades= App\Ciudad::all();
@@ -27,14 +28,6 @@ class reservas extends Controller
 	{
 
 
-			$miarray = array();
-			$miarray["destino"] = $request->get('city');
-			$miarray["llegada"] = $request->get('check-in');
-			$miarray["salida"] = $request->get('check-out');
-			$miarray["adultos"] = $request->get('adult');
-			$miarray["nino"] = $request->get('children');
-			$miarray["tipo"] = $request->get('room');
-
 		$dbDesde = Carbon::parse($request->get('check-in'))->format('Y-m-d');
 		$dbHasta = Carbon::parse($request->get('check-out'))->format('Y-m-d');
 		
@@ -45,6 +38,9 @@ class reservas extends Controller
 		$publicados = PublicarAlojamiento::where('fecha_inicio', '<=', $dbDesde)
 						->where('fecha_fin', '>=', $dbHasta)
 						->get();
+		
+       	
+		$ciudad = $request->get('city');
 
 		$p= count($publicados);
 		$params['publicados'] = $publicados;				
@@ -52,29 +48,64 @@ class reservas extends Controller
         $params['fotos'] = $fotos;
 		$params ['fecha'] = $fecha;
 		$params ['p'] = $p;
+		$params['ciudad']=$ciudad;
+		$params['dbDesde']=$dbDesde;
+		$params['dbHasta']=$dbHasta;
         
 		return view('alojamientos.busqueda', $params);
 			
-
-
-			
-			
-			//echo('$miarray["llegada"]');
-
 		
-			/*$ok=DB::SELECT('
-			SELECT alojamientos.nombre, alojamientos.direccion 
-			FROM publicar_alojamiento, alojamientos 
-			WHERE publicar_alojamiento.idhabitacion = '.$miarray["tipo"].'
-			AND publicar_alojamiento.idalojamiento = alojamientos.id
-			AND publicar_alojamiento.fecha_inicio  = date('.$miarray["llegada"].')
-			AND publicar_alojamiento.fecha_fin = date('.$miarray["salida"].')
-			');*/
 
-		   //return view('alojamientos.busqueda') ->with('ok',$ok);         
-		         //dd($miarray);   
-				// dd($ok);
 					
 	}
+
+	public function login(Request $request) 
+		{ 
+			$prueba = \Auth::user();
+			if ( !empty($prueba) ) {
+			$precio = $request->get('precio');
+			$id=$request->get('id');
+
+			$desde = $request->get('dbDesde');
+			$hasta = $request->get('dbHasta');
+			
+
+
+			$publicados = PublicarAlojamiento::where('id', '=',$id)
+						->get();
+			
+
+			$prueba = \Auth::user()->id;			
+			$ciudad = $request->get('city');
+			$params['ciudad']=$ciudad;
+			$params['publicados'] = $publicados;
+			$params['precio'] = $precio;
+			$params['desde'] = $desde;
+			$params['hasta'] = $hasta;
+
+			$reservaNueva = new App\Reserva;
+			$reservaNueva->iduser = $prueba;
+			$reservaNueva->idpublicado= $request->get('id');
+			$reservaNueva->fecha_entrada= $desde;
+			$reservaNueva->fecha_salida= $hasta;
+			$reservaNueva->precio_total=$precio;
+			$reservaNueva->bandera=0;
+			$reservaNueva->save();
+		
+
+			
+			return view('alojamientos.reserva',$params);
+			
+
+
+				
+    
+			} else {
+					
+				
+			echo 'No ha iniciado sesion';
+			}
+
+		}
 
 }

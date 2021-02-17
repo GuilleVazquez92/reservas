@@ -10,7 +10,7 @@
                 <div class="form-group">
     <label for="inputState">Seleccionar Alojamiento</label>
     <select name="idalojamiento" class="form-control" >
-                            <option selected>---Selecciona la habitacion----</option>
+                            <option selected>---Selecciona la Alojamiento----</option>
 
                                          @foreach($alojamientos as $aloja)
                             <option value="{{$aloja -> id}}">

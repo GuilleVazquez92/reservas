@@ -35,16 +35,29 @@ Route::get('regimenes', 'AlojamientoController@regimenes');
 Route::post('regimenes', 'AlojamientoController@cargarRegimenes')->name('regimenes');
 Route::get('habitaciones', 'AlojamientoController@habitaciones');
 Route::post('habitaciones', 'AlojamientoController@cargar_habitaciones')->name('habitaciones');
-Route::get('info', 'AlojamientoController@info');
+Route::get('info', 'AlojamientoController@info')->name('infoAlojamiento');
 Route::get('fotos', 'AlojamientoController@fotos');
 Route::post('fotos', 'AlojamientoController@cargarFotos')->name('fotos');
 Route::get('condiciones', 'AlojamientoController@condiciones');
 Route::get('pagos', 'AlojamientoController@pagos');
-Route::get('RegistrarAlojamiento', 'RegistroAlojamiento@mostrar')->name('RegistrarAlojamiento');
-Route::post('RegistrarAlojamiento', 'RegistroAlojamiento@cargarAlojamiento')->name('RegistrarAlojamiento');
 Route::get('pagos', 'AlojamientoController@pagos');
+
+
+//------RUTAS DE PUBLICACION DE ALOJAMIENTOS
+
 Route::get('publicar', 'Publicar@mostrar')->name('publicar');
 Route::post('publicar', 'Publicar@cargar')->name('publicarAlojamiento');
+
+Route::get('ReservasRealizadas', 'Publicar@verReservados')->name('ReservasRealizadas');
+Route::get('VerPublicados', 'Publicar@verPublicados')->name('VerPublicados');
+
+///---- Regitrar, editar y eliminar Alojamientos
+Route::get('RegistrarAlojamiento', 'RegistroAlojamiento@mostrar')->name('RegistrarAlojamiento');
+Route::post('RegistrarAlojamiento', 'RegistroAlojamiento@cargarAlojamiento')->name('RegistrarAlojamiento');
+
+Route::get('EditarAlojamiento', 'RegistroAlojamiento@editar')->name('EditarAlojamiento');
+Route::post('EditarAlojamiento', 'RegistroAlojamiento@edit')->name('editAlojamiento');
+
 
 
 //--- rutas para buscar Alojamiento ---
@@ -52,9 +65,8 @@ Route::post('publicar', 'Publicar@cargar')->name('publicarAlojamiento');
 
 Route::get('reservar', 'reservas@mostrar')->name('reservarAloja');
 Route::post('reservar', 'reservas@cargar')->name('reservarAlojamiento');
-Route::post('test','DateController@showDate');
-Route::get('paises', 'PaisController@paises');
-Route::post('paises', 'PaisController@cargarpaises')->name('paisess');
+
+Route::post('reservalogin', 'reservas@login')->name('reservasLogin');
 
 
 //--- RUTAS DE PAGO ---
@@ -63,16 +75,14 @@ Route::post('pagos', 'PagosController@pago' )->name('pagos');
 Route::get('pagos', 'PagosController@mostrar');
 Route::post('pagos/monto', 'PagosController@mostrar')->name('mostrarPago');
 Route::post('otro', 'PagosController@otro' )->name('otro');
+Route::post('pagosAloja', 'PagosController@aloja')->name('pagosAloja');
 
 
-//Route::get('alojamientos','Registro@aloja');
-//Route::post('alojamientos', 'Registro@cargarAlojamiento')->name('alojamiento');
-
-Route::get('Route','UserController@Route');
 
 		// Reservas Routes
-
-//Route::get('reservas/alojamientos', 'reservas@mostrar');
+Route::get('user/info', 'UserController@info');
+Route::get('user/reservas', 'UserController@reservas');
+Route::get('user/pagos', 'UserController@pagos');
 //Route::post('reservas/alojamientos', 'prueba@cargarAlojamiento')->name('prueba');
 
 

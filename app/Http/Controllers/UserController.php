@@ -3,29 +3,68 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Reserva;
 use App;
 use App\Pais;
 
 class UserController extends Controller
 {
-    public function aero()
+    public function pagos()
     {
 
-        $datos= App\aerolinea::all();
-        return view('Aerolineas', compact('datos'));
+        	$prueba = \Auth::user();
+			if ( !empty($prueba) ) {
+					
+			
+			$reserva = Reserva::where('iduser', '=',$prueba->id)
+						->get();
+			
+
+			
+			$params['reserva']=$reserva;
+			
+			//return $params;
+			return view('UserAdmin.pagar',$params);
+
+			}else {
+					
+				
+			echo 'No ha iniciado sesion';
+			}
+
     }
 
 
-public function login()
+public function info()
 {
 
-    return view('login');
+    return view('UserAdmin.info');
 }
 
-public function menuadmin()
+public function reservas(Request $request)
 {
+	$prueba = \Auth::user();
+			if ( !empty($prueba) ) {
+					
+			
+			$reserva = Reserva::where('iduser', '=',$prueba->id)
+						->get();
+			
 
-    return view('menuadmin');
+			
+			$params['reserva']=$reserva;
+			
+			//return $params;
+			return view('UserAdmin.reservas',$params);
+
+			}else {
+					
+				
+			echo 'No ha iniciado sesion';
+			}
+
+			
+
 }
 
 }

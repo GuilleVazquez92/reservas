@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Input;
 use Intervention\Image\ImageManagerStatic as Image;
 use App;
 use DB;
+use App\Reserva;
+use App\PublicarAlojamiento;
 
 class Publicar extends Controller
 {
@@ -57,6 +59,47 @@ class Publicar extends Controller
 		return view('Admin.Alojamientos.publicar',$params)->with('alojamientos',$prueba); 
 		
 	}
+
+		public function verReservados()
+		{
+
+        	$prueba = \Auth::user();
+			if ( !empty($prueba) ) {
+					
+			
+			$reserva = Reserva::select('reservas.*')
+                ->join('publicar_alojamiento', 'reservas.idpublicado', '=', 'publicar_alojamiento.id')
+                ->where('publicar_alojamiento.iduser', '=',$prueba->id )
+                ->get();
+
     
-}
+			
+
+			
+			$params['reserva']=$reserva;
+			
+			//return $params;
+			return view('Admin.Alojamientos.reservas',$params);
+
+			}else {
+					
+				
+			echo 'No ha iniciado sesion';
+			}
+		}
+
+	  public function verPublicados()
+
+		{
+			$publicados = \Auth::user()->publicados;
+			 
+
+			$params['publicados'] = $publicados;
+
+			return view('Admin.Alojamientos.verPublicado',$params) ;
+			
+		}  
+	
+
+	}
 

@@ -31,7 +31,9 @@
 							  <tbody>
 							  	
 							    <tr>
+
 							      @foreach($publicados as $key => $publi)		
+							      @if($publi->alojamiento->idciudad == $ciudad)
 							      <th> </th>
 							      <td></td>
 							      <td></td>
@@ -59,12 +61,15 @@
 							     
 							      ?>
 							      
-							      <form action="{{route('mostrarPago')}}" method="POST">
+							      <form action="{{route('reservasLogin')}}" method="post">
         							{{csrf_field()}}	
 							      <td> {{$total}} <br>{{$precio}} p/noche</td>
 							      
 							      	 <input type="hidden" value="{{$total}}" name="precio">
-							      	 
+							      	 <input type="hidden" value="{{$publi->id}}" name="id">
+							      	 <input type="hidden" value="{{$dbDesde}}" name="dbDesde">
+							      	 <input type="hidden" value="{{$dbHasta}}" name="dbHasta">
+
 															  
 					
 							      <th> <button type="submit" class="btn btn-primary " >Reservar</button></th>
@@ -73,6 +78,7 @@
 							      <td></td>
 							      <td></td>
 							    </tr>
+							   @endif
 							      @endforeach
 
 							       

@@ -59,6 +59,7 @@
   <tbody>
     <tr>
       @foreach($habitaciones as $habitacion)
+      @if($habitacion->idusers == $prueb)
       <th> {{$habitacion['id']}}</th>
       <td> {{$habitacion['descripcion']}}</td>
       <td> {{$habitacion['idtipo']}}</td>
@@ -66,6 +67,7 @@
       <td> {{$habitacion['precio']}}</td>
       
     </tr>
+      @endif
       @endforeach
   </tbody>
 </table>

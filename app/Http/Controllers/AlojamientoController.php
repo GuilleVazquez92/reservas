@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserPorAlojamiento;
+use App\Reserva;
+use App\PublicarAlojamiento;
 use App\User;
 use App\TipoHabitacion;
 use Illuminate\Support\Facades\Input;
@@ -27,18 +29,21 @@ class AlojamientoController extends Controller
 		$regimenes= App\Regimen::all();
 		$tipo_regimenes = App\TipoRegimen::all();
 		
+		
+		
+		$prueba = \Auth::user()->id;
+
 		$params['regimenes'] = $regimenes;
+		$params['prueba'] = $prueba;
 		$params['tipo_regimenes'] = $tipo_regimenes;
 		
-		$prueba = \Auth::user();
-		
-
 		return view('Admin.regimenes',$params)->with('alojamientos',$prueba); 
 	}
 	
 	public function cargarRegimenes(Request $request)
 	{
 			$prueba = \Auth::user();
+			$prueb = \Auth::user()->id;
 
 			$regimennuevo = new App\Regimen;
 			$regimennuevo->iduser= $prueba->id ;
@@ -53,7 +58,7 @@ class AlojamientoController extends Controller
 			$tipo_regimenes = App\TipoRegimen::all();
 			$params['regimenes'] = $regimenes;
 			$params['tipo_regimenes'] = $tipo_regimenes;
-			
+			$params['prueba'] = $prueb;
 		
 
 			return view('Admin.regimenes',$params)->with('alojamientos',$prueba);
@@ -62,16 +67,81 @@ class AlojamientoController extends Controller
 
 
  //-----------------INFORMACION PRINCIPAL------------------------------
+	public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
 	public function info()
 	{
-			return view('Admin.info');
+			$alojamientos= \Auth::user()->alojamientos;
+			$p= count($alojamientos);
+			$params['p']=$p;
+
+			$user= \Auth::user()->id;
+
+			$habi =  App\Habitacion::all();
+			$regi = App\Regimen::all();
+
+			$c= 0;
+			$re = 0 ;
+
+			foreach ($habi as $key => $h) {
+				
+				if ($h->idusers == $user) {
+					$c = $c+1;
+				}
+				
+
+			}
+			foreach ($regi as $key => $r) {
+				
+				if ($r->iduser == $user) {
+					$re = $re+1;
+				}
+				
+
+			}
+
+
+
+			$params['habi'] = $habi;
+			$params['alojamientos'] = $alojamientos;
+			$params['c'] = $c;
+			$params['re'] = $re;
+			$prueba = \Auth::user();
+			if ( !empty($prueba) ) {
+					
+			
+			$reserva = Reserva::select('reservas.*')
+                ->join('publicar_alojamiento', 'reservas.idpublicado', '=', 'publicar_alojamiento.id')
+                ->where('publicar_alojamiento.iduser', '=',$prueba->id )
+                ->get();
+
+    
+			
+			$params['reserva']=$reserva;
+			
+			//return $params;
+			return view('Admin.info',$params);
+
+			}else {
+					
+				
+			echo 'No ha iniciado sesion';
+			}
+
+
+			
 	}
 
 
   // ---------------HABITACIONES-----------------------------------------
 	public function habitaciones()
 	{
+
+		$prueba = \Auth::user();
+		$prueb = \Auth::user()->id;
 		$alojamientos= App\Alojamiento::all();
 		$tipoHabitaciones= App\TipoHabitacion::all();
 		$habitaciones= App\Habitacion::all();
@@ -79,16 +149,19 @@ class AlojamientoController extends Controller
 		$params['alojamientos'] = $alojamientos;
 		$params['tipo_habitacion'] = $tipoHabitaciones;
 		$params['habitaciones'] = $habitaciones;
+		$params['prueb'] = $prueb;
 
 		
-		$prueba = \Auth::user();
+		
 		
 
 		return view('Admin.habitaciones',$params)->with('alojamientos',$prueba); 
 	}
+
 		public function cargar_habitaciones(Request $request)
 	{
 			$prueba = \Auth::user();
+			$prueb = \Auth::user()->id;
 
 			$habitacionnueva = new App\Habitacion;
 			$habitacionnueva->idusers= $prueba->id;
@@ -105,7 +178,7 @@ class AlojamientoController extends Controller
 			$params['alojamientos'] = $alojamientos;
 			$params['tipo_habitacion'] = $tipoHabitaciones;
 			$params['habitaciones'] = $habitaciones;
-			
+			$params['prueb'] = $prueb;
 			
 		
 

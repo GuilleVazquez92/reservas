@@ -13,17 +13,23 @@ class Reserva extends Model
     public $timestamps=true;
 
     protected $fillable = [
-    	'iduser',
-    	'idhabitacion',
+        'iduser',
+    	'idpublicado',
     	'fecha_entrada',
     	'fecha_salida',
     	'precio_total',
-    	'porc_operador',
-    	'porc_agencia',
+    	'bandera',
     ];
     
     protected $guarded = [
     	'created_at',
     	'updated_at',
     ];
+     public function publicados() {
+        return $this->belongsTo(\App\PublicarAlojamiento::class, 'idpublicado', 'id');
+    }
+    public function user() {
+        return $this->belongsTo(\App\User::class, 'iduser', 'id');
+    }
+
 }

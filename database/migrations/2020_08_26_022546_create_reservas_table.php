@@ -16,6 +16,7 @@ class CreateReservasTable extends Migration
         Schema::create('reservas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('idpublicado')->unsigned();
+            $table->integer('iduser')->unsigned();
             $table->timestamp('fecha_entrada')->nullable();
             $table->timestamp('fecha_salida')->nullable();
             $table->integer('precio_total');
@@ -24,6 +25,8 @@ class CreateReservasTable extends Migration
             $table->timestamps();
 
             $table->foreign('idpublicado')->references('id')->on('publicar_alojamiento');
+
+            $table->foreign('iduser')->references('id')->on('users');
         });
     }
 

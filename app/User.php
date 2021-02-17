@@ -31,4 +31,8 @@ class User extends Authenticatable
     public function alojamientos() {
         return $this->belongsToMany(\App\Alojamiento::class, 'user_x_alojamiento', 'iduser', 'idalojamiento');
     }
+    
+      public function publicados() {
+        return $this->belongsToMany(\App\PublicarAlojamiento::class, 'user_x_alojamiento', 'iduser', 'iduser');
+    }
 }

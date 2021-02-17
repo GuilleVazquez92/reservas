@@ -70,14 +70,6 @@
   <label for="inputEmail4">Nombre de contacto</label>
   <input type="text" class="form-control" name="referencia" placeholder="">
 </div>
-<div class="form-group col-md-4">
-  <label for="inputEmail4">Latitud</label>
-  <input type="text" class="form-control" name="latitud" placeholder="">
-</div>
-<div class="form-group col-md-4">
-  <label for="inputEmail4">Longitud</label>
-  <input type="text" class="form-control" name="longitud" placeholder="">
-</div>
 
 </div>
 <div class="form-row">

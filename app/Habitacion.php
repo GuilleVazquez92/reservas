@@ -27,5 +27,11 @@ class Habitacion extends Model
 
     public function tipoHabitacion() {
         return $this->belongsTo(\App\TipoHabitacion::class, 'idtipo', 'id');
+    
     }
+    
+    public function user() {
+        return $this->belongsTo(\App\User::class, 'idusers', 'id');
+    }
+
 }

@@ -18,7 +18,7 @@
                                          @endforeach
 
                           </select>
-  </div>
+ 
               <label for="inputState">Descripcion</label>
               <input type="text" class="form-control" name="descripcion" placeholder="">
               <label for="inputState">Precio</label>
@@ -30,14 +30,14 @@
               
   
 </form>
-
+ 
 <h3 align="center">Regimenes Cargados</h3>
 <table class="table" name="">
   <thead class="thead-dark">
     
     <tr>
       <th scope="col">Numero</th>
-      <th scope="col">Alojamiento</th>
+      <th scope="col">Tipo</th>
       <th scope="col">Tipo de Regimen</th>
       <th scope="col">Precio</th>
     </tr>
@@ -45,14 +45,17 @@
   <tbody>
     <tr>
       @foreach($regimenes as $regimen)
+      @if($regimen->iduser == $prueba)
       <th> {{$regimen['id']}}</th>
       <td> {{$regimen['idtipo']}}</td>
       <td> {{$regimen['descripcion']}}</td>
       <td> {{$regimen['precio']}}</td>
       
     </tr>
+      @endif
       @endforeach
   </tbody>
 </table>
+       </div>
        </div>
 @endsection

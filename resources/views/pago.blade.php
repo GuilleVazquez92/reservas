@@ -6,7 +6,7 @@
  
 <div class="content" align="center">
     <h1>Compra de Prueba</h1>
-    <h3>{{$monto*100}}</h3>
+    <h3>{{$monto}}</h3>
     <form action="{{route('pagos')}}" method="POST">
         {{ csrf_field() }}
         <script
@@ -19,6 +19,7 @@
             data-locale="auto">
         </script>
         <input type="hidden" value="{{$monto*100}}" name="precio">
+        <input type="hidden" value="{{$id}}" name="id">
     </form>
 </div>
  

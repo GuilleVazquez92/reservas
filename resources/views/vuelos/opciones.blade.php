@@ -93,6 +93,14 @@ http://www.tooplate.com/view/2095-level
     <link rel="stylesheet" type="text/css" href="alojamientos/slick/slick-theme.css"/>
     <link rel="stylesheet" type="text/css" href="alojamientos/css/datepicker.css"/>
     <link rel="stylesheet" href="alojamientos/css/tooplate-style.css">                                   <!-- Templatemo style -->
+">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="inicio/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="inicio/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="inicio/css/magnific-popup.css"/>
+    <link rel="stylesheet" type="text/css" href="inicio/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="inicio/slick/slick-theme.css"/>
+    <link rel="stylesheet" href="inicio/css/tooplate-style.css">
   
   <!-- Theme style -->
   <link rel="stylesheet" href="./dist/css/adminlte.min.css">
@@ -150,52 +158,80 @@ http://www.tooplate.com/view/2095-level
  		
  		<div id="principal">
  				<div id="mitad">
-							 <p>Latam	 
+							 <p>{{$seg->carrierCode}} 
 							 </P>
 							 <p > 
 							 	&nbsp;&nbsp;&nbsp;<i class="fas fa-plane"></i>
 							 </p>
-							 <p>---</p>
+							 
 				</div>
 				<div id="mitad">
 							<p > {{$seg->departure->iataCode}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right" ></i></P>
 							 <p> {{parsearHorarioDeVuelo($seg->departure->at)}}</P>
-							 <p>----</p>
+							 
 				</div>
 				<div id="mitad">
 							 <p>{{$seg->arrival->iataCode}}</P>
 							 <p> {{parsearHorarioDeVuelo($seg->arrival->at)}}</P>
-							 		<p>----</p>
 				</div>
 				<div id="mitad">
 							 <p >{{parsearFechaDeVuelo($seg->departure->at)}}</P>
 							 <p ><i class="far fa-clock"></i> <tr>{{parsearDuracionEstimada($flight->itineraries[0]->duration)}}</P>
-							 	<p>----</p>
+							 	
 				</div>
 				<div id="mitad">
-							 <p> 1 escala</P>
-							 <p> <a href="">Ver detalles</a></P>
-							 <p>---</p>	
-				</div>		
+							 <p>Escalas</P>
+							 <p> <a href="#">Ver detalles</a></P>
+							 
+				</div>
+                @foreach($flight->itineraries[1]->segments as $seg)	
+                    <div id="mitad">
+                             <p>{{$seg->carrierCode}}    
+                             </P>
+                             <p > 
+                                &nbsp;&nbsp;&nbsp;<i class="fas fa-plane"></i>
+                             </p>
+                             
+                </div>
+                <div id="mitad">
+                            <p > {{$seg->departure->iataCode}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-arrow-right" ></i></P>
+                             <p> {{parsearHorarioDeVuelo($seg->departure->at)}}</P>
+                             
+                </div>
+                <div id="mitad">
+                             <p>{{$seg->arrival->iataCode}}</P>
+                             <p> {{parsearHorarioDeVuelo($seg->arrival->at)}}</P>
+                </div>
+                <div id="mitad">
+                             <p >{{parsearFechaDeVuelo($seg->departure->at)}}</P>
+                             <p ><i class="far fa-clock"></i> <tr>{{parsearDuracionEstimada($flight->itineraries[1]->duration)}}</P>
+                                
+                </div>
+                <div id="mitad">
+                             <p>Escalas</P>
+                             <p> <a href="#">Ver detalles</a></P>
+                             
+                </div>	
+                @endforeach
 				 	 	
  		</div>
  		@endforeach
+         <form action="{{route('mostrarPago')}}" method="POST">
+                                    {{csrf_field()}} 
+        <input type="hidden" value="{{$flight->price->total}}" name="precio">
  		<div class="anuncios1" align="center">
-					 <p> <h4>USD {{$flight->price->total}}</h4> </P>
+					 <p> <h4 style="color: blue;">USD {{$flight->price->total}}</h4> </P>
 					 	<p>Precio por adulto</p>
-					  <button type="button" class="btn  bg-gradient-danger ">Elegir</button>
-					 
+					  <button type="input" class="btn btn-danger ">Elegir</button>
+				</form>	 
  			</div>
  			 </div>
 
  
  @endforeach 	
 
- 
-	
-
-
-
+   
+                                                                        
 <footer class="tm-bg-dark-blue">
                 <div class="container">
                     <div class="row">

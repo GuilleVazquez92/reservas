@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Stripe\Stripe;
 use Stripe\Customer;
 use Stripe\Charge;
+use App\Reserva;
 
 class PagosController extends Controller
 {
@@ -13,20 +14,17 @@ class PagosController extends Controller
 	public function mostrar(Request $request){
 
         $monto = $request->get('precio');
+        $id = $request->get('id'); 
 
         $params['monto']= $monto;
+        $params['id'] = $id;
 		return view('pago',$params);
 	}
-    public function otro(Request $request){
+    
 
-        $precio= $request->get('precio');
-        dd($precio);
-    }
-
-   
 	public function pago(Request $request)
     {
-          
+         
         try {
             Stripe::setApiKey(config('services.stripe.secret'));
         $customer = Customer::create(array(
@@ -38,10 +36,46 @@ class PagosController extends Controller
                 'amount' => $request->get('precio'),
                 'currency' => 'usd'
             ));
-        return 'Cargo exitoso!';
+        $x=1;
+        $id = $request->get('id');
+        $app = Reserva::find($id);
+        $app->bandera = 1;
+        $app->save();
+        $prueba = \Auth::user();
+            if ( !empty($prueba) ) {
+                    
+            
+            $reserva = Reserva::where('iduser', '=',$prueba->id)
+                        ->get();
+            
+
+            
+            $params['reserva']=$reserva;
+            
+            //return $params;
+            return view('UserAdmin.reservas',$params);
+
+            }else {
+                    
+                
+            echo 'No ha iniciado sesion';
+            }
+
+
+        return view('UserAdmin.reservas');
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
+    }
+
+
+    public function otro(Request $request){
+
+        $x=1;
+        $id = $request->get('id');
+        $params['x']=$x;
+        $params['id']=$id;
+        return $params;
     }
     
 }

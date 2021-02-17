@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserPorAlojamiento;
+use App\Alojamiento;
 use App\User;
 use App\TipoHabitacion;
 use App;
@@ -86,4 +87,28 @@ class RegistroAlojamiento extends Controller
 		return view ('Admin.Alojamientos.registrar',$params);
 	}
 	
+
+
+	public function  edit()
+	{
+		$alojamientonuevo = new App\Alojamiento;
+	}
+
+	public function  editar()
+	{
+		$alojamiento = \Auth::user()->alojamientos;
+
+		$params['alojamiento'] = $alojamiento;
+		$ciudades= App\Ciudad::all();
+		$paises= App\Pais::all();
+		$departamentos= App\Departamento::all();
+		$tipos= App\TipoAlojamiento::all();
+
+		$params['ciudades'] = $ciudades;
+		$params['paises'] = $paises;
+		$params['tipos'] = $tipos;
+		$params['departamentos'] = $departamentos;	
+		return view('Admin.Alojamientos.editar',$params);
+	}
+
 }

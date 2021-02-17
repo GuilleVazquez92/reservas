@@ -35,6 +35,7 @@ http://www.tooplate.com/view/2102-constructive
 </head>
 
 <body>
+	
 	<!-- Loader -->
 	<div id="loader-wrapper">
 		<div id="loader"></div>
@@ -91,9 +92,39 @@ http://www.tooplate.com/view/2102-constructive
 					<!-- section 1 -->
 					<section id="tm-section-1" class="tm-section">
 						<div class="ml-auto">
-							<header class="mb-4"><h1 class="tm-text-shadow">Bienvenido</h1></header>
+							@if (Route::has('login'))
+							@auth
+						<header class="mb-4"><h1 class="tm-text-shadow">Bienvenido/a {{ Auth::user()->name }}
+							</h1></header>
+							
+							@else
+							<header class="mb-4"><h1 class="tm-text-shadow">Bienvenido/a </h1></header>
+							@endauth
+							@endif
+							
 							<p class="mb-5 tm-font-big">Tu Viaje es la mejor manera de viajar.</p>
-							<a href="#" class="btn tm-btn tm-font-big" data-nav-link="#tmNavLink2">Continuar...</a> 
+				
+				@if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('user/info') }}" class="btn tm-btn tm-font-big" data-nav-link="#tmNavLink2">MIS RESERVAS</a>
+                     	  <a href="{{ route('logout') }}" class="btn tm-btn tm-font-big"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Cerrar Sesion
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                    @else
+                        <a href="{{ route('login') }}" class="btn tm-btn tm-font-big">Iniciar Sesion</a>
+                        <a href="{{ route('register') }}" class="btn tm-btn tm-font-big" >Registrarse</a>
+                    @endauth
+                </div>
+            @endif
+
+							
 							<!-- data-nav-link holds the ID of nav item, which means this link should behave the same as that nav item  -->
 						</div>
 					</section>
@@ -101,9 +132,9 @@ http://www.tooplate.com/view/2102-constructive
 					<!-- section 2 -->
 					<section id="tm-section-2" class="tm-section tm-section-carousel">
 						<div>
-							<header class="mb-4"><h2 class="tm-text-shadow">Servicios</h2></header>		            
+							<header class="mb-4"><h2 class="tm-text-shadow">Proveedores</h2></header>		            
 								  <div class="row">
-							<a href="{{route('reservarAloja')}}" class="boton" style="color: white;">
+							<a href="{{route('infoAlojamiento')}}" class="boton" style="color: white;">
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
 									
@@ -132,9 +163,11 @@ http://www.tooplate.com/view/2102-constructive
 
 					<!-- section 3 -->
 					<section id="tm-section-3" class="tm-section tm-section-carousel">
-						<div>
-							<header class="mb-4"><h2 class="tm-text-shadow">Servicios</h2></header>		            
+						<div class="row mb-4">
+							<header class="mb-4"><h2 class="tm-text-shadow">Servicios</h2></header>	
+							</div>	            
 								  <div class="row">
+								  	
 								  	<a href="{{route('reservarAloja')}}" class="scrolly" style="color: white;">
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
@@ -146,6 +179,7 @@ http://www.tooplate.com/view/2102-constructive
 								</div>
 							</div>
 							</a>
+
 							<a href="{{route('consultaVuelo')}}" target="_blank" style="color: white;">	
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
@@ -158,8 +192,9 @@ http://www.tooplate.com/view/2102-constructive
 								</div>
 							</div>
 							</a>			          		
-						</div>          		          
-						</div>       		          	
+						</div> 
+
+     		          	
 					</section>
 
 					<!-- section 4 -->

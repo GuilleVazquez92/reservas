@@ -34,15 +34,7 @@
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-     <div class="input-group input-group-sm">
-            <a href="publicar">
-                <button type="button" class="btn btn-block btn-success">Publicar Alojamiento</button>
-            </a>
-      </div>
-    </form>
-
+  
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
@@ -182,82 +174,24 @@
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="habitaciones" class="nav-link">
+            <a href="reservas" class="nav-link">
               <i class="nav-icon fas fa-bed"></i>
               <p>
-                Habitaciones
+                Mis Reservas
                 
               </p>
             </a>
            
           </li>
-          
-          <li class="nav-item has-treeview">
-            <a href="regimenes" class="nav-link">
-              <i class="nav-icon fas fa-utensils"></i>
-              <p>
-                Regimenes
-                
-              </p>
-            </a>
-          </li>
-          <li class="nav-item has-treeview">
-            <a href="fotos" class="nav-link">
-              <i class="nav-icon fas fa-camera-retro"></i>
-              <p>
-                Fotos
-              </p>
-            </a>
-          </li>
+         
             <li class="nav-item">
             <a href="pagos" class="nav-link">
               <i class="nav-icon fas fa-money-check"></i>
               <p>
-                Pagos
+                Pagar 
               </p>
             </a>
           </li>
-        
-             <li class="nav-item">
-            <a href="condiciones" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Condiciones
-              </p>
-            </a>
-          </li>
-          
-          
-          
-          <li class="nav-header">ALOJAMIENTOS</li>
-          <li class="nav-item">
-            <a href="RegistrarAlojamiento" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <p>Registrar</p>
-            </a>
-          </li>
-             <li class="nav-item">
-            <a href="EditarAlojamiento" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>Ver</p>
-            </a>
-          </li>
-
-           <li class="nav-header">PUBLICADOS</li>
-          <li class="nav-item">
-            <a href="ReservasRealizadas" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
-              <p>Reservas</p>
-            </a>
-          </li>
-             <li class="nav-item">
-            <a href="VerPublicados" class="nav-link">
-              <i class="nav-icon fas fa-edit"></i>
-              <p>Ver</p>
-            </a>
-          </li>
-         
-         
           
         </ul>
       </nav>
