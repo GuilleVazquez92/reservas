@@ -13,7 +13,7 @@
 //------  Pantalla Principal  ---
 Route::get('/', function () {
 	return view('inicio/index');
-});
+})->name('inicio');
 
 
 Route::get('prueba', function () {
