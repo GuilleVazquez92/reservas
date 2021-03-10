@@ -9,7 +9,7 @@
     <div class="form-group ">
                  <label for="inputState">Tipo de Regimenes</label>
     <select name="idtiporegimen" class="form-control" >
-                            <option selected>---Seleccione tipo de Regimen----</option>
+                            <option selected value="{{null}}">---Seleccione tipo de Regimen----</option>
 
                                          @foreach($tipo_regimenes as $tipoRegi)
                             <option value="{{$tipoRegi -> id}}">
@@ -18,11 +18,19 @@
                                          @endforeach
 
                           </select>
- 
+              @if ($errors->has('idtiporegimen'))
+            <small class="form-text text-danger">{{ $errors->first('idtiporegimen') }}</small>
+     @endif
               <label for="inputState">Descripcion</label>
               <input type="text" class="form-control" name="descripcion" placeholder="">
+              @if ($errors->has('descripcion'))
+            <small class="form-text text-danger">{{ $errors->first('descripcion') }}</small>
+     @endif
               <label for="inputState">Precio</label>
               <input type="int" class="form-control" name="precio" placeholder="">
+              @if ($errors->has('precio'))
+            <small class="form-text text-danger">{{ $errors->first('precio') }}</small>
+     @endif
               </div>
 
     <button type="submit" class="btn btn-primary btn-lg">Cargar Regimen</button>

@@ -92,8 +92,7 @@ http://www.tooplate.com/view/2095-level
     <link rel="stylesheet" type="text/css" href="alojamientos/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="alojamientos/slick/slick-theme.css"/>
     <link rel="stylesheet" type="text/css" href="alojamientos/css/datepicker.css"/>
-    <link rel="stylesheet" href="alojamientos/css/tooplate-style.css">                                   <!-- Templatemo style -->
-">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="alojamientos/css/tooplate-style.css">                                   <!-- Templatemo style -->  <!-- Google web font "Open Sans" -->
     <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="inicio/css/fontawesome-all.min.css">
     <link rel="stylesheet" href="inicio/css/bootstrap.min.css">
@@ -110,8 +109,8 @@ http://www.tooplate.com/view/2095-level
 </head>
 
     <body>
-    	<div class="tm-main-content" id="top">
-            <div class="tm-top-bar-bg"></div>
+    	<div class="" id="">
+            <div class=""></div>
             <div class="tm-top-bar" id="tm-top-bar">
                 <!-- Top Navbar -->
                 <div class="container">
@@ -151,6 +150,8 @@ http://www.tooplate.com/view/2095-level
 
 	<h1 align="center">Lista de vuelos</h1>
 
+ 
+
   @foreach($body->data as $flight) 
   
 	@foreach($flight->itineraries[0]->segments as $seg)
@@ -158,7 +159,7 @@ http://www.tooplate.com/view/2095-level
  		
  		<div id="principal">
  				<div id="mitad">
-							 <p>{{$seg->carrierCode}} 
+							 <p>{{iata($seg->carrierCode)[0]->descripcion}} 
 							 </P>
 							 <p > 
 							 	&nbsp;&nbsp;&nbsp;<i class="fas fa-plane"></i>
@@ -186,7 +187,7 @@ http://www.tooplate.com/view/2095-level
 				</div>
                 @foreach($flight->itineraries[1]->segments as $seg)	
                     <div id="mitad">
-                             <p>{{$seg->carrierCode}}    
+                             <p>{{iata($seg->carrierCode)[0]->descripcion}}    
                              </P>
                              <p > 
                                 &nbsp;&nbsp;&nbsp;<i class="fas fa-plane"></i>
@@ -216,9 +217,9 @@ http://www.tooplate.com/view/2095-level
 				 	 	
  		</div>
  		@endforeach
-         <form action="{{route('mostrarPago')}}" method="POST">
+         <form action="{{route('flightsConfirm')}}" method="POST">
                                     {{csrf_field()}} 
-        <input type="hidden" value="{{$flight->price->total}}" name="precio">
+        <input type="hidden" accept="list" value="{{json_encode($flight,TRUE)}}" name="body">
  		<div class="anuncios1" align="center">
 					 <p> <h4 style="color: blue;">USD {{$flight->price->total}}</h4> </P>
 					 	<p>Precio por adulto</p>

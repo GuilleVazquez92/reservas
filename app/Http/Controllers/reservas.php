@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PublicarAlojamiento;
+use App\Reserva;
 use \Carbon\Carbon;
 use App;
 use DB;
+use App\Http\Requests\BusquedaRequest;
 class reservas extends Controller
 {
 	
@@ -24,7 +26,7 @@ class reservas extends Controller
 
 	}
 
-		public function cargar(Request $request)
+		public function cargar(BusquedaRequest $request)
 	{
 
 
@@ -35,9 +37,19 @@ class reservas extends Controller
 		$formatted_dt2=Carbon::parse($request->get('check-out'));
 		$fecha=$formatted_dt1->diffInDays($formatted_dt2);
 
-		$publicados = PublicarAlojamiento::where('fecha_inicio', '<=', $dbDesde)
-						->where('fecha_fin', '>=', $dbHasta)
-						->get();
+	
+
+
+		$publicados = PublicarAlojamiento::join('reservas', function($join) use($dbDesde, $dbHasta) {
+			$join->where('publicar_alojamiento.id','=','reservas.idpublicado');
+			$join->whereNotBetween('reservas.fecha_entrada', [$dbDesde, $dbHasta]);
+			$join->whereNotBetween('reservas.fecha_salida', [$dbDesde, $dbHasta]);
+
+			$join->orWhere('publicar_alojamiento.id','!=','reservas.idpublicado');
+		})
+		->whereBetween('fecha_inicio', [$dbDesde, $dbHasta])
+		->whereBetween('fecha_fin', [$dbDesde, $dbHasta])
+		->get();				
 		
        	
 		$ciudad = $request->get('city');
@@ -102,10 +114,43 @@ class reservas extends Controller
     
 			} else {
 					
-				
-			echo 'No ha iniciado sesion';
+			$url = $request->path();
+			$params['url'] = $url;
+			return view('auth.login',$params);
 			}
 
 		}
+
+		public function cancelar(Request $request)
+	{
+		
+		$estado = $request->get('estado');
+		$id = $request->get('id');
+
+		$app = Reserva::find($id);
+		$app->bandera = $estado;
+		$app->save();
+
+		$prueba = \Auth::user();
+			if ( !empty($prueba) ) {
+					
+			
+			$reserva = Reserva::where('iduser', '=',$prueba->id)
+						->get();
+			
+
+			
+			$params['reserva']=$reserva;
+			
+			//return $params;
+			return view('UserAdmin.reservas',$params);
+
+			}else {
+					
+				
+			echo 'No ha iniciado sesion';
+			}
+	
+	}
 
 }

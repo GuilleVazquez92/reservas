@@ -63,6 +63,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+                                <input type="hidden" name="rol" value="{{$rol}}" >
                                 <button type="submit" class="btn btn-primary">
                                     Registrar
                                 </button>

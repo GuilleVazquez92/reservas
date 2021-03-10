@@ -22,4 +22,5 @@ class UserPorAlojamiento extends Model
       public function alojamiento() {
         return $this->belongsTo(\App\Alojamiento::class, 'idalojamiento', 'id');
     }
+
 }

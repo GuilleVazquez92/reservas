@@ -56,7 +56,7 @@ http://www.tooplate.com/view/2102-constructive
 					<nav id="tmMainNav" class="tm-main-nav">
 						<ul>
 							<li>
-								<a href="#intro" id="tmNavLink1" class="scrolly active" data-bg-img="constructive_bg_01.jpg" data-page="#tm-section-1">
+								<a href="" id="tmNavLink1" class="scrolly active" data-bg-img="constructive_bg_01.jpg" data-page="#tm-section-1">
 									<i class="fas fa-home tm-nav-fa-icon"></i>
 									<span>Inicio</span>
 								</a>
@@ -65,14 +65,14 @@ http://www.tooplate.com/view/2102-constructive
 								<li>
 								<a href="#products" id="tmNavLink2" class="scrolly" data-bg-img="constructive_bg_02.jpg" data-page="#tm-section-3" data-page-type="carousel">
 									<i class="fas fa-map tm-nav-fa-icon"></i>
-									<span>Servicios</span>
+									<span>Reservar</span>
 								</a>
 							
 							</li>
 							<li>
 								<a href="#products" id="tmNavLink2" class="scrolly" data-bg-img="inicio/img/constructive_bg_02.jpg" data-page="#tm-section-2" data-page-type="carousel">
 									<i class="fas fa-map tm-nav-fa-icon"></i>
-									<span>Proveedores</span>
+									<span>Ver Reservas</span>
 								</a>
 							</li>							
 							
@@ -94,15 +94,15 @@ http://www.tooplate.com/view/2102-constructive
 						<div class="ml-auto">
 							@if (Route::has('login'))
 							@auth
-						<header class="mb-4"><h1 class="tm-text-shadow">Bienvenido/a {{ Auth::user()->name }}
+						<header class="mb-4"><h1 class="tm-text-shadow">Bienvenido/a  {{ Auth::user()->name }}
 							</h1></header>
 							
 							@else
-							<header class="mb-4"><h1 class="tm-text-shadow">Bienvenido/a </h1></header>
+							<header class="mb-4"><h1 class="tm-text-shadow">Bienvenido CLIENTE</h1></header>
 							@endauth
 							@endif
 							
-							<p class="mb-5 tm-font-big">Tu Viaje es la mejor manera de viajar.</p>
+							<p class="mb-5 tm-font-big"><b>Tu Viaje</b> es la mejor manera de viajar.</p>
 				
 				@if (Route::has('login'))
                 <div class="top-right links">
@@ -118,8 +118,15 @@ http://www.tooplate.com/view/2102-constructive
                                             {{ csrf_field() }}
                                         </form>
                     @else
-                        <a href="{{ route('login') }}" class="btn tm-btn tm-font-big">Iniciar Sesion</a>
-                        <a href="{{ route('register') }}" class="btn tm-btn tm-font-big" >Registrarse</a>
+                    
+                    	 <a href="{{ route('login') }}" class="btn tm-btn tm-font-big">Iniciar Sesión</a>
+                         <br> <br>
+                        <form action="{{ route('register') }}" method="GET">
+                        <button class="btn tm-btn tm-font-big">Registrarse &nbsp;&nbsp;&nbsp; 
+                        <input type="hidden" name="rol"	value="{{2}}">
+                        </button>
+                        </form>
+                       
                     @endauth
                 </div>
             @endif
@@ -132,27 +139,29 @@ http://www.tooplate.com/view/2102-constructive
 					<!-- section 2 -->
 					<section id="tm-section-2" class="tm-section tm-section-carousel">
 						<div>
-							<header class="mb-4"><h2 class="tm-text-shadow">Proveedores</h2></header>		            
+							<header class="mb-4"><h2 class="tm-text-shadow">Mis Reservas</h2></header>		            
 								  <div class="row">
-							<a href="{{route('infoAlojamiento')}}" class="boton" style="color: white;">
+							<a href="{{route('userInfo')}}" class="boton" style="color: white;">
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
 									
 									<i class="fas fa-hotel tm-icon-circled tm-icon-media "></i>
 									<div class="media-body">
 										<h3>Alojamientos</h3>
-										<p>We provide a variety of templates for you at no cost. Please spread a word about  website. Thank you.</p>	
+										<p>En este apartado podras ver todos los Alojamientos que tienes reservados.
+										No te olvides de Iniciar Sesión. Muchas Gracias.</p>	
 									</div>
 								</div>
 							</div>
 							</a>
-							<a href="{{route('vuelos')}}" target="_blank" style="color: white;">	
+							<a href="{{route('userInfo')}}" target="_blank" style="color: white;">	
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fas fa-car mr-4 tm-icon-circled tm-icon-media"></i>	
+									<i class="fas ffas fa-plane-departure mr-4 tm-icon-circled tm-icon-media"></i>	
 									<div class="media-body">
-										<h3>Trasporte</h3>
-										<p>Photos by Unsplash.com website, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>	
+										<h3>Vuelos</h3>
+										<p>En este apartado podras ver los vuelos que tienes reservado.
+										No te olvides de Iniciar Sesión</p>	
 									</div>
 								</div>
 							</div>
@@ -174,7 +183,7 @@ http://www.tooplate.com/view/2102-constructive
 									<i class="fas fa-hotel tm-icon-circled tm-icon-media"></i>
 									<div class="media-body">
 										<h3>Alojamientos</h3>
-										<p>We provide a variety of templates for you at no cost. Please spread a word about  website. Thank you.</p>	
+										<p>Elegí el Alojamiento que más llena tus expectativas. Con Tu Viaje, podes elegir entre muchos alojamientos dentro del país </p>	
 									</div>
 								</div>
 							</div>
@@ -187,7 +196,7 @@ http://www.tooplate.com/view/2102-constructive
 
 									<div class="media-body" >
 										<h3>Vuelos</h3>
-										<p>Photos by Unsplash.com website, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>	
+										<p>Reserva los vuelos mas acorde a tus necesidades, al mejor precio y a los mejores destinos</p>	
 									</div>
 								</div>
 							</div>

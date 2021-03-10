@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App;
+use App\ReservaVuelo;
+use App\ReservaVueloEscala;
 use Requests;
 use \Carbon\Carbon;
 
@@ -53,37 +56,69 @@ class AmadeusController extends Controller
 		$headers = array('Authorization' => 'Bearer '.$token);
 		$response = Requests::get($url, $headers);
 		$body = json_decode($response->body);
-
-		//echo "Cantidad de vuelos: {$body->meta->count}</br></br>";
-
-		/*foreach($body->data as $flight) {
-			$id= $flight->id;
-			$precio =$flight->price->total;
-			$duracion = $flight->itineraries[0]->duration;
-
-			foreach($flight->itineraries[0]->segments as $seg) {
-
-				$fecha_salida = Carbon::parse($seg->departure->at)->format('d-m-Y');
-				$hora_salida = Carbon::parse($seg->departure->at)->format('H:i');
-				$fecha_llegada = Carbon::parse($seg->arrival->at)->format('d-m-Y');
-				$hora_llegada = Carbon::parse($seg->arrival->at)->format('H:i');
-
-				$salida = $seg->departure->iataCode;
-				$llegada = $seg->arrival->iataCode;
-				$vuelo_numero = $seg->number;
-			}
-		}*/
-		
-
+	
 		$vuelos['body']= $body;
-		//dd($response);
 
 	return view('vuelos.opciones',$vuelos);
     }
-
-
         
+
+
+    	public function flightsConfirm(Request $request) {
+    	
    
- 		
+		$re=$request->get('body');
+		$body = json_decode($re);
+		$userId = \Auth::user()->id;
+
+	
+		$newReservaVuelo = new App\ReservaVuelo;
+		$newReservaVuelo->iduser = $userId;
+		$newReservaVuelo->precio_total = $body->price->grandTotal;
+		$newReservaVuelo->bandera = 0;
+		$newReservaVuelo->comprador = '';
+
+		$newReservaVuelo->save();
 		
+		foreach ($body->itineraries as $key => $fligth) {
+			foreach ($fligth->segments as $key => $seg) {
+		
+		$newReservaVueloEscala = new App\ReservaVueloEscala;
+		$newReservaVueloEscala->idvuelo = $newReservaVuelo->id;
+		$newReservaVueloEscala->idaerolineas = $seg->carrierCode;
+		$newReservaVueloEscala->salida = $seg->departure->iataCode ;
+		$newReservaVueloEscala->fecha_salida = parsearFechaDeVuelo($seg->departure->at);
+		$newReservaVueloEscala->horario_salida = parsearHorarioDeVuelo($seg->departure->at);
+		$newReservaVueloEscala->tiempo_salida= parsearDuracionEstimada($seg->duration);
+		$newReservaVueloEscala->llegada= $seg->arrival->iataCode ;
+		$newReservaVueloEscala->fecha_llegada = parsearFechaDeVuelo($seg->arrival->at);
+		$newReservaVueloEscala->horario_llegada= parsearHorarioDeVuelo($seg->arrival->at);
+		$newReservaVueloEscala->tiempo_llegada = parsearDuracionEstimada($seg->duration);
+		$newReservaVueloEscala->save();
+			
+			}
+
+		}
+
+ 
+ 	$vuelos = ReservaVuelo::where('iduser', '=', $userId)
+						->get();
+ 	$params['vuelos'] = $vuelos	;
+
+		
+	return view('UserAdmin.vuelos',$params);
+	
+    }
+
+ 	public function reservaVuelos()
+	{
+	$userId = \Auth::user()->id;
+	
+ 	$vuelos = ReservaVuelo::where('iduser', '=', $userId)
+						->get();
+ 	$params['vuelos'] = $vuelos	;
+
+	return view('UserAdmin.vuelos',$params);	
+		
+}
 }

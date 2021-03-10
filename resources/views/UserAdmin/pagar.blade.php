@@ -16,7 +16,7 @@
 							      <th scope="col"></th>
 							     
 							      <th scope="col">Nombre</th>
-							      <th scope="col">Tipo de habitacion</th> 
+							      <th scope="col">Tipo de habitación</th> 
 							      <th scope="col">Cantidad de Camas</th>
 							      <th scope="col">Regimen</th>
 							      <th scope="col">Entrada</th>

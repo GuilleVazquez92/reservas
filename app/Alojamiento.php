@@ -29,4 +29,9 @@ class Alojamiento extends Model
     	'created_at',
     	'updated_at',
     ];
+
+    public function publicados() {
+        return $this->belongsTo(\App\PublicarAlojamiento::class, 'id', 'idalojamiento');
+    }
+    
 }

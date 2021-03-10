@@ -22,4 +22,5 @@ class Regimen extends Model
      public function tipoRegimen() {
         return $this->belongsTo(\App\TipoRegimen::class, 'idtipo', 'id');
     }
+   
 }

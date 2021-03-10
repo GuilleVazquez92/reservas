@@ -33,7 +33,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Inicio</a>
+        <a href="{{ route('inicio') }}" class="nav-link">Inicio</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contacto</a>
@@ -132,7 +132,7 @@
       <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Cerrar Sesion
+                                            Cerrar Sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -171,19 +171,29 @@
           
           <li class="nav-header">INFO</li>
           <li class="nav-item">
-            <a href="info" class="nav-link">
+            <a href="{{route('userInfo')}}" class="nav-link">
               <i class="nav-icon fas fa-hotel"></i>
               <p>
-                Informacion General
+                Información General
               </p>
             </a>
           </li>
 
           <li class="nav-item has-treeview">
-            <a href="reservas" class="nav-link">
+            <a href="{{route('userReservas')}}" class="nav-link">
               <i class="nav-icon fas fa-bed"></i>
               <p>
-                Mis Reservas
+                Mis Reservas Alojamientos
+                
+              </p>
+            </a>
+           
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{{route('reservasVuelos')}}" class="nav-link">
+              <i class="nav-icon fas fa-bed"></i>
+              <p>
+                Mis Reservas Vuelos
                 
               </p>
             </a>
@@ -191,7 +201,7 @@
           </li>
          
             <li class="nav-item">
-            <a href="pagos" class="nav-link">
+            <a href="{{route('userPagos')}}" class="nav-link">
               <i class="nav-icon fas fa-money-check"></i>
               <p>
                 Pagar 
@@ -213,12 +223,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Administracion</h1>
+            <h1 class="m-0 text-dark">Administración/Usuario</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Informacion General</li>
+              <li class="breadcrumb-item"><a href="{{ route('inicio') }}">Inicio</a></li>
+              <li class="breadcrumb-item active">Información General</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -279,12 +289,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Error de autenticacion</h1>
+            <h1>Error de autenticación</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{route('inicio')}}">Inicio</a></li>
-              <li class="breadcrumb-item active">No has Iniciado Sesion</li>
+              <li class="breadcrumb-item active">No has Iniciado Sesión</li>
             </ol>
           </div>
         </div>
@@ -300,7 +310,7 @@
           <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! no esta autenticado</h3>
 
           <p>
-          Puede Iniciar sesion aqui <a href="{{route('login')}}">Iniciar Sesion</a> o vuelva a cargar el formulario
+          Puede Iniciar sesión aquí <a href="{{route('login')}}">Iniciar Sesión</a> o vuelva a cargar el formulario
           </p>
 
           <form class="search-form">

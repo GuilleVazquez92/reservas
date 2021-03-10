@@ -10,6 +10,7 @@ use App\User;
 use App\TipoHabitacion;
 use App;
 use DB;
+use App\Http\Requests\ValidarRegistroRequest;
 
 class RegistroAlojamiento extends Controller
 {
@@ -30,7 +31,7 @@ class RegistroAlojamiento extends Controller
 
 	}
 
-	public function cargarAlojamiento(Request $request)
+	public function cargarAlojamiento(ValidarRegistroRequest $request)
 	{
 		
 		$ciudades= App\Ciudad::all();

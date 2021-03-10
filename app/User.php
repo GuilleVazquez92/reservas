@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'confirmation_code', 'idrol',
     ];
 
     /**
@@ -31,8 +31,12 @@ class User extends Authenticatable
     public function alojamientos() {
         return $this->belongsToMany(\App\Alojamiento::class, 'user_x_alojamiento', 'iduser', 'idalojamiento');
     }
-    
-      public function publicados() {
-        return $this->belongsToMany(\App\PublicarAlojamiento::class, 'user_x_alojamiento', 'iduser', 'iduser');
+
+     public function alojamientosPublicados() {
+        return $this->belongsToMany(\App\PublicarAlojamiento::class, 'user_x_publicados', 'iduser', 'idpublicado');
     }
+     public function regimen() {
+        return $this->belongsTo(\App\Regimen::class, 'id', 'iduser');
+    }
+   
 }

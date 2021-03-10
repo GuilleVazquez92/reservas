@@ -15,6 +15,10 @@ Route::get('/', function () {
 	return view('inicio/index');
 })->name('inicio');
 
+Route::get('/proveedores', function () {
+	return view('inicio/proveedores');
+})->name('proveedores');
+
 
 Route::get('prueba', function () {
 	return view('vuelos.opciones');
@@ -25,8 +29,11 @@ Route::get('vuelos', function () {
 })->name('consultaVuelo');
 
 Route::get('amadeus/flights', 'AmadeusController@flights');
+Route::get('amadeus/flightsConfirm', 'AmadeusController@flightsConfirm')->name('flightsConfirm');
+Route::post('amadeus/flightsConfirm', 'AmadeusController@flightsConfirm')->name('flightsConfirma');
 Route::post('amadeus/busqueda', 'AmadeusController@flights')->name('busqueda');
 Route::get('amadeus/consulta', 'prueba@aloja')->name('vuelos');
+
 
 
 //--- rutas para Administrador de Alojamiento ---
@@ -68,21 +75,25 @@ Route::post('reservar', 'reservas@cargar')->name('reservarAlojamiento');
 
 Route::post('reservalogin', 'reservas@login')->name('reservasLogin');
 
+Route::get('cancelar/reserva', 'reservas@cancelar')->name('cancelarAlojamiento');
 
 //--- RUTAS DE PAGO ---
 
 Route::post('pagos', 'PagosController@pago' )->name('pagos');
+Route::post('pagosvuelos', 'PagosController@pagoVuelos' )->name('pagosvuelos');
 Route::get('pagos', 'PagosController@mostrar');
 Route::post('pagos/monto', 'PagosController@mostrar')->name('mostrarPago');
+Route::post('pagos/montos', 'PagosController@mostrarVuelo')->name('mostrarPagoVuelo');
 Route::post('otro', 'PagosController@otro' )->name('otro');
 Route::post('pagosAloja', 'PagosController@aloja')->name('pagosAloja');
 
 
 
 		// Reservas Routes
-Route::get('user/info', 'UserController@info');
-Route::get('user/reservas', 'UserController@reservas');
-Route::get('user/pagos', 'UserController@pagos');
+Route::get('user/info', 'UserController@info')->name('userInfo');
+Route::get('user/reservas', 'UserController@reservas')->name('userReservas');
+Route::get('user/pagos', 'UserController@pagos')->name('userPagos');
+Route::get('reservas/vuelos','AmadeusController@reservaVuelos') ->name('reservasVuelos');
 //Route::post('reservas/alojamientos', 'prueba@cargarAlojamiento')->name('prueba');
 
 
@@ -106,3 +117,7 @@ Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+			// Confirmacion de Correo
+
+Route::get('register/verify/{code}','Auth\RegisterController@verify')->name('verify'); 

@@ -1,12 +1,10 @@
-<html>
-  <head>
- 
-</head>
-  <body>
- 
+@extends('UserAdmin.index')
+@section('contenido')
+
+ <div class="col-md-12 " >
 <div class="content" align="center">
-    <h1>Compra de Prueba</h1>
-    <h3>{{$monto}}</h3>
+    <h1>Pago</h1>
+    <h3>{{$monto}}USD</h3>
     <form action="{{route('pagos')}}" method="POST">
         {{ csrf_field() }}
         <script
@@ -22,6 +20,5 @@
         <input type="hidden" value="{{$id}}" name="id">
     </form>
 </div>
- 
-</body>       
-</html>
+ </div>
+@endsection

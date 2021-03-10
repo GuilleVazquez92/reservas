@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Input;
 use Intervention\Image\ImageManagerStatic as Image;
 use App;
 use DB;
+use App\Http\Requests\ValidarHabitacionRequest;
+use App\Http\Requests\ValidarRegimenRequest;
+use App\Http\Requests\ValidarFotosRequest;
 class AlojamientoController extends Controller
 {
 	
@@ -40,7 +43,7 @@ class AlojamientoController extends Controller
 		return view('Admin.regimenes',$params)->with('alojamientos',$prueba); 
 	}
 	
-	public function cargarRegimenes(Request $request)
+	public function cargarRegimenes(ValidarRegimenRequest $request)
 	{
 			$prueba = \Auth::user();
 			$prueb = \Auth::user()->id;
@@ -158,7 +161,7 @@ class AlojamientoController extends Controller
 		return view('Admin.habitaciones',$params)->with('alojamientos',$prueba); 
 	}
 
-		public function cargar_habitaciones(Request $request)
+		public function cargar_habitaciones(ValidarHabitacionRequest $request)
 	{
 			$prueba = \Auth::user();
 			$prueb = \Auth::user()->id;
@@ -207,7 +210,7 @@ class AlojamientoController extends Controller
 	}
 		
 
-	public function cargarFotos(Request $request)
+	public function cargarFotos(ValidarFotosRequest $request)
 	{
 		
 		$alojamientos= App\Alojamiento::all();

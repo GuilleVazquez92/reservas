@@ -10,7 +10,7 @@
                 <div class="form-group">
     <label for="inputState">Seleccionar Alojamiento</label>
     <select name="idalojamiento" class="form-control" >
-                            <option selected>---Selecciona la Alojamiento----</option>
+                            <option selected value="{{null}}">---Selecciona la Alojamiento----</option>
 
                                          @foreach($alojamientos as $aloja)
                             <option value="{{$aloja -> id}}">
@@ -19,12 +19,15 @@
                                          @endforeach
 
                           </select>
+      @if ($errors->has('idalojamiento'))
+            <small class="form-text text-danger">{{ $errors->first('idalojamiento') }}</small>
+     @endif
   </div>
  
      <div class="form-group">
     <label for="inputState">Habitaciones</label>
     <select name="idhabitacion" class="form-control" >
-                            <option selected>---Selecciona la habitacion----</option>
+                            <option selected value="{{null}}">---Selecciona la habitación----</option>
 
                                          @foreach($habitaciones as $habi)
                             <option value="{{$habi -> id}}">
@@ -33,12 +36,15 @@
                                          @endforeach
 
                           </select>
+       @if ($errors->has('idhabitacion'))
+            <small class="form-text text-danger">{{ $errors->first('idhabitacion') }}</small>
+     @endif
   </div>
  
     <div class="form-group">
     <label for="inputState">Regimenes</label>
     <select name="idregimen" class="form-control" >
-                            <option selected>---Regimen----</option>
+                            <option selected value="{{null}}">---Regimen----</option>
 
                                          @foreach($regimenes as $regi)
                             <option value="{{$regi -> id}}">
@@ -47,6 +53,10 @@
                                          @endforeach
 
                           </select>
+
+       @if ($errors->has('idregimen'))
+            <small class="form-text text-danger">{{ $errors->first('idregimen') }}</small>
+     @endif 
   </div>
 
     <div class="content">
@@ -62,6 +72,9 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
+                                 @if ($errors->has('fecha_inicio'))
+            <small class="form-text text-danger">{{ $errors->first('fecha_inicio') }}</small>
+     @endif
                             </div>
                              <label for="date">Fecha de fin</label>
                             <div class="input-group">
@@ -69,6 +82,10 @@
                                 <div class="input-group-addon">
                                     <span class="glyphicon glyphicon-th"></span>
                                 </div>
+
+                                         @if ($errors->has('fecha_fin'))
+            <small class="form-text text-danger">{{ $errors->first('fecha_fin') }}</small>
+     @endif             
                             </div>
                         </div>
  

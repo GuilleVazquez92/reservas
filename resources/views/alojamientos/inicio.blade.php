@@ -24,14 +24,23 @@
                                           @endforeach
 
                                         </select>
-                                        </div>
+                                        @if ($errors->has('city'))
+            <small class="form-text text-danger">{{ $errors->first('city') }}</small>
+                                        @endif
+                                          </div>
                                         <div class="form-group tm-form-element tm-form-element-50">
                                             <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
                                             <input name="check-in" type="date" class="form-control" id="input" placeholder="Llegada">
+                                            @if ($errors->has('check-in'))
+            <small class="form-text text-danger">{{ $errors->first('check-in') }}</small>
+                                        @endif
                                         </div>
                                         <div class="form-group tm-form-element tm-form-element-50">
                                             <i class="fa fa-calendar fa-2x tm-form-element-icon"></i>
                                             <input name="check-out" type="date" class="form-control" id="input" placeholder="Salida">
+                                                         @if ($errors->has('check-out'))
+            <small class="form-text text-danger">{{ $errors->first('check-out') }}</small>
+                                        @endif
                                         </div>
                                     </div>
                                     <div class="form-row tm-search-form-row">
@@ -42,33 +51,10 @@
                                                 <option value="2">2</option>
                                                 <option value="3">3</option>
                                                 <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
                                             </select>
                                             <i class="fa fa-2x fa-user tm-form-element-icon"></i>
                                         </div>
-                                        <div class="form-group tm-form-element tm-form-element-2">                                            
-                                            <select name="children" class="form-control tm-select" id="nino">
-                                                <option value="">Niños</option>
-                                                <option value="0">0</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                                <option value="5">5</option>
-                                                <option value="6">6</option>
-                                                <option value="7">7</option>
-                                                <option value="8">8</option>
-                                                <option value="9">9</option>
-                                                <option value="10">10</option>
-                                            </select>
-                                            <i class="fa fa-user tm-form-element-icon tm-form-element-icon-small"></i>
-                                        </div>
-
+                                     
 
                             <div class="form-group tm-form-element tm-form-element-2">
                                             <select name="room" class="       form-control tm-select" id="tipo">

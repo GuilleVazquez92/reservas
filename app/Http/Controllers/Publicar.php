@@ -11,20 +11,34 @@ use Intervention\Image\ImageManagerStatic as Image;
 use App;
 use DB;
 use App\Reserva;
+use App\Regimen;
+use App\Habitacion;
 use App\PublicarAlojamiento;
+use App\UserPorPublicado;
+use App\Http\Requests\ValidarPublicarRequest;
 
 class Publicar extends Controller
 {
 
 	public function mostrar()
 	{
+		$user = \Auth::user()->id;
 		$alojamientos= App\Alojamiento::all();
 		$habitaciones= App\Habitacion::all();
-		$regimenes= App\Regimen::all();
+		$habitaciones = Habitacion::select('habitaciones.*')
+                ->where('habitaciones.idusers', '=',$user )
+                ->get();
+		
+		$regimenes = Regimen::select('regimenes.*')
+                ->where('regimenes.iduser', '=',$user )
+                ->get();
+		
+		
 
 		$params['alojamientos'] = $alojamientos;
 		$params['habitaciones'] = $habitaciones;
 		$params['regimenes'] = $regimenes;
+		$params['user'] = $user;
 		
 		$prueba = \Auth::user()->alojamientos;
 	
@@ -32,7 +46,7 @@ class Publicar extends Controller
 	}
 
 	
-		public function cargar(Request $request)
+		public function cargar(ValidarPublicarRequest $request)
 	{
 		$prueba = \Auth::user();
 
@@ -44,7 +58,12 @@ class Publicar extends Controller
 		$publinew->fecha_inicio= $request->get('fecha_inicio');
 		$publinew->fecha_fin= $request->get('fecha_fin');
 		$publinew->save();
-		 
+
+		$userPorPublicado = new App\UserPorPublicado;
+		$userPorPublicado->iduser = $prueba->id;
+		$userPorPublicado->idpublicado =  $publinew->id;
+		$userPorPublicado->save();
+
 		$alojamientos= App\Alojamiento::all();
 		$regimenes= App\Regimen::all();
 		$habitaciones= App\Habitacion::all();
@@ -55,8 +74,8 @@ class Publicar extends Controller
 			
 		$prueba = \Auth::user()->alojamientos;
 		
-
-		return view('Admin.Alojamientos.publicar',$params)->with('alojamientos',$prueba); 
+		
+	return view('Admin.Alojamientos.publicar',$params)->with('alojamientos',$prueba); 
 		
 	}
 
@@ -91,11 +110,23 @@ class Publicar extends Controller
 	  public function verPublicados()
 
 		{
-			$publicados = \Auth::user()->publicados;
-			 
+			/*$data = Alojamiento::select('alojamientos.*')
+                ->join('user-', 'users.idUser', '=', 'categories.user_id')
+                ->get();
 
+        		return $data;*/
+
+
+
+			$publicados = \Auth::user()->alojamientosPublicados;	
 			$params['publicados'] = $publicados;
+			//$params['alojamientos'] = $alojamientos;
 
+			/*foreach ($publicados as $key => $publi) {
+				
+				echo $publi->publicados->alojamiento;
+			}*/
+			//return $publicados;
 			return view('Admin.Alojamientos.verPublicado',$params) ;
 			
 		}  

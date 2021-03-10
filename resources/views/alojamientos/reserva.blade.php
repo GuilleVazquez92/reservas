@@ -54,7 +54,8 @@
 							      	
 															  
 					
-							      <th> <button type="submit" class="btn btn-primary " >Pagar</button></th>
+							      <th> <button type="submit" class="btn btn-primary " >Pagar</button>
+							      	<p><a href="{{route(('inicio'))}}">Pagar mas tarde</a></p></th></th>
 							      </form>		
 							      <td></td>
 							      <td></td>

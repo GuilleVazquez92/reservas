@@ -18,6 +18,8 @@
   
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+  @if (Route::has('login'))
+              @auth
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -134,7 +136,7 @@
       <a href="{{ route('logout') }}" class="dropdown-item dropdown-footer"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Cerrar Sesion
+                                            Cerrar Sesión
                                         </a>
 
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -176,7 +178,7 @@
             <a href="info" class="nav-link">
               <i class="nav-icon fas fa-hotel"></i>
               <p>
-                Informacion General
+                Información General
               </p>
             </a>
           </li>
@@ -209,23 +211,7 @@
               </p>
             </a>
           </li>
-            <li class="nav-item">
-            <a href="pagos" class="nav-link">
-              <i class="nav-icon fas fa-money-check"></i>
-              <p>
-                Pagos
-              </p>
-            </a>
-          </li>
-        
-             <li class="nav-item">
-            <a href="condiciones" class="nav-link">
-              <i class="nav-icon fas fa-file-alt"></i>
-              <p>
-                Condiciones
-              </p>
-            </a>
-          </li>
+       
           
           
           
@@ -273,12 +259,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Administracion</h1>
+            <h1 class="m-0 text-dark">Administración/Proveedores</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-              <li class="breadcrumb-item active">Informacion General</li>
+              <li class="breadcrumb-item active">Información General</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -306,6 +292,57 @@
   </footer>
 </div>
 <!-- ./wrapper -->
+@else
+              
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Error de autenticacion</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="{{route('inicio')}}">Inicio</a></li>
+              <li class="breadcrumb-item active">No has Iniciado Sesion</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="error-page">
+        <h2 class="headline text-warning"> 401</h2>
+
+        <div class="error-content">
+          <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! no esta autenticado</h3>
+
+          <p>
+          Puede Iniciar sesion aqui <a href="{{route('login')}}">Iniciar Sesion</a> o vuelva a cargar el formulario
+          </p>
+
+          <form class="search-form">
+            <div class="input-group">
+              <input type="text" name="search" class="form-control" placeholder="Search">
+
+              <div class="input-group-append">
+                <button type="submit" name="submit" class="btn btn-warning"><i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+            <!-- /.input-group -->
+          </form>
+        </div>
+        <!-- /.error-content -->
+      </div>
+      <!-- /.error-page -->
+    </section>
+    <!-- /.content -->
+  
+              @endauth
+              @endif
 
 <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->

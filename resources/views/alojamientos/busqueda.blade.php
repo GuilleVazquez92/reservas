@@ -2,7 +2,7 @@
 
 @section('alojamiento')
            
-	<div class="tm-section tm-bg-img" id="tm-section-1">
+	<div class="" id="">
                 <div class="tm-bg-white ie-container-width-fix-2">
                     <div class="container ie-h-align-center-fix">
                         <div class="row">
@@ -72,7 +72,8 @@
 
 															  
 					
-							      <th> <button type="submit" class="btn btn-primary " >Reservar</button></th>
+							      <th> <button type="submit" class="btn btn-primary " >Reservar</button>
+							      	
 							      </form>		
 							      <td></td>
 							      <td></td>

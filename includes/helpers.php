@@ -1,7 +1,7 @@
 <?php 
 use \Carbon\Carbon;
 use Illuminate\Http\Request;
-
+use App\aerolinea;
 function parsearDuracionEstimada( $str ) {
 
 	//string donde buscar el match
@@ -43,31 +43,15 @@ function parsearHorarioDeVuelo( $hora ) {
 
 }
 
-
-
-    	 /*function iata() {
+  function iata($code) {
     	
-   
+   		$vuelos = aerolinea::select('aerolineas_iata.descripcion')
+   						->where('iataCode', '=', $code)
+						->get();
 
-    	$token = getToken();
-    	$endpoint = 'https://est.api.amadeus.com/v1/reference-data/airlines ';
-    	$travel_data = array(
-    	  'airlineCodes'     => $request->get('origen')
-		
-    	);
-    	$params = http_build_query($travel_data);
-		$url = $endpoint . "?" . $params;
-		$headers = array('Authorization' => 'Bearer '.$token);
-		$response = Requests::get($url, $headers);
-		$body = json_decode($response->body);
-
-		
-		
-
-		$vuelos['body']= $body;
-		//dd($response);
+		$params ['vuelos'] = $vuelos;
 
 		return $vuelos;
-    }*/
+    }
       
 ?>
