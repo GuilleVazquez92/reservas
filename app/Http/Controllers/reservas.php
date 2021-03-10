@@ -37,20 +37,24 @@ class reservas extends Controller
 		$formatted_dt2=Carbon::parse($request->get('check-out'));
 		$fecha=$formatted_dt1->diffInDays($formatted_dt2);
 
-	
-
-
-		$publicados = PublicarAlojamiento::join('reservas', function($join) use($dbDesde, $dbHasta) {
-			$join->where('publicar_alojamiento.id','=','reservas.idpublicado');
-			$join->whereNotBetween('reservas.fecha_entrada', [$dbDesde, $dbHasta]);
-			$join->whereNotBetween('reservas.fecha_salida', [$dbDesde, $dbHasta]);
-
-			$join->orWhere('publicar_alojamiento.id','!=','reservas.idpublicado');
+		$publicadosReservados = PublicarAlojamiento::join('reservas', function($join) {
+			$join->on('publicar_alojamiento.id','=','reservas.idpublicado');
 		})
-		->whereBetween('fecha_inicio', [$dbDesde, $dbHasta])
-		->whereBetween('fecha_fin', [$dbDesde, $dbHasta])
-		->get();				
-		
+		->select('publicar_alojamiento.*')
+		->where('reservas.fecha_salida', '<=', $dbDesde)
+		->where('reservas.fecha_salida', '<=', $dbHasta)
+		->where('publicar_alojamiento.fecha_inicio', '<=', $dbDesde)
+		->where('publicar_alojamiento.fecha_fin', '>=', $dbHasta);
+
+		$publicados = PublicarAlojamiento::select('publicar_alojamiento.*')
+		->whereRaw("publicar_alojamiento.id NOT IN (SELECT res.idpublicado FROM reservas res)")
+		->where('publicar_alojamiento.fecha_inicio', '<=', $dbDesde)
+		->where('publicar_alojamiento.fecha_fin', '>=', $dbHasta)
+		->union($publicadosReservados)
+		->distinct()
+		->get();
+
+		dd($publicados);
        	
 		$ciudad = $request->get('city');
 
