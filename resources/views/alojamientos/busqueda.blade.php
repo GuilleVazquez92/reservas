@@ -34,6 +34,7 @@
 
 							      @foreach($publicados as $key => $publi)		
 							      @if($publi->alojamiento->idciudad == $ciudad)
+							      @if($publi->habitacion->idtipo == $room)
 							      <th> </th>
 							      <td></td>
 							      <td></td>
@@ -79,6 +80,7 @@
 							      <td></td>
 							      <td></td>
 							    </tr>
+							   @endif
 							   @endif
 							      @endforeach
 

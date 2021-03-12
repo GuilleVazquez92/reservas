@@ -48,6 +48,7 @@
       <th scope="col">Tipo</th>
       <th scope="col">Tipo de Regimen</th>
       <th scope="col">Precio</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -58,6 +59,10 @@
       <td> {{$regimen['idtipo']}}</td>
       <td> {{$regimen['descripcion']}}</td>
       <td> {{$regimen['precio']}}</td>
+      <td>
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modal-default" ><i class="far fa-edit"></i> </button>
+        <button class="btn bg-gradient-danger "><i class="fas fa-trash-alt"></i></button>
+      </td>
       
     </tr>
       @endif

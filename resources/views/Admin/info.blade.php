@@ -86,10 +86,13 @@
                     <td> {{parsearFechaDeVuelo($rese->fecha_entrada)}}</td>
                     <td> {{parsearFechaDeVuelo($rese->fecha_salida)}}</td>  
                           
-                    @if($rese->bandera == 0)    
-                    <th> <span class="badge badge-danger">Pendiente</span></th>
-                    @else
+                    @if($rese->bandera == 0 ||$rese->bandera == 4)    
+                    <th> <span class="badge badge-warning">Pendiente</span></th>
+                    @elseif($rese->bandera == 1)
                     <th> <span class="badge badge-success">Pagado</span></th>
+                    @elseif($rese->bandera == 3)
+                    <th> <span class="badge badge-danger">Cancelado</span></th>
+
                     @endif
                     </form>   
                     <td></td>

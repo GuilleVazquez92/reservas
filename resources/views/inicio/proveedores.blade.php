@@ -147,7 +147,8 @@ http://www.tooplate.com/view/2102-constructive
 									<i class="fas fa-hotel tm-icon-circled tm-icon-media "></i>
 									<div class="media-body">
 										<h3>Registrar</h3>
-										<p>We provide a variety of templates for you at no cost. Please spread a word about  website. Muchas Gracias.</p>	
+										<p>Registra de manera rapida y sencilla tus alojamientos 
+										y explota el mundo online con tus ofertas.</p>	
 									</div>
 								</div>
 							</div>
@@ -158,7 +159,8 @@ http://www.tooplate.com/view/2102-constructive
 									<i class="fas ffas fa-plane-departure mr-4 tm-icon-circled tm-icon-media"></i>	
 									<div class="media-body">
 										<h3>Ver mis Transportes</h3>
-										<p>Photos by Unsplash.com website, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>	
+										<p>En este apartado podes ver todos tus transportes 
+										registrados dentro del sistema </p>	
 									</div>
 								</div>
 							</div>
@@ -174,26 +176,27 @@ http://www.tooplate.com/view/2102-constructive
 							</div>	            
 								  <div class="row">
 								  	
-								  	<a href="{{route('reservarAloja')}}" class="scrolly" style="color: white;">
+								  	<a href="{{route('infoAlojamiento')}}" class="scrolly" style="color: white;">
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
 									<i class="fas fa-hotel tm-icon-circled tm-icon-media"></i>
 									<div class="media-body">
 										<h3>Registrar</h3>
-										<p>We provide a variety of templates for you at no cost. Please spread a word about  website. Thank you.</p>	
+										<p>Registra de manera rapida y sencilla tus alojamientos 
+										y explota el mundo online con tus ofertas</p>	
 									</div>
 								</div>
 							</div>
 							</a>
 
-							<a href="{{route('consultaVuelo')}}" target="_blank" style="color: white;">	
+							<a href="{{route('infoAlojamiento')}}" target="_blank" style="color: white;">	
 							<div class="col-sm-12 col-md-6 col-lg-12 col-xl-6 mb-4">
 								<div class="media tm-bg-transparent-black tm-border-white">
-									<i class="fas fa-plane-departure mr-4 tm-icon-circled tm-icon-media"></i>	
+									<i class="fas fa-hotel tm-icon-circled tm-icon-media"></i>	
 
 									<div class="media-body" >
 										<h3>Ver mis Alojamientos</h3>
-										<p>Photos by Unsplash.com website, ac ornare arcu finibus sed. Aenean ultrices nisi sit amet facilisis viverra.</p>	
+										<p>Publica, edita o elimina tus registros de Alojamiento de la mejor manera en este apartado.</p>	
 									</div>
 								</div>
 							</div>
@@ -216,26 +219,25 @@ http://www.tooplate.com/view/2102-constructive
 									<div class="contact_message">
 										<form action="#contact" method="post" class="contact-form">
 											<div class="form-group">
-												<input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Name" required>
+												<input type="text" id="contact_name" name="contact_name" class="form-control" placeholder="Nombre" required>
 											</div>
 											<div class="form-group">
 												<input type="email" id="contact_email" name="contact_email" class="form-control" placeholder="Email" required>
 											</div>
 											<div class="form-group">
-												<textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Message" required></textarea>
+												<textarea id="contact_message" name="contact_message" class="form-control" rows="9" placeholder="Mensaje" required></textarea>
 											</div>
-											<button type="submit" class="btn tm-btn-submit tm-btn ml-auto">Submit</button>
+											<button type="submit" class="btn tm-btn-submit tm-btn ml-auto">Enviar</button>
 										</form>
 									</div>
 								</div>
 								<div class="col-md-6 col-sm-12 tm-contact-col">
 									<div class="tm-address-box">
-										<p>Aliquam interdum, nisl sedd faucibus tempor, massa velit laoreet ipsum, et faucibus sapien magna at enim. Suspendisse a dictum tortor.</p>
-										<p>Curabitur venenatis leo in augue convallis, vulputate sollicitudin ex maximus.</p>
-										<address>
-											120-240 Aliquam nec neque augue<br>
-											Suspendisse tincidunt nunc,<br>
-											vitae sagis justo 11000
+										<p></p>
+										<p>En Tu Viaje nos procupamos por vos.</p>
+										<address>y queremos que tengas las mejores experencias dentro de tus viajes.<br>
+											Podes enviarnos un mensaje<br>
+											que nosotros estaremos atentos a tus consultas
 										</address>
 									</div>
 								</div>

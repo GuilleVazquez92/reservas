@@ -110,23 +110,24 @@ class Publicar extends Controller
 	  public function verPublicados()
 
 		{
-			/*$data = Alojamiento::select('alojamientos.*')
-                ->join('user-', 'users.idUser', '=', 'categories.user_id')
-                ->get();
+		
 
-        		return $data;*/
+        		
 
 
 
-			$publicados = \Auth::user()->alojamientosPublicados;	
+			$user = \Auth::user();
+			$publicados = PublicarAlojamiento::select('publicar_alojamiento.*')
+             ->where('publicar_alojamiento.iduser', '=',$user->id )
+             ->get();
+
+
+			
 			$params['publicados'] = $publicados;
-			//$params['alojamientos'] = $alojamientos;
-
-			/*foreach ($publicados as $key => $publi) {
-				
-				echo $publi->publicados->alojamiento;
-			}*/
-			//return $publicados;
+			
+		
+		
+			
 			return view('Admin.Alojamientos.verPublicado',$params) ;
 			
 		}  

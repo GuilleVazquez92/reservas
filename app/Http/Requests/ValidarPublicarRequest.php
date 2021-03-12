@@ -33,7 +33,7 @@ class ValidarPublicarRequest extends FormRequest
         'idhabitacion'          => 'required', 
         'idregimen'             => 'required',
         'fecha_inicio'          => 'required|after_or_equal:'.$date,
-        'fecha_fin'             => 'required|after_or_equal:check-in',
+        'fecha_fin'             => 'required|after_or_equal:fecha_inicio',
         ];
 
     }

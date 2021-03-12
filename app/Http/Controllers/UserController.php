@@ -50,7 +50,7 @@ public function reservas(Request $request)
 			$reserva = Reserva::where('iduser', '=',$prueba->id)
 						->get();
 			
-
+						
 			
 			$params['reserva']=$reserva;
 			

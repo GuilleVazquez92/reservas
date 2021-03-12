@@ -65,6 +65,7 @@
       <th scope="col">Orden</th>
       <th scope="col">Nombre</th>
       <th scope="col">Imagen</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -77,6 +78,10 @@
       <td> {{$foto['orden']}}</td>
       <td> {{$foto['path_imagen']}}</td>
       <td><img src="{{$foto['codigo_imagen']}}" alt="" style=" width: 150px; height: 150px;"> </td>
+       <td>
+        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#modal-default" ><i class="far fa-edit"></i> </button>
+        <button class="btn bg-gradient-danger "><i class="fas fa-trash-alt"></i></button>
+      </td>
       @endif
     </tr>
       @endforeach

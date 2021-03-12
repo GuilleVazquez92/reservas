@@ -8,9 +8,8 @@ class UserPorAlojamiento extends Model
 {
     protected $table = 'user_x_alojamiento';
     
-    protected $primaryKey = ['iduser','idalojamiento'];
+     protected $primaryKey = 'id';
 
-    public $incrementing = false;
     
     public $timestamps=false;
 

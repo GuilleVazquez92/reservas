@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\UserPorAlojamiento;
+use App\Habitacion;
 use App\Reserva;
 use App\PublicarAlojamiento;
 use App\User;
@@ -188,6 +189,125 @@ class AlojamientoController extends Controller
 		return view('Admin.habitaciones',$params)->with('alojamientos',$prueba); 
 		
 	}
+
+			public function mostrarEditarHabitacion(Request $request)
+	{
+			$id = $request->get('id');
+			
+
+			$habitacion = Habitacion::select('habitaciones.*')
+			->whereRaw("habitaciones.id NOT IN (SELECT pub.idhabi FROM publicar_alojamiento pub)")
+			->where('habitaciones.id', '=', $id)
+			->first();
+			$prueb = \Auth::user()->id;
+			$alojamientos= App\Alojamiento::all();
+			$tipoHabitaciones= App\TipoHabitacion::all();
+			$habitaciones= App\Habitacion::all();
+
+			$params['alojamientos'] = $alojamientos;
+			$params['tipo_habitacion'] = $tipoHabitaciones;
+			$params['habitaciones'] = $habitaciones;
+			$params['prueb'] = $prueb;
+			$params['habitacion'] = $habitacion;
+
+		if($habitacion ==null ){
+			
+
+			return view('Admin.habitaciones',$params);
+			
+		}
+		else{
+
+
+			return view('Admin.editHabitacion',$params);
+			
+		}
+		
+	}
+
+	public function editarHabitacion(Request $request)
+	{
+		$id = $request->get('id');
+		$habitacion = Habitacion::select('habitaciones.*')
+			->whereRaw("habitaciones.id NOT IN (SELECT pub.idhabi FROM publicar_alojamiento pub)")
+			->where('habitaciones.id', '=', $id)
+			->first();
+			$prueb = \Auth::user()->id;
+			$alojamientos= App\Alojamiento::all();
+			$tipoHabitaciones= App\TipoHabitacion::all();
+			$habitaciones= App\Habitacion::all();
+
+			$params['alojamientos'] = $alojamientos;
+			$params['tipo_habitacion'] = $tipoHabitaciones;
+			$params['habitaciones'] = $habitaciones;
+			$params['prueb'] = $prueb;
+			$params['habitacion'] = $habitacion;
+		
+		if($habitacion ==null ){
+		
+			return view('Admin.habitaciones',$params);
+			
+		}
+		else{
+			
+			$habitacionnueva = Habitacion::find($id);
+			$habitacionnueva->idusers= $prueb;
+			$habitacionnueva->idtipo= $request->get('idtipohabitacion');
+			$habitacionnueva->cant_camas= $request->get('cant_camas');
+			$habitacionnueva->precio= $request->get('precio');
+			$habitacionnueva->descripcion= $request->get('descripcion');
+			$habitacionnueva->save();
+
+			return view('Admin.editHabitacion',$params);
+			
+		}
+
+			
+
+		
+
+}
+	public function eliminarHabitacion(Request $request)
+	{
+		$id = $request->get('id');
+		$habitacion = Habitacion::select('habitaciones.*')
+			->whereRaw("habitaciones.id NOT IN (SELECT pub.idhabi FROM publicar_alojamiento pub)")
+			->where('habitaciones.id', '=', $id)
+			->first();
+			$prueb = \Auth::user()->id;
+			$alojamientos= App\Alojamiento::all();
+			$tipoHabitaciones= App\TipoHabitacion::all();
+			$habitaciones= App\Habitacion::all();
+
+			$params['alojamientos'] = $alojamientos;
+			$params['tipo_habitacion'] = $tipoHabitaciones;
+			$params['habitaciones'] = $habitaciones;
+			$params['prueb'] = $prueb;
+			$params['habitacion'] = $habitacion;
+		
+		if($habitacion ==null ){
+		
+			return view('Admin.habitaciones',$params);
+			
+		}
+		else{
+			
+       		$habitacion->delete();
+			return view('Admin.habitaciones',$params);
+			
+       		}
+		
+
+		
+			
+		}
+
+			
+
+		
+
+
+
 
 
  //-----------------------FOTOS-----------------------------------------------------------

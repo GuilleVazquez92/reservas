@@ -42,11 +42,14 @@
 							      	
 							      	
 															
-							      @if($rese->bandera == 0)		
-							      <th> <button type="submit" class="btn btn-danger " >Pendiente</button></th>
-							      @else
-							      <th> <button type="submit" class="btn btn-success " >Pagado</button></th>
-							      @endif
+							      @if($rese->bandera == 0 ||$rese->bandera == 4)    
+                    <th> <span class="badge badge-warning">Pendiente</span></th>
+                    @elseif($rese->bandera == 1)
+                    <th> <span class="badge badge-success">Pagado</span></th>
+                    @elseif($rese->bandera == 3)
+                    <th> <span class="badge badge-danger">Cancelado</span></th>
+
+                    @endif
 							      </form>		
 							      <td></td>
 							      <td></td>

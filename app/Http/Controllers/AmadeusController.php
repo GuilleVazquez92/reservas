@@ -66,14 +66,19 @@ class AmadeusController extends Controller
 
     	public function flightsConfirm(Request $request) {
     	
-   
+   	
 		$re=$request->get('body');
 		$body = json_decode($re);
-		$userId = \Auth::user()->id;
+
+		
+		
+		$userId = \Auth::user();
+
+		if ( !empty($userId) ) {
 
 	
 		$newReservaVuelo = new App\ReservaVuelo;
-		$newReservaVuelo->iduser = $userId;
+		$newReservaVuelo->iduser = $userId->id;
 		$newReservaVuelo->precio_total = $body->price->grandTotal;
 		$newReservaVuelo->bandera = 0;
 		$newReservaVuelo->comprador = '';
@@ -99,6 +104,13 @@ class AmadeusController extends Controller
 			}
 
 		}
+	}
+		else {
+					
+				
+			echo 'No ha iniciado sesion';
+			}
+
 
  
  	$vuelos = ReservaVuelo::where('iduser', '=', $userId)
@@ -112,13 +124,23 @@ class AmadeusController extends Controller
 
  	public function reservaVuelos()
 	{
-	$userId = \Auth::user()->id;
+	$userId = \Auth::user();
 	
- 	$vuelos = ReservaVuelo::where('iduser', '=', $userId)
+	if ( !empty($userId) ) {
+ 	$vuelos = ReservaVuelo::where('iduser', '=', $userId->id)
 						->get();
  	$params['vuelos'] = $vuelos	;
 
-	return view('UserAdmin.vuelos',$params);	
+ 	return view('UserAdmin.vuelos',$params);
+ 	}
+
+ 	else {
+					
+				
+			return view('UserAdmin.vuelos');
+			}
+
+		
 		
 }
 }

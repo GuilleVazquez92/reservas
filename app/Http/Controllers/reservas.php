@@ -54,9 +54,10 @@ class reservas extends Controller
 		->distinct()
 		->get();
 
-		dd($publicados);
+		//dd($publicados);
        	
 		$ciudad = $request->get('city');
+		$room = $request->get('room');
 
 		$p= count($publicados);
 		$params['publicados'] = $publicados;				
@@ -67,6 +68,9 @@ class reservas extends Controller
 		$params['ciudad']=$ciudad;
 		$params['dbDesde']=$dbDesde;
 		$params['dbHasta']=$dbHasta;
+		$params['room']=$room;
+
+		//dd($publicados);
         
 		return view('alojamientos.busqueda', $params);
 			
@@ -99,16 +103,30 @@ class reservas extends Controller
 			$params['desde'] = $desde;
 			$params['hasta'] = $hasta;
 
+
+		$fechahoy = Carbon::now();
+		$fechaEntrada = $desde;
+
+		$diasDiferencia = $fechahoy->diffInDays($fechaEntrada);
+		
+		
 			$reservaNueva = new App\Reserva;
 			$reservaNueva->iduser = $prueba;
 			$reservaNueva->idpublicado= $request->get('id');
 			$reservaNueva->fecha_entrada= $desde;
 			$reservaNueva->fecha_salida= $hasta;
 			$reservaNueva->precio_total=$precio;
-			$reservaNueva->bandera=0;
+
+			if($diasDiferencia <= 2)
+			{
+				$reservaNueva->bandera=4;
+			}	
+			else{
+				$reservaNueva->bandera=0;
+			}
+			
 			$reservaNueva->save();
 		
-
 			
 			return view('alojamientos.reserva',$params);
 			
@@ -134,6 +152,8 @@ class reservas extends Controller
 		$app = Reserva::find($id);
 		$app->bandera = $estado;
 		$app->save();
+
+		
 
 		$prueba = \Auth::user();
 			if ( !empty($prueba) ) {

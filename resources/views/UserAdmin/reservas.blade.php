@@ -81,6 +81,9 @@
 
 							   	 @elseif($rese->bandera == 3)
 							   	 	<th> <button type="submit" class="btn btn-danger " >Cancelado</button></th>
+							   	 	 @elseif($rese->bandera == 4)
+							   	 	<th> <button type="submit" class="btn btn-danger " >Pendiente</button></th>
+							   	 	<th>No es posible Cancelar</th>
 							      @else
 							      <th> <button type="submit" class="btn btn-success " >Pagado</button></th>
 							      @endif

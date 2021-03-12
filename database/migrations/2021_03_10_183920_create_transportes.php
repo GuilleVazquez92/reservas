@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserXAlojamiento extends Migration
+class CreateTransportes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,19 @@ class CreateUserXAlojamiento extends Migration
      */
     public function up()
     {
-        Schema::create('user_x_alojamiento', function (Blueprint $table) {
+        Schema::create('transportes', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('idtipotransporte')->unsigned();
             $table->integer('iduser')->unsigned();
-            $table->integer('idalojamiento')->unsigned();
+            $table->string('nombre');
+            $table->integer('capacidad')->nullable();
+            $table->timestamps();
 
+            $table->foreign('idtipotransporte')->references('id')->on('tipo_transportes');
             $table->foreign('iduser')->references('id')->on('users');
-            $table->foreign('idalojamiento')->references('id')->on('alojamientos');
-        });
-    }
+            
+    });
+}
 
     /**
      * Reverse the migrations.
@@ -30,6 +34,6 @@ class CreateUserXAlojamiento extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_x_alojamiento');
+        Schema::dropIfExists('transportes');
     }
 }

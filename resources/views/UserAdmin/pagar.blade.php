@@ -32,7 +32,7 @@
 
 							      @foreach($reserva as $key => $rese)		
 							      
-							      @if($rese->bandera == 0)
+							      @if($rese->bandera == 0 || $rese->bandera == 4 )
 							      <th> </th>
 							      <td></td>
 							      <td></td>

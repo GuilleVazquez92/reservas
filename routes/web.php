@@ -42,6 +42,10 @@ Route::get('regimenes', 'AlojamientoController@regimenes');
 Route::post('regimenes', 'AlojamientoController@cargarRegimenes')->name('regimenes');
 Route::get('habitaciones', 'AlojamientoController@habitaciones');
 Route::post('habitaciones', 'AlojamientoController@cargar_habitaciones')->name('habitaciones');
+
+Route::get('mostrareditarHabitacion', 'AlojamientoController@mostrareditarHabitacion')->name('mostrareditarHabitacion'); 
+Route::post('editarHabitacion', 'AlojamientoController@editarHabitacion')->name('editarHabitacion'); 
+Route::get('eliminarHabitacion', 'AlojamientoController@eliminarHabitacion')->name('eliminarHabitacion'); 
 Route::get('info', 'AlojamientoController@info')->name('infoAlojamiento');
 Route::get('fotos', 'AlojamientoController@fotos');
 Route::post('fotos', 'AlojamientoController@cargarFotos')->name('fotos');
@@ -62,8 +66,14 @@ Route::get('VerPublicados', 'Publicar@verPublicados')->name('VerPublicados');
 Route::get('RegistrarAlojamiento', 'RegistroAlojamiento@mostrar')->name('RegistrarAlojamiento');
 Route::post('RegistrarAlojamiento', 'RegistroAlojamiento@cargarAlojamiento')->name('RegistrarAlojamiento');
 
-Route::get('EditarAlojamiento', 'RegistroAlojamiento@editar')->name('EditarAlojamiento');
-Route::post('EditarAlojamiento', 'RegistroAlojamiento@edit')->name('editAlojamiento');
+Route::get('EditarAlojamientos', 'RegistroAlojamiento@mostrarAlojamiento')->name('EditarAlojamiento');
+Route::get('EditarAlojamiento', 'RegistroAlojamiento@edit')->name('editAlojamiento');
+Route::get('editAlojamiento', 'RegistroAlojamiento@edit')->name('editAlojamientos');
+Route::post('editAlojamientos', 'RegistroAlojamiento@editar')->name('AlojaEditar');
+
+
+Route::get('eliminarAlojamiento', 'RegistroAlojamiento@eliminar')->name('eliminarAlojamiento');
+
 
 
 
@@ -86,6 +96,12 @@ Route::post('pagos/monto', 'PagosController@mostrar')->name('mostrarPago');
 Route::post('pagos/montos', 'PagosController@mostrarVuelo')->name('mostrarPagoVuelo');
 Route::post('otro', 'PagosController@otro' )->name('otro');
 Route::post('pagosAloja', 'PagosController@aloja')->name('pagosAloja');
+
+
+//--- RUTAS DE TRANSPORTE---
+
+Route::get('Transportebusqueda', 'TransporteController@busqueda');
+Route::post('Transportereservar', 'TransporteController@reservar')->name('reservarTransporte');
 
 
 
