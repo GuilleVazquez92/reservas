@@ -3,7 +3,7 @@
 
 @section('contenido')
 <div class="col-md-12 contenido-dos">
-<h1 align="center" id="prueba">Registrar Alojamiento</h1>
+<h1 align="center" id="prueba">Registrar A</h1>
 <form action="{{route('prueba')}}" method="POST">
   {{csrf_field()}}
   <div class="form-row">
@@ -109,9 +109,44 @@
 </div>
 
 </div>
+<div class="form-row">
+ 
+ <div id="mapa">  </div>
+
+</div>
+
 <div class="cold-md-12">
  <button type="submit" class="btn btn-primary ">Cargar</button>
  </div>
 </form>
  </div>
+
+ <style>
+    #mapa{
+      width: 800px;
+      max-width:100%;
+      height: 600px;
+      max-height: 100vh; 
+    }
+  </style>
+  <script src="https://maps.google.com/maps/api/js?key=AIzaSyC2QF1gXM89q7vo9JIc5x7x_lXjEgP8xQs"></script> 
+
+   <script >
+     
+    google.maps.event.addDomListener(window, "load",function(){
+
+     var mapElement = document.getElementById('mapa')
+
+
+     var map = new google.maps.Map(mapElement,{
+      center:{
+        lat:-25.3486644,
+        lng:-57.6237011
+      },
+      zoom:15
+     })
+       
+    })
+   </script>
+    
 @endsection

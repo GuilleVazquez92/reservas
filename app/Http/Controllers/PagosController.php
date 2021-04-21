@@ -8,6 +8,9 @@ use Stripe\Customer;
 use Stripe\Charge;
 use App\Reserva;
 use App\ReservaVuelo;
+use Mail;
+use App\Mail\Pago;
+
 
 class PagosController extends Controller
 {
@@ -61,7 +64,19 @@ class PagosController extends Controller
             
             $params['reserva']=$reserva;
             
-            //return $params;
+            $data['nombre'] = $app->idaerolineas;
+           $data['precio'] = $app->precio_total;
+           $data['ticket'] = $app->id;
+           $data['fecha_entrada'] = $app->ReservaVuelo->fecha_salida;
+           $data['fecha_salida'] = $app->ReservaVuelo->fecha_llegada;
+           $data['cliente'] = \Auth::user()->name; 
+           $data['mail'] = \Auth::user()->email;
+
+
+           Mail::send('emails.pago',$data, function($messagge) use($data) {
+
+            $messagge->to($data['mail'],$data['precio'])->subject('Pago');   
+        });
             return view('UserAdmin.vuelos',$params);
 
             }else {
@@ -107,8 +122,25 @@ class PagosController extends Controller
 
             
             $params['reserva']=$reserva;
+
             
-            //return $params;
+
+           $data['nombre'] = $app->publicados->alojamiento->nombre;
+           $data['precio'] = $app->precio_total;
+           $data['ticket'] = $app->id;
+           $data['fecha_entrada'] = $app->fecha_entrada;
+           $data['fecha_salida'] = $app->fecha_salida;
+           $data['cliente'] = \Auth::user()->name; 
+           $data['mail'] = \Auth::user()->email;
+
+
+           Mail::send('emails.pago',$data, function($messagge) use($data) {
+
+            $messagge->to($data['mail'],$data['precio'])->subject('Pago');   
+        });
+
+   
+             
             return view('UserAdmin.reservas',$params);
 
             }else {
@@ -132,6 +164,12 @@ class PagosController extends Controller
         $params['x']=$x;
         $params['id']=$id;
         return $params;
+    }
+
+    public function pdf(){
+
+        $pdf =  \PDF::loadView('emails.pdf');
+        return $pdf->download();
     }
     
 }

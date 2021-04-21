@@ -11,7 +11,7 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Alojamiento</th>
-      <th scope="col">Descripcion</th>
+      <th scope="col">Descripción</th>
       <th scope="col"></th>
     </tr>
   </thead>

@@ -42,7 +42,7 @@
      @endif
   </div>
  <div class="form-group col-md-6">
-  <label for="inputAddress">Direccion</label>
+  <label for="inputAddress">Dirección</label>
   <input type="text" class="form-control" name="direccion" placeholder="">
    @if ($errors->has('direccion'))
             <small class="form-text text-danger">{{ $errors->first('direccion') }}</small>
@@ -61,7 +61,7 @@
      @endif
 </div>
 <div class="form-group col-md-3">
-  <label for="inputEmail4">Telefono</label>
+  <label for="inputEmail4">Teléfono</label>
   <input type="text" class="form-control" name="telefono" placeholder="Telefono">
    @if ($errors->has('telefono'))
         <small class="form-text text-danger">{{ $errors->first('telefono') }}</small>
@@ -79,7 +79,7 @@
 
 <div class="form-row">
  <div class="form-group col-md-10">
-  <label for="inputAddress2">Descripcion</label>
+  <label for="inputAddress2">Descripción</label>
   <input type="text" class="form-control" name="descripcion" placeholder="">
 </div>
 
@@ -101,9 +101,9 @@
 </select>
 </div>
 <div class="form-group col-md-5">
-  <label for="inputState">Categoria</label>
+  <label for="inputState">Categoría</label>
   <select name="categoria" class="form-control">
-    <option selected value="{{null}}">---Elegir Categoria---</option>
+    <option selected value="{{null}}">---Elegir Categoría---</option>
     <option value="{{6}}">No soy un hotel</option>
     <option>5</option>
     <option>4</option>
@@ -117,6 +117,39 @@
 </div>
 
 </div>
+
+<div class="form-row">
+ 
+ <div id="mapa">  </div>
+
+</div>
+  <script src="https://maps.google.com/maps/api/js?key=AIzaSyC2QF1gXM89q7vo9JIc5x7x_lXjEgP8xQs"></script> 
+
+   <script >
+     
+    google.maps.event.addDomListener(window, "load",function(){
+
+     var mapElement = document.getElementById('mapa')
+
+
+     var map = new google.maps.Map(mapElement,{
+      center:{
+        lat:-25.3486644,
+        lng:-57.6237011
+      },
+      zoom:15
+     })
+       
+    })
+   </script>
+     <style>
+    #mapa{
+      width: 700px;
+      max-width:100%;
+      height: 400px;
+      max-height: 100vh; 
+    }
+  </style>
 <div class="cold-md-12">
  <button type="submit" class="btn btn-primary ">Cargar</button>
  </div>

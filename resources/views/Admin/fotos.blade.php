@@ -2,7 +2,7 @@
 
 @section('contenido')
 <div class="col-md-12 contenido-uno">
-<h3 align="center">Imagenes</h3>
+<h3 align="center">Imágenes</h3>
          <form action="{{route('fotos')}}" method="POST" enctype="multipart/form-data">
             {{csrf_field()}}
                 <div class="form-group">
@@ -23,7 +23,7 @@
      @endif
              </div>
                   <div class="form-group">
-                      <label for="exampleFormControlFile1">Seleccione Imagenes de SU ALOJAMIENTO</label>
+                      <label for="exampleFormControlFile1">Seleccione Imágenes de SU ALOJAMIENTO</label>
                         
                         <input type="file" id="imagen" name="imagen" accept="image/*" /><br>
                             @if ($errors->has('imagen'))
@@ -60,7 +60,7 @@
   <thead class="thead-dark">
     
     <tr>
-      <th scope="col">Numero</th>
+      <th scope="col">Número</th>
       <th scope="col">Alojamiento</th>
       <th scope="col">Orden</th>
       <th scope="col">Nombre</th>

@@ -9,8 +9,14 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-//------  Pantalla Principal  ---
+*///------  Pantalla Principal  ---
+Route::get('form', function () {
+	return view('alojamientoform');
+})->name('mapa');
+
+
+
+
 Route::get('/', function () {
 	return view('inicio/index');
 })->name('inicio');
@@ -79,6 +85,7 @@ Route::get('eliminarAlojamiento', 'RegistroAlojamiento@eliminar')->name('elimina
 
 //--- rutas para buscar Alojamiento ---
 
+Route::post ('filtros', 'reservas@filtros')->name('filtros');
 
 Route::get('reservar', 'reservas@mostrar')->name('reservarAloja');
 Route::post('reservar', 'reservas@cargar')->name('reservarAlojamiento');
@@ -86,6 +93,8 @@ Route::post('reservar', 'reservas@cargar')->name('reservarAlojamiento');
 Route::post('reservalogin', 'reservas@login')->name('reservasLogin');
 
 Route::get('cancelar/reserva', 'reservas@cancelar')->name('cancelarAlojamiento');
+
+
 
 //--- RUTAS DE PAGO ---
 
@@ -137,3 +146,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 			// Confirmacion de Correo
 
 Route::get('register/verify/{code}','Auth\RegisterController@verify')->name('verify'); 
+
+
+Route::get('pago/pdf','PagosController@pdf')->name('pdf'); 

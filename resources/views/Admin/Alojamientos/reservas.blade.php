@@ -11,9 +11,9 @@
 							    
 							    <tr>
 							      <th scope="col">Alojamiento</th>
-							      <th scope="col">Tipo de habitacion</th> 
+							      <th scope="col">Tipo de habitación</th> 
 							      <th scope="col">Cantidad de Camas</th>
-							      <th scope="col">Regimen</th>
+							      <th scope="col">Régimen</th>
 							      <th scope="col">Entrada</th>
 							      <th scope="col">Salida</th>
 							      <th scope="col">Precio</th>

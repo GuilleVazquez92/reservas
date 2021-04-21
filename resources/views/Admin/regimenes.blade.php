@@ -2,14 +2,14 @@
 
 @section('contenido')
  <div class="col-md-12 contenido-tres">
-                       <h3 align="center">Cargar Regimenes</h3>
+                       <h3 align="center">Cargar Regímenes</h3>
 <form action="{{route('regimenes')}}" method="POST">
         {{csrf_field()}}
       
     <div class="form-group ">
-                 <label for="inputState">Tipo de Regimenes</label>
+                 <label for="inputState">Tipo de Regímenes</label>
     <select name="idtiporegimen" class="form-control" >
-                            <option selected value="{{null}}">---Seleccione tipo de Regimen----</option>
+                            <option selected value="{{null}}">---Seleccione tipo de Régimen----</option>
 
                                          @foreach($tipo_regimenes as $tipoRegi)
                             <option value="{{$tipoRegi -> id}}">
@@ -21,7 +21,7 @@
               @if ($errors->has('idtiporegimen'))
             <small class="form-text text-danger">{{ $errors->first('idtiporegimen') }}</small>
      @endif
-              <label for="inputState">Descripcion</label>
+              <label for="inputState">Descripción</label>
               <input type="text" class="form-control" name="descripcion" placeholder="">
               @if ($errors->has('descripcion'))
             <small class="form-text text-danger">{{ $errors->first('descripcion') }}</small>
@@ -33,20 +33,20 @@
      @endif
               </div>
 
-    <button type="submit" class="btn btn-primary btn-lg">Cargar Regimen</button>
+    <button type="submit" class="btn btn-primary btn-lg">Cargar Régimen</button>
   
               
   
 </form>
  
-<h3 align="center">Regimenes Cargados</h3>
+<h3 align="center">Regímenes Cargados</h3>
 <table class="table" name="">
   <thead class="thead-dark">
     
     <tr>
       <th scope="col">Numero</th>
       <th scope="col">Tipo</th>
-      <th scope="col">Tipo de Regimen</th>
+      <th scope="col">Tipo de Régimen</th>
       <th scope="col">Precio</th>
       <th scope="col"></th>
     </tr>

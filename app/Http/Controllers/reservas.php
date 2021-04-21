@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\PublicarAlojamiento;
+use App\Ciudad;
 use App\Reserva;
 use \Carbon\Carbon;
 use App;
@@ -12,7 +13,9 @@ use App\Http\Requests\BusquedaRequest;
 class reservas extends Controller
 {
 	
-     
+
+
+
 	public function mostrar()
 	{
 		$ciudades= App\Ciudad::all();
@@ -57,9 +60,16 @@ class reservas extends Controller
 		//dd($publicados);
        	
 		$ciudad = $request->get('city');
+		$city = Ciudad::select('ciudades.*')
+		->where('ciudades.id', '=', $ciudad)
+		->first();
+
+	
+
 		$room = $request->get('room');
 
 		$p= count($publicados);
+		$params['city'] = $city->descripcion;
 		$params['publicados'] = $publicados;				
 		$fotos= App\Fotos::all();
         $params['fotos'] = $fotos;
@@ -77,6 +87,106 @@ class reservas extends Controller
 		
 
 					
+	}
+
+	    	public function filtros(Request $request)
+
+	{
+		$city = $request->get('ciudad');
+		$dbDesde = $request->get('dbDesde');
+		$dbHasta = $request->get('dbHasta');
+		$ciudad = $request->get('city');
+
+		$desayuno = $request->get('desayuno');
+		$media = $request->get('media');
+		$all = $request->get('all');
+		$sin = $request->get('sin');
+		$americano = $request->get('a');
+
+		$unostar= $request->get('1star');
+		$dosstar= $request->get('2star');
+		$tresstar= $request->get('3star');
+		$cuatrostar= $request->get('4star');
+		$cincostar= $request->get('5star');
+
+		$publicadosReservados = PublicarAlojamiento::join('reservas', function($join) {
+			$join->on('publicar_alojamiento.id','=','reservas.idpublicado');
+		})
+		->select('publicar_alojamiento.*')
+		->where('reservas.fecha_salida', '<=', $dbDesde)
+		->where('reservas.fecha_salida', '<=', $dbHasta)
+		->where('publicar_alojamiento.fecha_inicio', '<=', $dbDesde)
+		->where('publicar_alojamiento.fecha_fin', '>=', $dbHasta);
+
+		$publicado = PublicarAlojamiento::select('publicar_alojamiento.*')
+		->whereRaw("publicar_alojamiento.id NOT IN (SELECT res.idpublicado FROM reservas res)")
+		->where('publicar_alojamiento.fecha_inicio', '<=', $dbDesde)
+		->where('publicar_alojamiento.fecha_fin', '>=', $dbHasta)
+		->union($publicadosReservados)
+		->distinct()
+		->get();
+
+		foreach ($publicado as $key => $publi) {
+			
+			if ($publi->regimen->idtipo ==$desayuno) {
+
+
+				$publicados = $publi;
+			}
+
+			if ($publi->regimen->idtipo ==$media) {
+
+				$publicados = $publi;
+
+			}
+			if ($publi->regimen->idtipo ==$all) {
+
+				$publicados = $publi;
+				
+			}
+				if ($publi->regimen->idtipo ==$sin) {
+
+				$publicados = $publi;
+				
+			}
+				if ($publi->regimen->idtipo ==$americano) {
+
+				$publicados = $publi;
+				
+			}
+
+			if (isset($publicados) == false) {
+
+				$publicados = $publi;
+				
+			}
+
+		}
+
+		$formatted_dt1=Carbon::parse($request->get('dbDesde'));
+		$formatted_dt2=Carbon::parse($request->get('dbhasta'));
+		$fecha=$formatted_dt1->diffInDays($formatted_dt2);
+
+		$room = $request->get('room');
+
+	
+		$este['publicados'] = $publicados;
+		$params['publicados'] = $este;				
+		$fotos= App\Fotos::all();
+        $params['fotos'] = $fotos;
+		$params ['fecha'] = $fecha;
+		$params['ciudad']=$city;
+		$params['city'] = $ciudad;	
+		$params['dbDesde']=$dbDesde;
+		$params['dbHasta']=$dbHasta;
+		$params['room']=$room;
+
+
+		//dd($publicados);
+		//echo $publicado;
+
+		return view('alojamientos.busqueda',$params);
+				
 	}
 
 	public function login(Request $request) 
@@ -176,5 +286,10 @@ class reservas extends Controller
 			}
 	
 	}
+
+
+
+			
+
 
 }
